@@ -11,9 +11,9 @@
     <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
     <!--  <ul class="nav navbar-nav ml-auto">-->
 
+    <ul class="navbar-menu">
     <!-- ユーザーがログインしているとき -->
     <% if user_sign_in? %>
-    <ul class="navbar-menu">
       <li class="nav-item">
         <%= link_to users_path do %>
           <i class="fas fa-id-card"> MY PAGE </i>
@@ -34,7 +34,8 @@
           <i class="fas fa-sign-out-alt"> LOG OUT </i>
         <% end %>
       </li>
-    </ul>
+
+    <!-- 管理者がログインしているとき -->
     <% elsif admin_signed_in? %>
       <li class="nav-item">
         <%= link_to admins_posts_path do %>
@@ -47,13 +48,34 @@
         <% end %>
       </li>
       <li class="nav-item">
-        
+        <%= link_to admin_areas_path do %>
+          <i class="fas fa-map-marked-alt"> エリア一覧 </i>
+        <% end %>
       </li>
       <li class="nav-item">
-        
+        <%= link_to destroy_admin_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"> LOG OUT </i>
+        <% end %>
       </li>
-    
+
+    <!-- ログインしていないとき -->
+    <% else %>
+      <li class="nav-item">
+        <%= link_to posts_path do %>
+          <i class="fas fa-quran"> 投稿一覧 </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to new_user_registration_path do %>
+          <i class="fas fa-user-edit"> 新規登録 </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <i class="fas fa-sign-in-alt"> LOG IN </i>
+      </li>
+
     <% end %>
-    
+    </ul>
+
   </nav>
 </header>
