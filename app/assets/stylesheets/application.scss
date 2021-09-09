@@ -43,6 +43,7 @@ main {
 }
 
 
+// ヘッダー
 .navbar {
     justify-content: flex end;
     align-items: center;
@@ -64,4 +65,9 @@ main {
 .nav-item i:hover {
     background-color: #752100;
     border-radius: 4px;
+}
+
+// フッター
+.footer {
+    background-color: #762f07;
 }
