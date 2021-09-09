@@ -1,6 +1,6 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#8f6552;">
-    <nav class="navbar-brand navbar-left header-logo">
+  <nav class="navbar navbar-expand-lg navbar-light" >
+    <nav class="navbar-brand navbar-left header-logo" >
       <%= link_to root_path do %>
         <i class="fas fa-coffee"> CAWS </i>
       <% end %>
@@ -13,7 +13,7 @@
 
     <ul class="navbar-menu">
     <!-- ユーザーがログインしているとき -->
-    <% if user_sign_in? %>
+    <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to users_path do %>
           <i class="fas fa-id-card"> MY PAGE </i>
@@ -71,7 +71,9 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <i class="fas fa-sign-in-alt"> LOG IN </i>
+        <%= link_to new_user_session_path do %>
+          <i class="fas fa-sign-in-alt"> LOG IN </i>
+        <% end %>
       </li>
 
     <% end %>

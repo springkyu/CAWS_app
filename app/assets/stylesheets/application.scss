@@ -17,6 +17,50 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-body {
-  background-image: image-url("background3.png");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+//   background-image: image-url("background3.png");
+}
+
+main {
+    flex: 10 auto;
+    background-color: #b4866b;
+}
+
+
+.navbar {
+    justify-content: flex end;
+    align-items: center;
+    background-color: #762f07;
+    padding: 8px 12px;
+}
+
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+.nav-item i {
+    padding: 8px 12px;
+    color: #eb9b6f;
+}
+
+// .nav-item i:hover {
+//     background-color: ;
+// }
