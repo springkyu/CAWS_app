@@ -1,0 +1,59 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#8f6552;">
+    <nav class="navbar-brand navbar-left header-logo">
+      <%= link_to root_path do %>
+        <i class="fas fa-coffee"> CAWS </i>
+      <% end %>
+    </nav>
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--  <span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
+    <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+    <!--  <ul class="nav navbar-nav ml-auto">-->
+
+    <!-- ユーザーがログインしているとき -->
+    <% if user_sign_in? %>
+    <ul class="navbar-menu">
+      <li class="nav-item">
+        <%= link_to users_path do %>
+          <i class="fas fa-id-card"> MY PAGE </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to posts_path do %>
+          <i class="fas fa-quran"> 投稿一覧 </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to new_post_path do %>
+          <i class="fas fa-edit"> 新規投稿 </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"> LOG OUT </i>
+        <% end %>
+      </li>
+    </ul>
+    <% elsif admin_signed_in? %>
+      <li class="nav-item">
+        <%= link_to admins_posts_path do %>
+          <i class="fas fa-paste"> 投稿一覧 </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to admins_users_path do %>
+          <i class="fas fa-users-cog"> 会員一覧 </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        
+      </li>
+      <li class="nav-item">
+        
+      </li>
+    
+    <% end %>
+    
+  </nav>
+</header>
