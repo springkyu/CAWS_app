@@ -40,11 +40,11 @@
         </table>
         <% end %>
         </div>
-  		
-  		  <i class="fas fa-eye"> SHOW </i>
-  		<% end %>
-  		<%= link_to posts_path do%>
-  		  <i class="fas fa-backward"> BACK </i>
-  	  <% end %>
+  		  <%= link_to post_path(@post) %>
+  		    <i class="fas fa-eye"> SHOW </i>
+  		  <% end %>
+  		  <%= link_to posts_path do %>
+  		    <i class="fas fa-backward"> BACK </i>
+  	    <% end %>
   </div>
 </div>
