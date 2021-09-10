@@ -4,7 +4,7 @@ class Users::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save!
-      flash[:notice]="You have creatad book successfully."
+      flash[:notice]="You have creatad post successfully."
       redirect_to post_path(@post)
     else
       redirect_back(fallback_location: root_path)
@@ -39,14 +39,19 @@ class Users::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
     if @post.update(post_params)
-      flash[:notice]="Book was successfully updated."
+      flash[:notice]="Post was successfully updated."
       redirect_back post_path(@post.id)
     else
       render :edit
-    end
+    end 
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "Post was successfully destroyed."
+      redirect_to books_path
+    end
   end
 
   private
