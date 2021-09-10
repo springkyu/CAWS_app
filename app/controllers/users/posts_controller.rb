@@ -1,5 +1,10 @@
 class Users::PostsController < ApplicationController
 
+  def new
+    @post = Post.new
+    @areas = Area.all
+  end
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -16,7 +21,7 @@ class Users::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @post = Post.new
+    # @post = Post.new
     @user = current_user
   end
 
