@@ -1,0 +1,50 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h2> EDITTING POST ~// 投稿を編集 //~</h2>
+    	<%= render 'layouts/errors', obj: @post %>
+  		  <div class="form-group">
+        <%= form_with model: @post, url: post_path(@pot), method: :patch, local: true do |f| %>
+        <table class="table table-borderless">
+
+          <tr>
+            <td><%= f.label :Cafe_Name, class: "float-left" %></td>
+            <td><%= f.text_field :shop_name, placeholder: "カフェの名前", autofocus: true, autocomplete: "shop_name", class: "form-control w-75" %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :Photo, class: "float-left" %></td>
+            <td><%= f.file_field :image, placeholder: "写真を選んでください", autofocus: true %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :Text, class: "float-left" %></td>
+            <td><%= f.text_area :body, placeholder: "何かコメントがあれば...", autofocus: true, autocomplete: "body", class: "form-control", size: "50x10" %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :Area, class: "float-left" %></td>
+            <td><%= f.collection_select(:area_id, @areas, :id, :area, :prompt => "--エリアを選択してください--") %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :Location, class: "float-left" %></td>
+            <td><%= f.text_field :location, placeholder: "位置情報", autofocus: true, autocomplete: "location", class: "form-control w-75" %></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit "SAVE CHANGES", class: "btn btn-outline-succuces" %></td>
+          </tr>
+
+        </table>
+        <% end %>
+        </div>
+  		
+  		  <i class="fas fa-eye"> SHOW </i>
+  		<% end %>
+  		<%= link_to posts_path do%>
+  		  <i class="fas fa-backward"> BACK </i>
+  	  <% end %>
+  </div>
+</div>
