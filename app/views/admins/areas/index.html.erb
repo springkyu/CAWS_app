@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h4 class="">エリア一覧・追加</h4>
+  </div>
+  <div class="row">
+    <div class="">
+      <%= form_with model: @area, url: admins_areas_path, local: true do |f| %>
+        <%= f.label :AREA %>
+        <%= f.text_field :area, placeholder: "エリア名", class: "" %>
+        <%= f.submit "NEW/ADD", class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
+    <div class="">
+      <table class="areaindex table-hover">
+        <tr class="" style="text-align: center;">
+          <th>AREA</th>
+          <th></th>
+        </tr>
+        <% @areas.each do |area| %>
+        <tr>
+          <td><%= area.area %></td>
+          <td><%= link_to "EDIT", edit_admins_area_path(area.id), class: "btn btn-outline-success" </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
