@@ -5,7 +5,7 @@
     	<%= render 'layouts/errors', obj: @post %>
   		<div class="form-group">
         <%= form_with model: @post, url: post_path(@pot), method: :patch, local: true do |f| %>
-        <table class="table table-borderless">
+        <table class="postedit table-borderless">
 
           <tr>
             <td><%= f.label :Cafe_Name, class: "float-left" %></td>
