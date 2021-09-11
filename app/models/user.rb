@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :introduction
+
   # ActiveStorageバリデーション
   validate :profile_image_type
 
