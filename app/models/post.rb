@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   validates :area_id, { presence: true, message: " : エリアを選択してください" }
   validates :text
   validates :location
-  
+
 
   # ActiveStorageバリデーション
   validate :image_type
