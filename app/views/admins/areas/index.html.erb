@@ -7,7 +7,7 @@
       <%= form_with model: @area, url: admins_areas_path, local: true do |f| %>
         <%= f.label :AREA %>
         <%= f.text_field :area, placeholder: "エリア名", class: "" %>
-        <%= f.submit "NEW/ADD", class: "btn btn-outline-success" %>
+        <%= f.submit "NEW/ADD", class: "btn btn-outline-primary" %>
       <% end %>
     </div>
     <div class="">
@@ -19,7 +19,7 @@
         <% @areas.each do |area| %>
         <tr>
           <td><%= area.area %></td>
-          <td><%= link_to "EDIT", edit_admins_area_path(area.id), class: "btn btn-outline-success" </td>
+          <td><%= link_to "EDIT", edit_admins_area_path(area.id), class: "btn btn-outline-success" %></td>
         </tr>
         <% end %>
       </table>
