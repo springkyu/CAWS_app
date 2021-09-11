@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h4 class="">エリア編集</h4>
+    </div>
+    <div class="">
+      <%= form_with model: @area, url: admins_area_path(@area), method: :patch, local: true |f| %>
+        <%= f.label :AREA %>
+        <%= f.text_field :area, class: "" %>
+        <%= f.submit "SAVE CHANGES", class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
