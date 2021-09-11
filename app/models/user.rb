@@ -10,4 +10,16 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  # ActiveStorageバリデーション
+  validate :profile_image_type
+
+  private
+
+  def profile_image_type
+    if !image.blob.content_type.in?(%('image/jpg image/jpeg image/png'))
+      image.purge
+      errors.add(:profile_image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+    end
+  end
+
 end
