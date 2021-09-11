@@ -8,10 +8,18 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_one_attached :profile_image
-
+  # バリデーション
   validate :introduction
 
+
+  def already_favorited?(post)
+    self.favorites.exists?(post_id: post.id)
+  end
+
+
+
+  # has_one_attachedメソッド
+  has_one_attached :profile_image
   # ActiveStorageバリデーション
   validate :profile_image_type
 
