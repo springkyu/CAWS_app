@@ -3,7 +3,7 @@
   <h2> NEW POST ~ //新規投稿// ~ </h2>
     <div class="form-group">
       <%= form_with model: @post, url: posts_path, local: true do |f| %>
-      <table class="table table-borderless">
+      <table class="postnew table-borderless">
 
         <tr>
           <td><%= f.label :Cafe_Name, class: "float-left" %></td>

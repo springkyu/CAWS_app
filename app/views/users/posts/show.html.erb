@@ -2,7 +2,36 @@
   <div class="row">
     <div class="col-10">
       <h2> POST DETAIL ~// 詳細 //~ </h2>
-      
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      <%= image_tag @post.image.variant(resize:'300x300') %>
+      <table class="postinfo table-borderless">
+        <tr>
+          <th>CAFE's NAME</th>
+          <td><%= @post.shop_name %></td>
+          <td><%= @post.area.area %></td>
+        </tr>
+        <tr>
+          <th>TEXT</th>
+          <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <th>LOCATION</th>
+          <td><%= @post.location %></td>
+        </tr>
+        <tr>
+          <th>
+            <% if @post.user.profile_image.attached? %>
+              <%= image_tag @post.user.profile_image.variant (resize:'50x50')  %>
+            <% else %>
+              <%= image_tag 'no_image.jpg' %>
+            <% end %>
+          </th>
+          <td><%= @post.user.name %><p><%= @post.created_at %></p></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
