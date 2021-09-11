@@ -8,10 +8,10 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
-  validates :shop_name, { presence: true, message: " : カフェの名前を入力してください" }
-  validates :area_id, { presence: true, message: " : エリアを選択してください" }
-  validates :text
-  validates :location
+  validates :shop_name, presence: true
+  validates :area_id, presence: true
+  validate :text
+  validate :location
 
 
   # ActiveStorageバリデーション

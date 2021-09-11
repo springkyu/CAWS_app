@@ -20,7 +20,7 @@
         <tr>
           <td><%= area.area %></td>
           <td><%= link_to "EDIT", edit_admins_area_path(area.id), class: "btn btn-outline-success" %></td>
-          <td><%= link_to "DESTROY", admins_area_path(area), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %></td>
+          <td><%= link_to "DESTROY", admins_area_path(area.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %></td>
         </tr>
         <% end %>
       </table>
