@@ -30,6 +30,13 @@
             <% end %>
           </th>
           <td><%= @post.user.name %><p><%= @post.created_at %></p></td>
+          <td></td>
+        </tr>
+        <tr>
+        <% if @post.user_id == current_user.id %>
+          <td><%= link_to 'EDIT', edit_post_path(@post), class:"btn btn-outline-succuces" %></td>
+          <td><%= link_to 'DESTROY', posts_path(@post), method: :delete, data: {confirm: '️︎本当に消してもよろしいですか？'}, class:"btn btn-outline-danger" %></td>
+        <% end %>
         </tr>
       </table>
     </div>
