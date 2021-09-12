@@ -8,12 +8,6 @@ class Users::CommentsController < ApplicationController
     render :index
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
     render :index
