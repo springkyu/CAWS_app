@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class=""><%= @user.name %>さんのUSER INFO.</h4>
+      <table class="userinfo table-borderless table-hover">
+        <tr>
+          <td>USER ID</td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td>NICKNAME</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td>E-MAIL</td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td>USER STATUS</td>
+          <td>
+            <!-- ユーザステータス/ 退会フラグで条件分岐 -->
+            <% if user.is_deleted == true %>
+              <p class="text-secondary"> 退会済 </p>
+            <% else %>
+              <p class="text-success"> 有効 </p>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= link_to "EDIT", edit_admins_user_path(@user.id), class: "btn btn-outline-success" %></td>
+          <td><%= link_to "USER's ALL POSTs", admins_posts_path(@user.id), class: "btn btn-outline-primary" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
