@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # バリデーション
   validate :introduction
 
-
+  
   def already_favorited?(post)
     self.favorites.exists?(post_id: post.id)
   end
