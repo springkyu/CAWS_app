@@ -32,10 +32,18 @@
             <% end %>
           </th>
           <td><%= @post.user.name %><p><%= @post.created_at %></p></td>
-          <td></td>
+          <td>
+            <!-- いいねは非同期通信 -->
+            <div id="likes_buttons_<%= @post.id %>">
+              <%= render partial: 'likes/like', locals: {post: @post} %>
+            </div>
+          </td>
+          <!-- コメント数のカウント -->
+          <td> | COMMENTS: <%= @post.comment.count %></td>
         </tr>
         <tr>
-          <!-- この投稿のユーザがログインユーザなら編集・削除ボタンを表示 -->
+          <td></td>
+        <!-- この投稿のユーザがログインユーザなら編集・削除ボタンを表示 -->
         <% if @post.user_id == current_user.id %>
           <td><%= link_to 'EDIT', edit_post_path(@post), class:"btn btn-outline-success" %> | </td>
           <td><%= link_to 'DESTROY', posts_path(@post), method: :delete, data: {confirm: '️︎本当に消してもよろしいですか？'}, class:"btn btn-outline-danger" %></td>
