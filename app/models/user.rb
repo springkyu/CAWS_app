@@ -12,8 +12,8 @@ class User < ApplicationRecord
   validate :introduction
 
   
-  def already_favorited?(post)
-    self.favorites.exists?(post_id: post.id)
+  def already_likeed?(post)
+    self.likes.exists?(post_id: post.id)
   end
 
 
