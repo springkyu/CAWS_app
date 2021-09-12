@@ -1,0 +1,29 @@
+<table class="comment table-hover">
+  <!-- 投稿に対してのコメントを一覧で表示する -->
+  <% post.comments.each do |comment| %>
+    <% comment_user = comment.user %>
+    <tr>
+      <td>
+        <%= link_to user_path(comment_user), class: "user_#{comment_user.id}" do %>
+          <!-- プロフィール画像表示の条件分岐 -->
+          <% if comment_user.profile_image.attached? %>
+            <%= image_tag comment_user.profile_image.variant(resize:'50x50')  %>
+          <% else %>
+            <%= image_tag 'no_image.jpg' %>
+          <% end %>
+          <!-- ユーザの名前 -->
+          <%= comment_user.name %>
+        <% end %>
+      </td>
+      <td></td>
+      <!-- コメント数のカウント -->
+      <td><%= comment.count %></td>
+      <!-- ログインユーザがコメントしたユーザなら削除ボタン表示 -->
+      <% if current_user == comment_user %>
+        <td>
+          <%= link_to "DESTROY", post_comment_path(comment.post_id, comment.id), class: "btn btn-outline-danger", method: :delete, remote: true %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
