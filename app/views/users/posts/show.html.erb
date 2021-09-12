@@ -6,6 +6,7 @@
   </div>
   <div class="row">
     <div class="">
+      <!-- 投稿写真 -->
       <%= image_tag @post.image.variant(resize:'300x300') %>
       <table class="postinfo table-borderless">
         <tr>
@@ -23,6 +24,7 @@
         </tr>
         <tr>
           <th>
+            <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
             <% if @post.user.profile_image.attached? %>
               <%= image_tag @post.user.profile_image.variant (resize:'50x50')  %>
             <% else %>
@@ -33,6 +35,7 @@
           <td></td>
         </tr>
         <tr>
+          <!-- この投稿のユーザがログインユーザなら編集・削除ボタンを表示 -->
         <% if @post.user_id == current_user.id %>
           <td><%= link_to 'EDIT', edit_post_path(@post), class:"btn btn-outline-success" %> | </td>
           <td><%= link_to 'DESTROY', posts_path(@post), method: :delete, data: {confirm: '️︎本当に消してもよろしいですか？'}, class:"btn btn-outline-danger" %></td>
