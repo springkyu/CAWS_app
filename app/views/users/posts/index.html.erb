@@ -23,10 +23,20 @@
                 <% end %>
               </td>
               <td>
+                <% if current_user.already_likeed?(@post) %>
+                  <%= link_to post_likes_path(@post), method: :delete do %>
+                  <i class="fas fa-heart"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(@post), method: :post do %>
+                  <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+                <%= @post.likes.count %>
                 <!-- いいねは非同期通信 -->
-                <div id="likes_buttons_<%= post.id %>">
-                  <%= render partial: 'likes/like', locals: {post: post} %>
-                </div>
+                <!--<div id="likes_buttons_<#%= post.id %>">-->
+                <!--  <%#= render partial: 'likes/like', locals: {post: post} %>-->
+                <!--</div>-->
               </td>
             </tr>
             <tr>

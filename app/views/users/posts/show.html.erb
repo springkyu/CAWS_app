@@ -33,10 +33,20 @@
           </th>
           <td><%= @post.user.name %><p><%= @post.created_at %></p></td>
           <td>
+            <% if current_user.already_likeed?(@post) %>
+              <%= link_to post_likes_path(@post), method: :delete do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to post_likes_path(@post), method: :post do %>
+                <i class="far fa-heart"></i>
+              <% end %>
+            <% end %>
+            <%= @post.likes.count %>
             <!-- いいねは非同期通信 -->
-            <div id="likes_buttons_<%= @post.id %>">
+            <!--<div id="likes_buttons_<%#= @post.id %>">-->
               <%#= render partial: 'likes/like', locals: {post: @post} %>
-            </div>
+            <!--</div>-->
           </td>
           <!-- コメント数のカウント -->
           <td> | COMMENTS: <%= @post.comments.count %></td>
@@ -51,15 +61,15 @@
         </tr>
       </table>
       <!-- コメント一覧を表示 -->
-      <div id="comments_area">
-        <%= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>
-      </div>
+      <!--<div id="comments_area">-->
+      <!--  <%#= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>-->
+      <!--</div>-->
       <!-- ユーザーがログインしていれば、コメントフォームを表示 -->
-      <% if user_signed_in? %>
-        @post = Post.new if @post.nil?
-        @comment = Comment.new
-        <%= render partial: 'users/comments/form', locals: {post: @post, comments: @comments} %>
-      <% end %>
+      <!--<%# if user_signed_in? %>-->
+      <!--  @post = Post.new if @post.nil?-->
+      <!--  @comment = Comment.new-->
+      <!--  <%#= render partial: 'users/comments/form', locals: {post: @post, comments: @comments} %>-->
+      <!--<%# end %>-->
     </div>
   </div>
 </div>
