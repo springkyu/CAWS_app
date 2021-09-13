@@ -52,11 +52,11 @@
       </table>
       <!-- コメント一覧を表示 -->
       <div id="comments_area">
-        <%= render partial: 'comments/index', locals: {post: @post, comments: @comments} %>
+        <%= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>
       </div>
       <!-- ユーザーがログインしていれば、コメントフォームを表示 -->
       <% if user_signed_in? %>
-        <%= render partial: 'comments/form', locals: {post: @post, comments: @comments} %>
+        <%= render partial: 'users/comments/form', locals: {post: @post, comments: @comments} %>
       <% end %>
     </div>
   </div>
