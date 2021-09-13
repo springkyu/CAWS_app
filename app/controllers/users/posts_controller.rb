@@ -12,10 +12,10 @@ class Users::PostsController < ApplicationController
       flash[:notice]="You have creatad post successfully."
       redirect_to post_path(@post)
     else
-      redirect_back(fallback_location: root_path)
-      # @user = current_user
-      # @posts = Post.all
-      # render :index
+      # redirect_back(fallback_location: root_path)
+      @user = current_user
+      @posts = Post.all
+      render :index
     end
   end
 
@@ -44,7 +44,7 @@ class Users::PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.update(post_params)
       flash[:notice]="Post was successfully updated."
-      redirect_back post_path(@post.id)
+      redirect_to post_path(@post.id)
     else
       render :edit
     end 
@@ -59,8 +59,9 @@ class Users::PostsController < ApplicationController
   end
 
   private
+
   def post_params
-    params.require(:post).permit(:shop_name, :image, :body, :location)
+    params.require(:post).permit(:shop_name, :image, :body, :location, :area_id)
   end
 
 end

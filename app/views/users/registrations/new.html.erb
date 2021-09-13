@@ -1,3 +1,23 @@
+<%= render "users/shared/error_messages", resource: resource %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3> SIGN UP ~// 新規会員登録 //~ </h3>
+      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+      <table class="">
+        <tr>
+          
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <h2>Sign up</h2>
 
 <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
