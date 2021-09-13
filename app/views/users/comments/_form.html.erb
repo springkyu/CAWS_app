@@ -1,9 +1,9 @@
 <!-- コメント入力フォーム -->
-<%= form_with model: [post, comment] do |f| %>
+<%= form_with model: @comment do |f| %>
   <table class="commentnew table-borderless">
     <tr>
       <td><%= f.label :COMMENT, class: "float-left" %></td>
-      <td><%= f.text_area :comment, placeholder: "ここに入力"size:"90×5" %></td>
+      <td><%= f.text_area :comment, placeholder: "ここに入力", size:"90×5" %></td>
     </tr>
     <tr>
       <td></td>
