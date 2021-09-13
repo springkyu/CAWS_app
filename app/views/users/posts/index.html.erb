@@ -46,8 +46,8 @@
             </tr>
             <tr>
               <!-- 投稿日 -->
-              <td class="card-date"><i class="fas fa-calendar-day"></i><%= post.created_at %>  |  </td>
-              <td class="category"><%= post.area.area %></td>
+              <td class="card-date"><i class="fas fa-calendar-day"></i><%= post.created_at.strftime("%Y/%m/%d %H:%M") %>  |  </td>
+              <td class="category"><%= post.area.area %> エリア </td>
             </tr>
           </table>
         </div>

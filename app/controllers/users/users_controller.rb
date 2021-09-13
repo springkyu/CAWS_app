@@ -2,6 +2,7 @@ class Users::UsersController < ApplicationController
 
   def show
     @user = current_user
+    @posts = @user.posts.page(params[:page]).reverse_order
   end
 
   def edit
