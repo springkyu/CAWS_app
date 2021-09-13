@@ -8,7 +8,13 @@
     <table class="table table-bordered table-hover">
       <tr>
         <th>Profile Image</th>
-        <td></td>
+        <td>
+          <% if @user.profile_image.attached? %>
+            <%= image_tag @user.profile_image.variant(resize:'100x100') %>
+          <% else %>
+            <%= image_tag 'no_image.jpg' %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th>Nickname</th>
@@ -17,10 +23,6 @@
       <tr>
         <th>E-Mail</th>
         <td><%= @user.email %></td>
-      </tr>
-      <tr>
-        <th>Introduction</th>
-        <td><%= @user.introduction %></td>
       </tr>
     </table>
   </div>
