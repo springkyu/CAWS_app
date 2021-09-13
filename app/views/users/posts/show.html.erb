@@ -74,6 +74,15 @@
         <% end %>
       </table>
 
+      <%= form_with(model:[@post, @comment], local: true) do |f| %>
+        <div class="row" >
+          <%= f.text_area :comment, class: "col-md-11 comment_content" %><br >
+        </div>
+        <div class="actions">
+          <%= f.submit 'POST', class: "btn btn-outline-dark mt-4" %>
+        </div>
+      <% end %>
+
       <!-- コメント一覧を表示 -->
       <!--<div id="comments_area">-->
       <!--  <%#= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>-->

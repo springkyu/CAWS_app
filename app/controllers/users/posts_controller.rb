@@ -36,7 +36,7 @@ class Users::PostsController < ApplicationController
     if @post.user == current_user
       render :edit
     else
-      redirect_to books_path
+      redirect_to posts_path
     end
   end
 
