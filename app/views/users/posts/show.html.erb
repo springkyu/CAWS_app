@@ -60,6 +60,20 @@
         <% end %>
         </tr>
       </table>
+      <table class="table comment">
+        <% @post.comments.each do |comment| %>
+          <tr>
+            <td><%= comment.user.name %></td>
+            <td><%= comment.comment %></td>
+            <% if comment.user == current_user %>
+              <td>
+                <%= link_to "DESTROY", post_comment_path(comment.post, comment), method: :delete, class: " btn btn-outline-danger" %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+
       <!-- コメント一覧を表示 -->
       <!--<div id="comments_area">-->
       <!--  <%#= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>-->
