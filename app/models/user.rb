@@ -8,9 +8,6 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  # バリデーション
-  validate :introduction
-
   
   def already_likeed?(post)
     self.likes.exists?(post_id: post.id)
