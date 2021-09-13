@@ -14,14 +14,14 @@
         </tr>
         <tr>
           <td><%= f.label :EMAIL, class: "float-left" %></td>
-          <td><%= email_field :email, class* "form_control" %></td>
+          <td><%= email_field :email, class: "form_control" %></td>
         </tr>
         <tr>
           <td><%= f.label :STATUS, class: "float-left" %></td>
           <td>
             <!-- ラジオボタンでステータス選択 -->
             <%= radio_button :is_deleted, false %><span> 有効 </span>
-            <%= radio_button :is_deleted, true %><span> 退会 </span> 
+            <%= radio_button :is_deleted, true %><span> 退会 </span>
           </td>
         </tr>
         <tr>
@@ -30,7 +30,7 @@
           <td><%= f.submit "UPDATE", class: "btn btn-outline-success" %></td>
         </tr>
       </table>
-      <% end 
+      <% end %>
     </div>
   </div>
 </div>
