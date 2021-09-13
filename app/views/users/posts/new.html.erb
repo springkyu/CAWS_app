@@ -6,8 +6,8 @@
       <table class="postnew table-borderless">
 
         <tr>
-          <td><%= f.label :Cafe_Name, class: "float-left" %></td>
-          <td><%= f.text_field :shop_name, placeholder: "カフェの名前", autofocus: true, autocomplete: "shop_name", class: "form-control w-75" %></td>
+          <td><%= f.label :shop_name, "Cafe's Name", class: "float-left" %></td>
+          <td><%= f.text_field :shop_name, placeholder: "カフェの名前", autofocus: true, autocomplete: "shop_name", class: "form-control w-100" %></td>
         </tr>
 
         <tr>
@@ -27,7 +27,7 @@
 
         <tr>
           <td><%= f.label :Location, class: "float-left" %></td>
-          <td><%= f.text_field :location, placeholder: "位置情報", autofocus: true, autocomplete: "location", class: "form-control w-75" %></td>
+          <td><%= f.text_field :location, placeholder: "位置情報", autofocus: true, autocomplete: "location", class: "form-control w-100" %></td>
         </tr>
 
         <tr>
