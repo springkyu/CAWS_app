@@ -26,20 +26,20 @@
           <th>
             <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
             <% if @post.user.profile_image.attached? %>
-              <%= image_tag @post.user.profile_image.variant (resize:'50x50')  %>
+              <%= image_tag @post.user.profile_image.variant(resize:'100x100') %>
             <% else %>
-              <%= image_tag 'no_image.jpg' %>
+              <%= image_tag 'no_image.jpg', size: '100x100' %>
             <% end %>
           </th>
           <td><%= @post.user.name %><p><%= @post.created_at %></p></td>
           <td>
             <!-- いいねは非同期通信 -->
             <div id="likes_buttons_<%= @post.id %>">
-              <%= render partial: 'likes/like', locals: {post: @post} %>
+              <%#= render partial: 'likes/like', locals: {post: @post} %>
             </div>
           </td>
           <!-- コメント数のカウント -->
-          <td> | COMMENTS: <%= @post.comment.count %></td>
+          <td> | COMMENTS: <%= @post.comments.count %></td>
         </tr>
         <tr>
           <td></td>
@@ -56,6 +56,8 @@
       </div>
       <!-- ユーザーがログインしていれば、コメントフォームを表示 -->
       <% if user_signed_in? %>
+        @post = Post.new if @post.nil?
+        @comment = Comment.new
         <%= render partial: 'users/comments/form', locals: {post: @post, comments: @comments} %>
       <% end %>
     </div>

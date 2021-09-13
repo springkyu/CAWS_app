@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  
+
   def already_likeed?(post)
     self.likes.exists?(post_id: post.id)
   end
@@ -23,8 +23,8 @@ class User < ApplicationRecord
   private
 
   def profile_image_type
-    if !image.blob.content_type.in?(%('image/jpg image/jpeg image/png'))
-      image.purge
+    if profile_image.attached? && !profile_image.blob.content_type.in?(%('image/jpg image/jpeg image/png'))
+      profile_image.purge
       errors.add(:profile_image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
     end
   end

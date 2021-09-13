@@ -47,7 +47,7 @@ class Users::PostsController < ApplicationController
       redirect_to post_path(@post.id)
     else
       render :edit
-    end 
+    end
   end
 
   def destroy
