@@ -54,7 +54,7 @@
                 <% end %>
               </td>
               <td>
-                <% if current_user.already_likeed?(post) %>
+                <% if current_user.already_liked?(post) %>
                   <%= link_to post_likes_path(post), method: :delete do %>
                   <i class="fas fa-heart"></i>
                   <% end %>
