@@ -1,22 +1,30 @@
-<div class="container">
+<div class="card-container">
   <div class="row">
     <div class="col-10">
       <h2 class=""> POST DETAIL </h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <!-- 投稿写真 -->
-      <%= image_tag @post.image.variant(resize:'300x300') %>
+ <div class="card w-75 mx-auto mt-4 mb-5 p-3 shadow-lg border-secondary">
+   <!-- カフェの名前をcardのヘッダーに -->
+   <div class="card-header mb-3" style="background: #dddcd6;" >
+     <%= @post.shop_name %>
+   </div>
+   <!-- 投稿写真 -->
+   <%= image_tag @post.image %>
+   <div class="card-body">
+     <div class="card-text">
       <table class="postinfo table-borderless">
         <tr>
           <th>CAFE's NAME：</th>
           <td><%= @post.shop_name %></td>
-          <td><%= @post.area.area %></td>
         </tr>
         <tr>
           <th>TEXT：</th>
           <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <th>AREA：</th>
+          <td><%= @post.area.area %> エリア</td>
         </tr>
         <tr>
           <th>LOCATION：</th>
@@ -47,6 +55,7 @@
           <td><%= link_to 'DESTROY', admins_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-outline-danger" %></td>
         </tr>
       </table>
+      
       <table class="table comment">
         <!-- 投稿のコメント一覧 -->
         <% @post.comments.each do |comment| %>
@@ -58,5 +67,6 @@
         <% end %>
       </table>
     </div>
+  </div>
   </div>
 </div>
