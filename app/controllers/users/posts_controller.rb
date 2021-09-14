@@ -57,6 +57,9 @@ class Users::PostsController < ApplicationController
     if @post.destroy
       flash[:notice] = "Post was successfully destroyed."
       redirect_to posts_path
+    else
+      flash[:alert] = "Could not destroy."
+      redirect_back(fallback_location: root_path)
     end
   end
 
