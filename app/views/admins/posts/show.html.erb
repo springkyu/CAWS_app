@@ -41,7 +41,7 @@
         </tr>
         <tr>
           <td></td>
-          <td><%= link_to 'DESTROY', admins_post_path(@post), method: :delete, data: {confirm: '️︎本当に消していいですか？'}, class:"btn btn-outline-danger" %></td>
+          <td><%= link_to 'DESTROY', admins_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-outline-danger" %></td>
         </tr>
       </table>
       <table class="table comment">
@@ -50,7 +50,7 @@
           <tr>
             <td><%= comment.user.name %></td>
             <td><%= comment.comment %></td>
-            <td><%= link_to "DESTROY", post_comment_path(comment.post, comment), method: :delete, class: " btn btn-outline-danger" %></td>
+            <td><%= link_to "DESTROY", post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
           </tr>
         <% end %>
       </table>
