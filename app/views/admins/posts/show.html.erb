@@ -10,16 +10,16 @@
       <%= image_tag @post.image.variant(resize:'300x300') %>
       <table class="postinfo table-borderless">
         <tr>
-          <th>CAFE's NAME</th>
+          <th>CAFE's NAME：</th>
           <td><%= @post.shop_name %></td>
           <td><%= @post.area.area %></td>
         </tr>
         <tr>
-          <th>TEXT</th>
+          <th>TEXT：</th>
           <td><%= @post.body %></td>
         </tr>
         <tr>
-          <th>LOCATION</th>
+          <th>LOCATION：</th>
           <td><%= @post.location %></td>
         </tr>
         <tr>
@@ -32,7 +32,10 @@
             <% end %>
           </th>
           <!-- 投稿ユーザと投稿日 -->
-          <td><%= @post.user.name %><p><%= @post.created_at %></p></td>
+          <td>
+            <%= link_to @post.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-secondary" %>
+            <p><%= @post.created_at %></p>
+          </td>
           <td></td>
           <!-- いいね数のカウント -->
           <td><i class="fas fa-heart"><%= @post.likes.count %></i></td>
