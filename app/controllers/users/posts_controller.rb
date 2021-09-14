@@ -56,7 +56,7 @@ class Users::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "Post was successfully destroyed."
-      redirect_to books_path
+      redirect_to posts_path
     end
   end
 
