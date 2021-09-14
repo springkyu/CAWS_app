@@ -9,12 +9,6 @@ class Admins::PostsController < ApplicationController
     @user = @post.user
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
   end
 
