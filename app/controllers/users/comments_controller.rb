@@ -5,24 +5,24 @@ class Users::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
     if comment.save!
-      redirect_back(fallback_location: root_path)
+      # redirect_back(fallback_location: root_path)
       # 非同期
-      # render :index
+      render :index
     end
   end
 
   def destroy
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
     # 非同期
-    # render :index
+    render :index
   end
 
 
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :post_id)
+    params.require(:comment).permit(:comment, :post_id, :user_id)
   end
 
 end

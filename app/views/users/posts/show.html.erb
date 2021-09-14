@@ -76,51 +76,16 @@
             </tr>
           </table>
 
-          <table class="table table-hover mt-5 mb-3">
-            <thead>
-              <tr>
-                <th>USER NAME</th>
-                <th>COMMENT</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-            <% @post.comments.each do |comment| %>
-              <tr>
-                <td><%= comment.user.name %></td>
-                <td><%= comment.comment %></td>
-              <% if comment.user == current_user %>
-                <td>
-                  <%= link_to "DESTROY", post_comment_path(comment.post, comment), method: :delete,　data: {confirm: '️︎本当に消してもよろしいですか？'}, class: " btn btn-outline-danger" %>
-                </td>
-              <% end %>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-
-        </div>
-        <div class="card-form">
-          <%= form_with(model:[@post, @comment], local: true) do |f| %>
-          <div class="row" >
-            <%= f.text_area :comment, placeholder: "ここにコメントを入力", class: "col-md-11 form-control form-control-lg" %><br >
-          </div>
-          <div class="actions">
-            <%= f.submit 'POST', class: "btn btn-outline-info mt-4" %>
-          </div>
-          <% end %>
-        </div>
-
       <!-- コメント一覧を表示 -->
-      <!--<div id="comments_area">-->
-      <!--  <%#= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>-->
-      <!--</div>-->
+      <div id="comments_area">
+        <%= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>
+      </div>
       <!-- ユーザーがログインしていれば、コメントフォームを表示 -->
-      <!--<%# if user_signed_in? %>-->
-      <!--  @post = Post.new if @post.nil?-->
-      <!--  @comment = Comment.new-->
-      <!--  <%#= render partial: 'users/comments/form', locals: {post: @post, comments: @comments} %>-->
-      <!--<%# end %>-->
+      <% if user_signed_in? %>
+        <!--@post = Post.new if @post.nil?-->
+        <!--@comment = Comment.new-->
+        <%= render partial: 'users/comments/form', locals: {post: @post, comment: @comment} %>
+      <% end %>
     </div>
     <div class="card-footer text-muted mt-2" style="background: #e9dfe5;" >
       craeated at <%= @post.created_at %>
