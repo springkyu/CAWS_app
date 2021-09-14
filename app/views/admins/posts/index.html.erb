@@ -1,10 +1,10 @@
 <div class="card-list-container py-5">
-  <h2> POST ALL ~ //一覧// ~ </h2>
+  <h2 class=""> POST LIST </h2>
   <!-- 投稿の一覧を表示 -->
   <% @posts.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <!-- 投稿写真（メイン） -->
-    <%= link_to post_path(post.id) do %>
+    <%= link_to admins_post_path(post.id) do %>
       <%= image_tag post.image, class:"card-img-top"; %>
     <% end %>
     <div class="card-body">
@@ -22,21 +22,17 @@
             <tr>
               <td class="card-title">
                 <!-- 投稿のタイトル＝カフェの名前 -->
-                <%= link_to post_path(post.id), class:"text-secondary" do %>
-                  <strong><i class="fas fa-coffee"></i><span> <%= post.shop_name %></span></strong>
+                <%= link_to admins_post_path(post.id), class:"text-secondary" do %>
+                  <strong><i class="fas fa-coffee"><span> <%= post.shop_name %> </span></i></strong>
                 <% end %>
               </td>
-              <td>
-                <i class="fas fa-heart"><%= post.likes.count %></i>
-                <!-- いいねは非同期通信 -->
-                <!--<div id="likes_buttons_<#%= post.id %>">-->
-                <!--  <%#= render partial: 'likes/like', locals: {post: post} %>-->
-                <!--</div>-->
-              </td>
+              <td><i class="fas fa-heart"><%= post.likes.count %></i></td>
             </tr>
             <tr>
               <!-- 投稿日 -->
-              <td class="card-date"><i class="fas fa-calendar-day"></i><%= post.created_at.strftime("%Y/%m/%d %H:%M") %>  |  </td>
+              <td class="card-date"><i class="fas fa-calendar-day"><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></i></td>
+              <td></td>
+              <!-- エリア -->
               <td class="category"><%= post.area.area %> エリア </td>
             </tr>
           </table>
