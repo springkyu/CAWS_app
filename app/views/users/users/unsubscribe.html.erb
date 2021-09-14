@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h3><strong>本当に退会しますか？</strong></h3>
+  </div>
+  <div class="row">
+    <h5 class="font-weight-normal text-center">
+      退会すると、ユーザ登録情報や<br />
+      これまでの投稿が閲覧できなくなり、<br />
+      いいねやコメント履歴も全て消えてしまいます。<br />
+      退会する場合は、「WITHDRAW(退会)」をクリックしてください。
+    </h5>
+  </div>
+  <div class="row">
+    <div class="">
+      <%= link_to "NOT WITHDRAW", users_path, class: "btn btn-outline-info" %>
+      <%= link_to "WITHDRAW(退会)", users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか?", class: "btn btn-outline-danger" %>
+    </div>
+  </div>
+</div>

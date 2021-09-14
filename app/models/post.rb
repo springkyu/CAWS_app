@@ -10,8 +10,8 @@ class Post < ApplicationRecord
 
   validates :shop_name, presence: true
   validates :area_id, presence: true
-  validate :text
-  validate :location
+  # validate :text
+  # validate :location
 
 
   # ActiveStorageバリデーション

@@ -2,15 +2,20 @@ class Users::CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    comment = current_user.comment.new(comment_params)
+    comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
-    comment.save
-    render :index
+    if comment.save!
+      redirect_back(fallback_location: root_path)
+      # 非同期
+      # render :index
+    end
   end
 
   def destroy
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    render :index
+    redirect_back(fallback_location: root_path)
+    # 非同期
+    # render :index
   end
 
 

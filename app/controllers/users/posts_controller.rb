@@ -28,6 +28,7 @@ class Users::PostsController < ApplicationController
     @newpost = Post.new
     @post = Post.find(params[:id])
     @user = @post.user
+    @comment = Comment.new
   end
 
   def edit
@@ -35,7 +36,7 @@ class Users::PostsController < ApplicationController
     if @post.user == current_user
       render :edit
     else
-      redirect_to books_path
+      redirect_to posts_path
     end
   end
 
@@ -46,8 +47,9 @@ class Users::PostsController < ApplicationController
       flash[:notice]="Post was successfully updated."
       redirect_to post_path(@post.id)
     else
+      flash[:alert] = "Could not update."
       render :edit
-    end 
+    end
   end
 
   def destroy
