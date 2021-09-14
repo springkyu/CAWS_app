@@ -39,7 +39,7 @@
                   <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
                 <% end %>
               </td>
-              <td><%= @post.user.name %><p>Posted on <%= @post.created_at %></p></td>
+              <td><%= @post.user.name %><p>Posted on <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></p></td>
             </tr>
             <tr>
               <th></th>
@@ -117,6 +117,9 @@
       <!--  @comment = Comment.new-->
       <!--  <%#= render partial: 'users/comments/form', locals: {post: @post, comments: @comments} %>-->
       <!--<%# end %>-->
+    </div>
+    <div class="card-footer text-muted mt-2" style="background: #e9dfe5;" >
+      craeated at <%= @post.created_at %>
     </div>
   </div>
 </div>
