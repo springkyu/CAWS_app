@@ -4,25 +4,35 @@
       <h4 class=""><%= @user.name %>さんのUSER INFO.</h4>
       <table class="userinfo table-borderless table-hover">
         <tr>
-          <td>USER ID</td>
+          <th> プロフィール画像 : </th>
+          <td>
+            <% if @user.profile_image.attached? %>
+              <%= image_tag @user.profile_image.variant(resize:'150x150') %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size:'150x150' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th> ユーザID : </th>
           <td><%= @user.id %></td>
         </tr>
         <tr>
-          <td>NICKNAME</td>
+          <th> ニックネーム : </th>
           <td><%= @user.name %></td>
         </tr>
         <tr>
-          <td>E-MAIL</td>
+          <th> メールアドレス : </th>
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <td>USER STATUS</td>
+          <th> ユーザステータス : </th>
           <td>
             <!-- ユーザステータス/ 退会フラグで条件分岐 -->
-            <% if user.is_deleted == true %>
-              <p class="text-secondary"> 退会済 </p>
+            <% if @user.is_deleted == true %>
+              <div class="text-secondary"> 退会済 </div>
             <% else %>
-              <p class="text-success"> 有効 </p>
+              <div class="text-success"> 有効 </div>
             <% end %>
           </td>
         </tr>

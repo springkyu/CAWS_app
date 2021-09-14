@@ -5,23 +5,23 @@
       <%= form_with model: @user, url: admins_user_path, local: true do |f| %>
       <table class="edituser table-borderless">
         <tr>
-          <td><%= f.label :USER_ID, class: "float-left" %></td>
+          <td><%= f.label :user_id, "ユーザ ID", class: "float-left" %></td>
           <td><%= @user.id %></td>
         </tr>
         <tr>
-          <td><%= f.label :NICKNAME, class: "float-left" %></td>
+          <td><%= f.label :name, "ニックネーム", class: "float-left" %></td>
           <td><%= f.text_field :name, class: "form_control" %></td>
         </tr>
         <tr>
-          <td><%= f.label :EMAIL, class: "float-left" %></td>
-          <td><%= email_field :email, class* "form_control" %></td>
+          <td><%= f.label :email, "メールアドレス", class: "float-left" %></td>
+          <td><%= f.email_field :email, class: "form_control" %></td>
         </tr>
         <tr>
-          <td><%= f.label :STATUS, class: "float-left" %></td>
+          <td><%= f.label :status, "ユーザ ステータス", class: "float-left" %></td>
           <td>
             <!-- ラジオボタンでステータス選択 -->
-            <%= radio_button :is_deleted, false %><span> 有効 </span>
-            <%= radio_button :is_deleted, true %><span> 退会 </span> 
+            <%= f.radio_button :is_deleted, false %><span> 有効 </span>
+            <%= f.radio_button :is_deleted, true %><span> 退会 </span>
           </td>
         </tr>
         <tr>
@@ -30,7 +30,7 @@
           <td><%= f.submit "UPDATE", class: "btn btn-outline-success" %></td>
         </tr>
       </table>
-      <% end 
+      <% end %>
     </div>
   </div>
 </div>
