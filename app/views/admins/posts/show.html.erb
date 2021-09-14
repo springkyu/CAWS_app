@@ -31,6 +31,7 @@
           <td><%= @post.location %></td>
         </tr>
         <tr>
+          <th>POSTED BY：</th>
           <th>
             <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
             <% if @post.user.profile_image.attached? %>
@@ -42,20 +43,27 @@
           <!-- 投稿ユーザと投稿日 -->
           <td>
             <%= link_to @post.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-secondary" %>
-            <p><%= @post.created_at %></p>
           </td>
-          <td></td>
+        </tr>
+        <tr>
+          <th>Posted on </th>
+          <td><%= @post.created_at %></td>
+        </tr>
+        <tr>
+          <th>USER RESOPNSE：</th>
           <!-- いいね数のカウント -->
           <td><i class="fas fa-heart"><%= @post.likes.count %></i></td>
+          <td></td>
           <!-- コメント数のカウント -->
           <td> | COMMENTS: <%= @post.comments.count %></td>
         </tr>
         <tr>
+          <th>content that is inappropriate ?</th>
           <td></td>
           <td><%= link_to 'DESTROY', admins_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-outline-danger" %></td>
         </tr>
       </table>
-      
+
       <table class="table comment">
         <!-- 投稿のコメント一覧 -->
         <% @post.comments.each do |comment| %>
