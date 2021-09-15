@@ -35,7 +35,8 @@
             </tr>
             <tr>
               <th>TEXT：</th>
-              <td><%= @post.body %></td>
+              <td><%=simple_format(@post.body)%></td> <!-- 投稿テキストの改行をそのまま表示 
+              <!--<td><%#=safe_join(@post.body.split("\n"),tag(:br))%></td>-->
             </tr>
             <tr>
               <th>AREA：</th>
