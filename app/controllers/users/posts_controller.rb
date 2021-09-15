@@ -33,6 +33,7 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @areas = Area.all
     if @post.user == current_user
       render :edit
     else
@@ -56,7 +57,10 @@ class Users::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "Post was successfully destroyed."
-      redirect_to books_path
+      redirect_to posts_path
+    else
+      flash[:alert] = "Could not destroy."
+      redirect_back(fallback_location: root_path)
     end
   end
 

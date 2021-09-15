@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
 
-  def already_likeed?(post)
+  def already_liked?(post)
     self.likes.exists?(post_id: post.id)
   end
 

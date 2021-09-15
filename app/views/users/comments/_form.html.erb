@@ -1,13 +1,11 @@
 <!-- コメント入力フォーム -->
-<%= form_with model: @comment do |f| %>
-  <table class="commentnew table-borderless">
-    <tr>
-      <td><%= f.label :COMMENT, class: "float-left" %></td>
-      <td><%= f.text_area :comment, placeholder: "ここに入力", size:"90×5" %></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><%= f.submit "COMMENT", class: "btn btn-outline-primary" %></td>
-    </tr>
-  </div>
-<% end %>
+<div class="card-form">
+  <%= form_with(model:[post, comment], url: post_comments_path(post) ) do |f| %>
+    <div class="row" >
+      <%= f.text_area :comment, placeholder: "ここにコメントを入力", class: "col-md-11 form-control form-control-lg" %><br >
+    </div>
+    <div class="actions">
+      <%= f.submit 'POST', class: "btn btn-outline-info mt-4" %>
+    </div>
+  <% end %>
+</div>
