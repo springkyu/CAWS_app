@@ -1,7 +1,7 @@
 <div class="card-list-container py-5">
-  <h2> POST ALL ~ //一覧// ~ </h2>
+  <h2> FAVORITES LIST ~ //お気に入り一覧// ~ </h2>
   <!-- 投稿の一覧を表示 -->
-  <% @posts.each do |post| %>
+  <% @like_posts.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg border-secondary p-2 text-center">
     <!-- 投稿写真（メイン） -->
     <%= link_to post_path(post.id) do %>
@@ -50,5 +50,5 @@
     </div>
   </div>
   <% end %>
-  <div class="pagination"><%= paginate @posts %></div>
+  <!--<div class="pagination"><%#= paginate @like_posts %></div>-->
 </div>

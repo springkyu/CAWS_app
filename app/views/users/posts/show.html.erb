@@ -1,98 +1,93 @@
-<div class="container">
+<div class="card-container">
   <div class="row">
     <div class="col-10">
-      <h2> POST DETAIL ~// 詳細 //~ </h2>
+      <h2 class=""> POST DETAIL ~// 詳細 //~ </h2>
     </div>
   </div>
-  <div class="row">
-    <div class="">
-      <!-- 投稿写真 -->
-      <%= image_tag @post.image.variant(resize:'300x300') %>
-      <table class="postinfo table-borderless">
-        <tr>
-          <th>CAFE's NAME</th>
-          <td><%= @post.shop_name %></td>
-          <td><%= @post.area.area %></td>
-        </tr>
-        <tr>
-          <th>TEXT</th>
-          <td><%= @post.body %></td>
-        </tr>
-        <tr>
-          <th>LOCATION</th>
-          <td><%= @post.location %></td>
-        </tr>
-        <tr>
-          <th>
-            <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
-            <% if @post.user.profile_image.attached? %>
-              <%= image_tag @post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
-            <% else %>
-              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
-            <% end %>
-          </th>
-          <td><%= @post.user.name %><p><%= @post.created_at %></p></td>
-          <td>
-            <% if current_user.already_likeed?(@post) %>
-              <%= link_to post_likes_path(@post), method: :delete do %>
-                <i class="fas fa-heart"></i>
-              <% end %>
-            <% else %>
-              <%= link_to post_likes_path(@post), method: :post do %>
-                <i class="far fa-heart"></i>
-              <% end %>
-            <% end %>
-            <%= @post.likes.count %>
-            <!-- いいねは非同期通信 -->
-            <!--<div id="likes_buttons_<%#= @post.id %>">-->
-              <%#= render partial: 'likes/like', locals: {post: @post} %>
-            <!--</div>-->
-          </td>
-          <!-- コメント数のカウント -->
-          <td> | COMMENTS: <%= @post.comments.count %></td>
-        </tr>
-        <tr>
-          <td></td>
-        <!-- この投稿のユーザがログインユーザなら編集・削除ボタンを表示 -->
-        <% if @post.user_id == current_user.id %>
-          <td><%= link_to 'EDIT', edit_post_path(@post), class:"btn btn-outline-success" %> | </td>
-          <td><%= link_to 'DESTROY', posts_path(@post), method: :delete, data: {confirm: '️︎本当に消してもよろしいですか？'}, class:"btn btn-outline-danger" %></td>
-        <% end %>
-        </tr>
-      </table>
-      <table class="table comment">
-        <% @post.comments.each do |comment| %>
-          <tr>
-            <td><%= comment.user.name %></td>
-            <td><%= comment.comment %></td>
-            <% if comment.user == current_user %>
-              <td>
-                <%= link_to "DESTROY", post_comment_path(comment.post, comment), method: :delete, class: " btn btn-outline-danger" %>
+  <div class="card w-75 mx-auto mt-4 mb-5 p-3 shadow-lg border-secondary text-center">
+    <!-- カフェの名前をcardのヘッダーに -->
+    <div class="card-header mb-3" style="background: #e9dfe5;" >
+      <%= @post.shop_name %>
+    </div>
+    <!-- 投稿写真 -->
+      <%= image_tag @post.image %>
+      <div class="card-body">
+        <div class="card-text">
+          <table class="postinfo table-borderless">
+            <tr>
+              <th>POSTED BY：</th>
+              <td> <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
+                <% if @post.user.profile_image.attached? %>
+                  <%= image_tag @post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
+                <% end %>
+                <p><%= @post.user.name %></p>
               </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </table>
-
-      <%= form_with(model:[@post, @comment], local: true) do |f| %>
-        <div class="row" >
-          <%= f.text_area :comment, class: "col-md-11 comment_content" %><br >
-        </div>
-        <div class="actions">
-          <%= f.submit 'POST', class: "btn btn-outline-dark mt-4" %>
-        </div>
-      <% end %>
+            </tr>
+            <tr>
+              <th>POSTED ON：</th>
+              <td><%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+            </tr>
+            <tr>
+              <th>CAFE's NAME：</th>
+              <td><%= @post.shop_name %></td>
+            </tr>
+            <tr>
+              <th>TEXT：</th>
+              <td><%=simple_format(@post.body)%></td> <!-- 投稿テキストの改行をそのまま表示 -->
+              <!--<td><%#=safe_join(@post.body.split("\n"),tag(:br))%></td>-->
+            </tr>
+            <tr>
+              <th>AREA：</th>
+              <td><%= @post.area.area %>エリア</td>
+            </tr>
+            <tr>
+              <th>LOCATION：</th>
+              <td><%= @post.location %></td>
+            </tr>
+            <tr>
+              <th>REACT：</th>
+              <td>
+                <%# if current_user.already_likeed?(@post) %>
+                  <%#= link_to post_likes_path(@post), method: :delete do %>
+                    <!--<i class="fas fa-heart"></i>-->
+                  <%# end %>
+                <%# else %>
+                  <%#= link_to post_likes_path(@post), method: :post do %>
+                    <!--<i class="far fa-heart"></i>-->
+                  <%# end %>
+                <%# end %>
+                <%#= @post.likes.count %>
+              <!-- いいねは非同期通信 -->
+              <div id="likes_buttons_<%= @post.id %>">
+                <%= render partial: 'users/likes/like', locals: {post: @post} %>
+              </div>
+              </td>
+              <!-- コメント数のカウント -->
+              <td>COMMENTS: <%= @post.comments.count %></td>
+            </tr>
+            <tr>
+            <!-- この投稿のユーザがログインユーザなら編集・削除ボタンを表示 -->
+              <% if @post.user_id == current_user.id %>
+              <th>You want..?</th>
+              <td><%= link_to 'EDIT', edit_post_path(@post), class:"btn btn-outline-success" %></td>
+              <td><%= link_to 'DESTROY', post_path(@post), method: :delete, data: {confirm: '️︎本当に消してもよろしいですか？'}, class: "btn btn-outline-danger" %></td>
+              <% end %>
+            </tr>
+          </table>
 
       <!-- コメント一覧を表示 -->
-      <!--<div id="comments_area">-->
-      <!--  <%#= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>-->
-      <!--</div>-->
+      <div id="comments_area">
+        <%= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>
+      </div>
       <!-- ユーザーがログインしていれば、コメントフォームを表示 -->
-      <!--<%# if user_signed_in? %>-->
-      <!--  @post = Post.new if @post.nil?-->
-      <!--  @comment = Comment.new-->
-      <!--  <%#= render partial: 'users/comments/form', locals: {post: @post, comments: @comments} %>-->
-      <!--<%# end %>-->
+      <% if user_signed_in? %>
+        <%= render partial: 'users/comments/form', locals: {post: @post, comment: @comment} %>
+      <% end %>
+    </div>
+    <div class="card-footer text-muted mt-2" style="background: #e9dfe5;" >
+      craeated at <%= @post.created_at %>
     </div>
   </div>
 </div>

@@ -31,9 +31,15 @@ class Users::UsersController < ApplicationController
       redirect_to root_path
   end
 
+  def likes
+    @user = current_user
+    likes = Like.where(user_id: @user.id).pluck(:post_id)
+    @like_posts = Post.find(likes)
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction, :email, :is_deleted)
+    params.require(:user).permit(:name, :profile_image, :introduction, :email, :encrypted_password, :is_deleted)
   end
 end

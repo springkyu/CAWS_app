@@ -1,5 +1,5 @@
 <!--ログインユーザがすでにいいねしていたら（＝trueだったら）-->
-<%= if current_user.already_liked?(post) %>
+<% if current_user.already_liked?(post) %>
   <%= link_to post_likes_path(post), method: :delete, remote: true do %>
     <i class="fas fa-heart"></i>
   <% end %>
