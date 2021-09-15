@@ -71,7 +71,7 @@
               <% if @post.user_id == current_user.id %>
               <th>You want..?</th>
               <td><%= link_to 'EDIT', edit_post_path(@post), class:"btn btn-outline-success" %></td>
-              <td><%= link_to 'DESTROY', posts_path(@post), method: :delete, data: {confirm: '️︎本当に消してもよろしいですか？'}, class: "btn btn-outline-danger" %></td>
+              <td><%= link_to 'DESTROY', post_path(@post), method: :delete, data: {confirm: '️︎本当に消してもよろしいですか？'}, class: "btn btn-outline-danger" %></td>
               <% end %>
             </tr>
           </table>

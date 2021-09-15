@@ -33,6 +33,7 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @areas = Area.all
     if @post.user == current_user
       render :edit
     else
