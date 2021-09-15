@@ -82,8 +82,6 @@
       </div>
       <!-- ユーザーがログインしていれば、コメントフォームを表示 -->
       <% if user_signed_in? %>
-        <!--@post = Post.new if @post.nil?-->
-        <!--@comment = Comment.new-->
         <%= render partial: 'users/comments/form', locals: {post: @post, comment: @comment} %>
       <% end %>
     </div>
