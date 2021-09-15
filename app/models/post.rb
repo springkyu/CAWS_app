@@ -27,8 +27,8 @@ class Post < ApplicationRecord
   end
 
 
-  def self.search_for(keyword)
-    Post.where('name LIKE ?', '%'+keyword+'%').or(Post.where(area_id: keyword))
+  def self.search(keyword)
+    Post.where(['shop_name LIKE ? OR body LIKE ? OR location LIKE ?', "%#{keyword}", "%#{keyword}", "%#{keyword}"])
   end
 
 

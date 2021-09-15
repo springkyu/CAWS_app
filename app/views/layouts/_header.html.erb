@@ -39,6 +39,9 @@
           <i class="fas fa-sign-out-alt"> LOG OUT </i>
         <% end %>
       </li>
+      <div>
+        <%= render 'layouts/search' %>
+      </div>
 
     <!-- 管理者がログインしているとき -->
     <% elsif admin_signed_in? %>
@@ -80,6 +83,9 @@
           <i class="fas fa-sign-in-alt"> LOG IN </i>
         <% end %>
       </li>
+      <div>
+        <%= render 'layouts/search' %>
+      </div>
 
     <% end %>
     </ul>

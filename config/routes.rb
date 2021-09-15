@@ -14,16 +14,16 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :areas, only: [:index, :create, :edit, :update, :destroy]
 
-    get "searches/search" => "searches#search"
+    get "/search" => "searches#search"
   end
 
   scope module: :users do
-    resource :users, only: [:show, :edit, :update] do 
+    resource :users, only: [:show, :edit, :update] do
       member do
         get :likes
       end
     end
-    
+
     get "users/unsubscribe" => "users#unsubscribe"
     patch "users/withdraw" => "users#withdraw"
 
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    get "searches/search" => "searches#search"
+    get "/search" => "searches#search"
 
   end
 
