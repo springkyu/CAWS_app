@@ -26,4 +26,10 @@ class Post < ApplicationRecord
     end
   end
 
+
+  def self.search_for(keyword)
+    Post.where('name LIKE ?', '%'+keyword+'%').or(Post.where(area_id: keyword))
+  end
+
+
 end
