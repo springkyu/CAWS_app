@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :areas, only: [:index, :create, :edit, :update, :destroy]
+
+    get "searches/search" => "searches#search"
   end
 
   scope module: :users do
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+
+    get "searches/search" => "searches#search"
 
   end
 
