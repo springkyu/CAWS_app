@@ -1,5 +1,6 @@
 <div class="card-list-container py-5">
   <h2> POST ALL ~ //一覧// ~ </h2>
+  <%= link_to "NEW ARRIVAL", posts_path(sort: 'created_at DESC'), class:"text-secondary" %> | <%= link_to "RECOMMEND", posts_path(sort: 'rate DESC'), class:"text-secondary" %>
   <!-- 投稿の一覧を表示 -->
   <% @posts.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg border-secondary p-2 text-center">
@@ -50,5 +51,5 @@
     </div>
   </div>
   <% end %>
-  <div class="pagination"><%= paginate @posts %></div>
+  <div class="pagination"><%= paginate @posts_page %></div>
 </div>
