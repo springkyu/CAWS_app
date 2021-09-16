@@ -20,7 +20,8 @@ class Users::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).reverse_order
+    @posts = Post.all.order(params[:sort])
+    # @posts_page = Post.page(params[:page]).per(8)
     @user = current_user
   end
 
@@ -67,7 +68,7 @@ class Users::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:shop_name, :image, :body, :location, :area_id)
+    params.require(:post).permit(:shop_name, :image, :body, :rate, :area_id, :location)
   end
 
 end

@@ -19,6 +19,25 @@
           <td><%= f.label :Text, class: "float-left" %></td>
           <td><%= f.text_area :body, placeholder: "何かコメントがあれば...", autofocus: true, autocomplete: "body", class: "form-control", size: "50x10" %></td>
         </tr>
+        <!-- 評価 -->
+        <tr>
+          <th><%= f.label :Rate, "Recommend?", class: "float-left" %></th>
+          <td id="star"><%= f.hidden_field :rate, id: :review_star, class: "form-control" %></td>
+        </tr>
+        <!-- 評価javascript -->
+        <script>
+        // debugger;
+          $('#star').raty({
+            size    :  36,
+            starOff :  '<%= asset_path('star-off.png') %>',
+            starOn  :  '<%= asset_path('star-on.png') %>',
+            starHalf:  '<%= asset_path('star-half.png') %>',
+            // postモデルのrateカラムに値を保存
+            scoreName: 'post[rate]',
+            // 星の半分の入力を行う
+            half    :  true,
+          });
+        </script>
 
         <tr>
           <td><%= f.label :Area, class: "float-left" %></td>

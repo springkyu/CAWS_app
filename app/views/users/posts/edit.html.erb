@@ -23,6 +23,27 @@
             <td><%= f.label :Area, class: "float-left" %></td>
             <td><%= f.collection_select(:area_id, @areas, :id, :area, :prompt => "--エリアを選択してください--") %></td>
           </tr>
+          <!-- 評価 -->
+          <tr> 
+            <td><%= f.label :Rate, class: "float-left" %></td>
+            <td id="star"><%= f.hidden_field :rate, id: :review_star, class: "form-control" %></td>
+          </tr>
+          <!-- 評価javascript -->
+          <script>
+          $('#star').raty({
+            size    :  36,
+            starOff :  '<%= asset_path('star-off.png') %>',
+            starOn  :  '<%= asset_path('star-on.png') %>',
+            starHalf:  '<%= asset_path('star-half.png') %>',
+            // 星の半分の入力を行う
+            half    :  true,
+            // 読み取り専用
+            readOnly: true,
+            // 星の入力値を読み込む
+            score   :  <%= @post.rate %>,
+          });
+          </script>
+
           <tr>
             <td><%= f.label :Location, class: "float-left" %></td>
             <td><%= f.text_field :location, placeholder: "位置情報", autofocus: true, autocomplete: "location", class: "form-control w-75" %></td>

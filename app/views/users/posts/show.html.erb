@@ -38,6 +38,29 @@
               <td><%=simple_format(@post.body)%></td> <!-- 投稿テキストの改行をそのまま表示 -->
               <!--<td><%#=safe_join(@post.body.split("\n"),tag(:br))%></td>-->
             </tr>
+            <!-- 星評価 -->
+            <tr>
+              <th>RECOMMENDED FOR：</th>
+              <td>
+                <!--繰り返し処理をしてもidを一意に保てるよう@post.idを埋め込む-->
+                <div id="star-rate-<%= @post.id %>"></div>
+                <script>
+                  $('#star-rate-<%= @post.id %>').raty ({
+                    size     :  36,
+                    starOff  :  '<%= asset_path('star-off.png') %>',
+                    starOn   :  '<%= asset_path('star-on.png') %>',
+                    starHalf :  '<%= asset_path('star-half.png') %>',
+                    // 星の半分の入力を行う
+                    half     :  true,
+                    // 読み取り専用
+                    readOnly :  true,
+                    // 星の入力値を読み込む
+                    score    :  <%= @post.rate %>,
+                  });
+                </script>
+              </td>
+            </tr>
+
             <tr>
               <th>AREA：</th>
               <td><%= @post.area.area %>エリア</td>
