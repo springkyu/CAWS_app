@@ -40,22 +40,22 @@
             </tr>
             <!-- 星評価 -->
             <tr>
-              <th>RATE：</th>
+              <th>RECOMMENDED FOR：</th>
               <td>
                 <!--繰り返し処理をしてもidを一意に保てるよう@post.idを埋め込む-->
                 <div id="star-rate-<%= @post.id %>"></div>
                 <script>
                   $('#star-rate-<%= @post.id %>').raty ({
-                    size     : 36,
+                    size     :  36,
                     starOff  :  '<%= asset_path('star-off.png') %>',
                     starOn   :  '<%= asset_path('star-on.png') %>',
                     starHalf :  '<%= asset_path('star-half.png') %>',
                     // 星の半分の入力を行う
-                    half     : true,
+                    half     :  true,
                     // 読み取り専用
-                    readOnly : true,
-                    // 星の入力を読み込む
-                    score    : <%= @post.rate %>,
+                    readOnly :  true,
+                    // 星の入力値を読み込む
+                    score    :  <%= @post.rate %>,
                   });
                 </script>
               </td>

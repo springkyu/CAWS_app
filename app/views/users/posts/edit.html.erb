@@ -26,18 +26,21 @@
           <!-- 評価 -->
           <tr> 
             <td><%= f.label :Rate, class: "float-left" %></td>
-            <td><%= f.hidden_field :rate, id: :review_star, class: "form-control" %></td>
+            <td id="star"><%= f.hidden_field :rate, id: :review_star, class: "form-control" %></td>
           </tr>
           <!-- 評価javascript -->
           <script>
           $('#star').raty({
-            size    :36,
+            size    :  36,
             starOff :  '<%= asset_path('star-off.png') %>',
             starOn  :  '<%= asset_path('star-on.png') %>',
             starHalf:  '<%= asset_path('star-half.png') %>',
             // 星の半分の入力を行う
-            half    : true,
-            score   : <%= @post.rate %>,
+            half    :  true,
+            // 読み取り専用
+            readOnly: true,
+            // 星の入力値を読み込む
+            score   :  <%= @post.rate %>,
           });
           </script>
 

@@ -22,9 +22,7 @@
         <!-- 評価 -->
         <tr>
           <th><%= f.label :Rate, "Recommend?", class: "float-left" %></th>
-          <td id="star">
-              <%= f.hidden_field :rate, id: :review_star, class: "form-control" %>
-          </td>
+          <td id="star"><%= f.hidden_field :rate, id: :review_star, class: "form-control" %></td>
         </tr>
         <!-- 評価javascript -->
         <script>
@@ -34,10 +32,10 @@
             starOff :  '<%= asset_path('star-off.png') %>',
             starOn  :  '<%= asset_path('star-on.png') %>',
             starHalf:  '<%= asset_path('star-half.png') %>',
-            scoreName: 'post[rate]',
             // postモデルのrateカラムに値を保存
-            half: true,
+            scoreName: 'post[rate]',
             // 星の半分の入力を行う
+            half    :  true,
           });
         </script>
 
