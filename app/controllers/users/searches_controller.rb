@@ -1,8 +1,8 @@
 class Users::SearchesController < ApplicationController
 
   def search
-    @posts = Post.search(params[:keyword])
-    @keyword = params[:keyword]
+    @keyword = params.dig(:search, :value)
+    @posts = Post.search(@keyword)
   end
 
 
