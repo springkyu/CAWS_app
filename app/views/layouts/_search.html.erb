@@ -1,7 +1,7 @@
 <table class="search-form table-borderless">
   <%= form_with(url: search_path, method: :get, local: true) do |f| %>
   <tr>
-    <td><%= f.text_field 'search[value]', placeholder: "KEYWORD ?", class: "form-control" %></td>
+    <td><%= f.text_field 'search[value]', placeholder: "KEYWORD..?", class: "form-control" %></td>
     <td><%= f.submit "SEARCH", class: "btn btn-outline-dark"  %></td>
   </tr>
   <% end %>
