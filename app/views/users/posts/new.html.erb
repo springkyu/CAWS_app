@@ -20,11 +20,12 @@
           <td><%= f.text_area :body, placeholder: "何かコメントがあれば...", autofocus: true, autocomplete: "body", class: "form-control", size: "50x10" %></td>
         </tr>
         <!-- 評価 -->
-        <tr id="star">
-          <td><%= f.label :Rate, class: "float-left" %></td>
-          <td><%= f.hidden_field :rate, id: :review_star, class: "form-control" %></td>
+        <tr>
+          <th><%= f.label :Rate, "Recommend?", class: "float-left" %></th>
+          <td id="star">
+              <%= f.hidden_field :rate, id: :review_star, class: "form-control" %>
+          </td>
         </tr>
-
         <!-- 評価javascript -->
         <script>
         // debugger;
