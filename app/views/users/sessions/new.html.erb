@@ -1,11 +1,11 @@
-<!--ユーザログイン画面-->
+<!-- ユーザーログイン画面 -->
 <div class="container">
   <div class="row">
     <div class="col-md-4 offset-md-4">
       <h3 class="text-center pt-5">Welcome to CAWS !<br />Please log in below.<i class="far fa-arrow-alt-circle-down"></i></h3>
 
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-      <!--メールアドレス-->
+      <!-- メールアドレス -->
       <div class="form-label pt-2" >
         <%= f.label :Email %>
       </div>
@@ -13,7 +13,7 @@
         <%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "form-control w-100" %>
         <div id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</div>
       </div>
-      <!--パスワード-->
+      <!-- パスワード -->
       <div class="form-label">
         <%= f.label :Password %>
       </div> 
@@ -26,13 +26,13 @@
         <%= f.label :remember_me %>
       </div>
       <% end %>
-　　　<!--ログインボタン-->
+      <!-- ログインボタン -->
       <div class="text-center mb-5">
         <%= f.submit "LOG IN", class: "btn btn-outline-primary w-100" %>
       </div>
       <% end %>
 
-      <!--新規登録orパスワード忘れ-->
+      <!-- 新規登録orパスワード忘れ -->
       <div class="">
         <%= render "users/shared/links" %>
       </div>
