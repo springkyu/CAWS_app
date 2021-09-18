@@ -21,7 +21,11 @@
       <h4 class="text-center mt-3 mb-3">E-Mail：</h4>
       <div class="text-center"><strong><%= @user.email %></strong></div>
       <!-- ユーザー情報編集ボタン -->
-      <div class="text-center mt-3"><%= link_to "EDIT", edit_users_path, class: "btn btn-outline-success" %></div>
+      <div class="text-center mt-5">
+        <%= link_to edit_users_path, class: "btn btn-outline-success w-50" do %>
+          <i class="fas fa-user-edit"></i> EDIT
+        <% end %>
+      </div>
 
     </div>
   </div>
@@ -33,9 +37,9 @@
       <h3 class="text-center pt-5 mb-5">YOUR POST LIST <i class="fas fa-list-ul"></i></h3>
 
       <% @posts.each do |post| %>
-      <div class="card w-50 mx-auto mt-4 mb-5 shadow-lg border-secondary p-2 text-center" style="background: #d8bfd8;">
+      <div class="card w-50 mx-auto mt-4 mb-5 shadow-lg border-secondary p-2 text-center" style="background: #d3cbc6;">
         <!--エリア名（投稿のヘッダー）-->
-        <div class="card-header text-light mb-3" style="background: #888084;">
+        <div class="card-header text-light mt-1 mb-3" style="background: #6f514c;">
           <%= post.area.area %> エリア
         </div>
 
@@ -66,7 +70,7 @@
         </div>
 
         <!--投稿日（投稿のフッター）-->
-        <div class="card-footer text-light" style="background: #888084;">
+        <div class="card-footer text-light" style="background: #6f514c;">
           <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
         </div>
       </div>
