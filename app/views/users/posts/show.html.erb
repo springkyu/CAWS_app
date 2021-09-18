@@ -5,22 +5,22 @@
       <!-- ページタイトル -->
       <h1 class="text-center pt-5"> THIS POST DETAIL <i class="fas fa-camera-retro"></i></h1>
 
-      <div class="card w-75 mx-auto mt-4 mb-5 p-3 shadow-lg border-secondary text-center">
+      <div class="card w-75 mx-auto mt-5 mb-5 p-3 shadow-lg border-secondary text-center">
         <!--カフェの名前（投稿のヘッダー）-->
         <div class="card-header mb-3" style="background: #e9dfe5;" >
-          <%= @post.shop_name %>
+          <strong><%= @post.shop_name %></strong>
         </div>
         <!-- 投稿写真（メイン） -->
           <%= image_tag @post.image %>
 
         <div class="card-body">
           <!-- 投稿のタイトル＝カフェの名前 -->
-          <h4 class="card-title">
+          <h4 class="card-title mt-3">
             CAFE's NAME：<i class="fas fa-mug-hot"><%= @post.shop_name %></i>
           </h4>
           <!-- 投稿ユーザー情報 -->
           <div class="card-text">
-            POSTED BY：
+            <strong> POSTED BY：</strong>
             <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
             <% if @post.user.profile_image.attached? %>
               <%= image_tag @post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
@@ -30,18 +30,18 @@
             <p><%= @post.user.name %></p>
           </div>
           <!-- 投稿日 -->
-          <div class="card-text">
-            POSTED ON：<%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
+          <div class="card-text mt-3">
+            <strong>POSTED ON：</strong> <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
           </div>
           <!-- 投稿テキスト本文（改行をそのまま表示） -->
-          <div class="card-text">
-            CONTENT：<%=safe_join(@post.body.split("\n"),tag(:br))%>
+          <div class="card-text mt-3">
+            <strong>CONTENT：</strong> <%=safe_join(@post.body.split("\n"),tag(:br))%>
             <!--<%#=simple_format(@post.body)%>-->
           </div>
           <!-- おすすめ度（星評価） -->
-          <div class="card-text">
+          <div class="card-text mt-3">
             <!--繰り返し処理をしてもidを一意に保てるよう@post.idを埋め込む-->
-            RECOMMENDED FOR：
+            <strong>RECOMMENDED FOR：</strong>
                 <div id="star-rate-<%= @post.id %>"></div>
                 <script>
                   $('#star-rate-<%= @post.id %>').raty ({
@@ -59,27 +59,29 @@
                 </script>
           </div>
           <!-- エリア名 -->
-          <div class="card-text">
-            AREA：<%= @post.area.area %>エリア
+          <div class="card-text mt-3">
+            <strong>AREA：</strong> <%= @post.area.area %>エリア
           </div>
           <!-- 位置情報 -->
-          <div class="card-text">
-            LOCATION：<%= @post.location %>
+          <div class="card-text mt-3 mb-3">
+            <strong>LOCATION：</strong> <%= @post.location %>
           </div>
           <!-- いいねボタン（非同期通信） -->
-          <div id="likes_buttons_<%= @post.id %>">REACT（LIKES）：
+          <div id="likes_buttons_<%= @post.id %>"><strong>REACT（LIKES）：</strong>
             <%= render partial: 'users/likes/like', locals: {post: @post} %>
           </div>
           <!-- コメント数のカウント -->
-          <div class="card-text">
-            REACT（COMMENTS）：<%= @post.comments.count %>
+          <div class="card-text mt-3">
+            <strong>REACT（COMMENTS）：</strong> <%= @post.comments.count %>
           </div>
           <!-- この投稿のユーザーがログインユーザーなら編集・削除ボタンを表示 -->
           <% if @post.user_id == current_user.id %>
-          <div class="card-text">
-            You want..?
-            <p><%= link_to 'POST EDIT', edit_post_path(@post), class:"btn btn-outline-success" %></p>
-            <p><%= link_to "DESTROY", post_likes_path(@post), method: :delete, data: { confirm: '本当に消してもよろしいですか？' }, class: "btn btn-outline-danger" %></p>
+          <div class="card-text mt-5">
+            <strong>You want..?</strong>
+          </div>
+          <div class="card-text mt-3">
+            <p><%= link_to 'POST EDIT', edit_post_path(@post), class:"btn btn-outline-success w-25" %></p>
+            <p><%= link_to "POST DESTROY", post_likes_path(@post), method: :delete, data: { confirm: '本当に消してもよろしいですか？' }, class: "btn btn-outline-danger w-25" %></p>
           </div>
           <% end %>
 
