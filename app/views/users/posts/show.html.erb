@@ -1,3 +1,113 @@
+<!-- 投稿詳細ページ -->
+<div class="card-container">
+  <div class="row">
+    <div class="col">
+      <!-- ページタイトル -->
+      <h1 class="text-center pt-5"> THIS POST DETAIL <i class="fas fa-camera-retro"></i></h1>
+
+      <div class="card w-75 mx-auto mt-4 mb-5 p-3 shadow-lg border-secondary text-center">
+        <!--カフェの名前（投稿のヘッダー）-->
+        <div class="card-header mb-3" style="background: #e9dfe5;" >
+          <%= @post.shop_name %>
+        </div>
+        <!-- 投稿写真（メイン） -->
+          <%= image_tag @post.image %>
+
+        <div class="card-body">
+          <!-- 投稿のタイトル＝カフェの名前 -->
+          <h4 class="card-title">
+            CAFE's NAME：<i class="fas fa-mug-hot"><%= @post.shop_name %></i>
+          </h4>
+
+          <div class="card-text">
+            POSTED BY：
+            <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
+            <% if @post.user.profile_image.attached? %>
+              <%= image_tag @post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
+            <% end %>
+            <p><%= @post.user.name %></p>
+          </div>
+          <div class="card-text">
+            POSTED ON：<%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </div>
+          <!-- 投稿テキスト本文（改行をそのまま表示） -->
+          <div class="card-text">
+            CONTENT：<%=safe_join(@post.body.split("\n"),tag(:br))%>
+            <!--<%#=simple_format(@post.body)%>-->
+          </div>
+          <div class="card-text">
+            <!--繰り返し処理をしてもidを一意に保てるよう@post.idを埋め込む-->
+            RECOMMENDED FOR：
+                <div id="star-rate-<%= @post.id %>"></div>
+                <script>
+                  $('#star-rate-<%= @post.id %>').raty ({
+                    size     :  36,
+                    starOff  :  '<%= asset_path('star-off.png') %>',
+                    starOn   :  '<%= asset_path('star-on.png') %>',
+                    starHalf :  '<%= asset_path('star-half.png') %>',
+                    // 星の半分の入力を行う
+                    half     :  true,
+                    // 読み取り専用
+                    readOnly :  true,
+                    // 星の入力値を読み込む
+                    score    :  <%= @post.rate %>,
+                  });
+                </script>
+          </div>
+          <div class="card-text">
+            AREA：<%= @post.area.area %>エリア
+          </div>
+          <div class="card-text">
+            LOCATION：<%= @post.location %>
+          </div>
+          <!-- いいねボタン（非同期通信） -->
+          <div id="likes_buttons_<%= @post.id %>">REACT（LIKES）：
+            <%= render partial: 'users/likes/like', locals: {post: @post} %>
+          </div>
+          <!-- コメント数のカウント -->
+          <div class="card-text">
+            REACT（COMMENTS）：<%= @post.comments.count %>
+          </div>
+          <!-- この投稿のユーザがログインユーザなら編集・削除ボタンを表示 -->
+          <% if @post.user_id == current_user.id %>
+          <div class="card-text">
+            You want..?
+            <p><%= link_to 'POST EDIT', edit_post_path(@post), class:"btn btn-outline-success" %></p>
+            <p><%= link_to "DESTROY", post_likes_path(@post), method: :delete, data: { confirm: '本当に消してもよろしいですか？' }, class: "btn btn-outline-danger" %></p>
+          </div>
+          <% end %>
+
+          <div class="card-text">
+          </div>
+          
+          <!-- コメント一覧を表示 -->
+          <div id="comments_area">
+            <%= render partial: 'users/comments/index', locals: {post: @post, comments: @comments} %>
+          </div>
+
+          <!-- ユーザーがログインしていれば、コメントフォームを表示 -->
+          <% if user_signed_in? %>
+            <%= render partial: 'users/comments/form', locals: {post: @post, comment: @comment} %>
+          <% end %>
+
+
+
+        </div>
+        <!-- 投稿日（投稿のフッター） -->
+        <div class="card-footer text-muted mt-2" style="background: #e9dfe5;" >
+          craeated at <%= @post.created_at %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="card-container">
   <div class="row">
     <div class="col-10">
@@ -11,6 +121,7 @@
     </div>
     <!-- 投稿写真 -->
       <%= image_tag @post.image %>
+
       <div class="card-body">
         <div class="card-text">
           <table class="postinfo table-borderless">
@@ -43,9 +154,9 @@
               <th>RECOMMENDED FOR：</th>
               <td>
                 <!--繰り返し処理をしてもidを一意に保てるよう@post.idを埋め込む-->
-                <div id="star-rate-<%= @post.id %>"></div>
+                <div id="star-rate-<%#= @post.id %>"></div>
                 <script>
-                  $('#star-rate-<%= @post.id %>').raty ({
+                  $('#star-rate-<%#= @post.id %>').raty ({
                     size     :  36,
                     starOff  :  '<%= asset_path('star-off.png') %>',
                     starOn   :  '<%= asset_path('star-on.png') %>',
@@ -55,7 +166,7 @@
                     // 読み取り専用
                     readOnly :  true,
                     // 星の入力値を読み込む
-                    score    :  <%= @post.rate %>,
+                    score    :  <%#= @post.rate %>,
                   });
                 </script>
               </td>
