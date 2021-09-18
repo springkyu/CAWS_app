@@ -98,7 +98,7 @@
               <tr>
                 <td><%= comment.user.name %></td>
                 <td><%= comment.comment %></td>
-                <td><%= link_to "DESTROY", post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
+                <td><%= link_to "DESTROY", admins_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
               </tr>
             </tbody>
             <% end %>
