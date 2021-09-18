@@ -33,7 +33,9 @@
       </div>
       <!-- 退会ボタン -->
       <div class="text-center mt-5 mb-5">
-        <%= link_to "WITHDRAW(退会)", users_unsubscribe_path, class: "btn btn-outline-danger w-50" %>
+        <%= link_to users_unsubscribe_path, class: "btn btn-outline-danger w-50" do %>
+          <i class="fas fa-user-slash"> WITHDRAW(退会)</i>
+        <% end %>
       </div>
       <% end %>
       <!-- マイページに戻る -->
