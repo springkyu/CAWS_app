@@ -7,7 +7,7 @@
 
       <!-- お気に入り投稿の一覧を表示 -->
       <% @like_posts.each do |post| %>
-      <div class="card w-50 mx-auto mt-4 shadow-lg p-2 text-center text-light" style="background: #cc9999;">
+      <div class="card w-50 mx-auto mt-5 mb-5 shadow-lg p-2 text-center text-light" style="background: #d4acad;">
         <!--エリア名（投稿のヘッダー）-->
         <div class="card-header mt-1 mb-3" style="background: #996666;">
           <%= post.area.area %> エリア
@@ -23,7 +23,7 @@
         <div class="card-body">
         　<!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
-             <%= link_to post_path(post.id), class:"text-secondary" do %>
+             <%= link_to post_path(post.id), class:"text-dark" do %>
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
               <% end %>
           </h4>
@@ -40,12 +40,12 @@
             <% else %> <!-- （ない場合はデフォルトイメージ表示） -->
               <%= image_tag 'no_image.jpg', size:'100×100' %>
             <% end %>
-            <!--投稿ユーザのニックネーム-->
+            <!-- 投稿ユーザのニックネーム-->
             <p>by. <%= post.user.name %></p>
           </div>
         </div>
 
-　　　　<!--投稿日（投稿のフッター）-->
+　　　　<!-- 投稿日（投稿のフッター） -->
         <div class="card-footer" style="background: #996666;">
           <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
         </div>
@@ -53,6 +53,7 @@
       <% end %>
 
     </div>
-    <!--<div class="pagination"><%#= paginate @posts_page %></div>-->
+    <!-- ページネーション -->
+    <!--<div class="pagination justify-content-center"><%#= paginate @posts_page %></div>-->
   </div>
 </div>
