@@ -80,8 +80,16 @@
             <strong>You want..?</strong>
           </div>
           <div class="card-text mt-3">
-            <p><%= link_to 'POST EDIT', edit_post_path(@post), class:"btn btn-outline-success w-25" %></p>
-            <p><%= link_to "POST DESTROY", post_likes_path(@post), method: :delete, data: { confirm: '本当に消してもよろしいですか？' }, class: "btn btn-outline-danger w-25" %></p>
+            <p> <!-- 編集ボタン -->
+              <%= link_to edit_post_path(@post), class:"btn btn-outline-success w-25" do %>
+                <i class="fas fa-edit"></i> POST EDIT
+              <% end %>
+            </p>
+            <p> <!-- 削除ボタン -->
+              <%= link_to post_likes_path(@post), method: :delete, data: { confirm: '本当に消してもよろしいですか？' }, class: "btn btn-outline-danger w-25" do %>
+                <i class="fas fa-trash-alt"></i> POST DESTROY
+              <% end %>
+            </p>
           </div>
           <% end %>
 
