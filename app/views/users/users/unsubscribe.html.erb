@@ -15,11 +15,15 @@
       </h5>
       <!-- 退会しないボタン -->
       <div class="text-center mt-5 mb-3">
-        <%= link_to "NOT WITHDRAW", users_path, class: "btn btn-outline-info" %>
+        <%= link_to users_path, class: "btn btn-outline-info w-25" do %>
+          <i class="fas fa-user"> NOT WITHDRAW </i>
+        <% end %>
       </div>
       <!-- 退会ボタン -->
       <div class="text-center mt-3 mb-5">
-        <%= link_to "WITHDRAW(退会)", users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか?", class: "btn btn-outline-danger" %>
+        <%= link_to users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか?", class: "btn btn-outline-danger w-25" do %>
+          <i class="fas fa-user-slash"> WITHDRAW(退会) </i>
+        <% end %>
       </div>
       <!-- 編集ページに戻る -->
       <div class="row mb-5">
