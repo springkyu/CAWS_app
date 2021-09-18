@@ -1,3 +1,64 @@
+<!-- 管理者用 ユーザー情報編集ページ -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- ページタイトル -->
+      <h3 class="text-center pt-5">
+        <i class="fas fa-user-circle"></i> <%= @user.name %>'s USER INFO.<br />
+        What would you like to edit <i class="fas fa-question"></i></h3>
+
+      <%= form_with model: @user, url: admins_user_path, local: true do |f| %>
+
+      <!-- プロフィール画像 -->
+      <div class="form-label pt-5" >
+        <%= f.label :profile_image, "Profile Image", class: "float-left" %>
+      </div>
+      <div class="form-group">
+        <%= f.file_field :profile_image, autofocus: true %>
+      </div>
+      <!-- ニックネーム -->
+      <div class="form-label pt-2" >
+        <%= f.label :name, "NICKNAME", class: "float-left" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control w-75" %>
+      </div>
+      <!-- メールアドレス -->
+      <div class="form-label pt-2" >
+        <%= f.label :email, "E-MAIL", class: "float-left" %>
+      </div>
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control w-75" %>
+      </div>
+      <!-- ユーザーステータス -->
+      <div class="form-label pt-2" >
+        <%= f.label :status, "USER STATUS", class: "float-left" %>
+      </div>
+      <!-- ラジオボタンでステータス選択 -->
+      <div class="form-check">
+        <%= f.radio_button :is_deleted, false %> <span> 有効 </span>
+        <%= f.radio_button :is_deleted, true %> <span> 退会 </span>
+      </div>
+      <!-- 変更保存ボタン -->
+      <div class="text-center mt-5">
+        <%= f.submit "UPDATE INFO.", class: "btn btn-outline-success w-50" %>
+      </div>
+
+      <% end %>
+      <!-- ユーザー詳細ページに戻る -->
+      <div class="row mb-5">
+        <%= link_to  admins_user_path(@user.id) do %>
+          <i class="fas fa-backward text-dark"> BACK </i>
+        <% end %>
+  	  </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="container">
   <div class="row">
     <div class="col">
