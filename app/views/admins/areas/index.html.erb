@@ -46,9 +46,18 @@
           <tr>
             <th scope="row"><%= area.id %></th>
             <td><%= area.area %></td>
-            <!-- 編集・削除ボタン -->
-            <td><%= link_to "EDIT", edit_admins_area_path(area.id), class: "btn btn-outline-success" %></td>
-            <td><%= link_to "DESTROY", admins_area_path(area.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %></td>
+            <!-- 編集ボタン -->
+            <td>
+              <%= link_to edit_admins_area_path(area.id), class: "btn btn-outline-success" do %>
+                EDIT <i class="far fa-edit"></i>
+              <% end %>
+            </td>
+            <!-- 削除ボタン -->
+            <td>
+              <%= link_to admins_area_path(area.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" do %>
+                DESTROY <i class="far fa-trash-alt"></i>
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <% end %>
