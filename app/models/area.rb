@@ -5,4 +5,5 @@ class Area < ApplicationRecord
   # バリデーション
   validates :area, presence: true
 
+  
 end
