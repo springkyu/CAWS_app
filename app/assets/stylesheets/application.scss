@@ -84,21 +84,39 @@ main {
     color: #555647;
 }
 
-
+/*ページネーション自体のデザイン*/
 .pagination {
-  text-align: center;
+//   text-align: center;
   padding-top: 50px;
 }
-.pagination p {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin: 0 5px;
-  color: #fff;
-  background-color: #acabab;
-  border-radius: 3px;
-  line-height: 30px;
+
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  background: #cbd0d3;     /*背景の色を変える*/
+  color: #6f4b3e;   /*文字の色を変える*/
 }
+
+/* 表示しているページ番号のデザイン */
+.pagination>li.active {     
+  color: #6f4b3e;   /*文字の色を変える*/
+  border-radius: 25px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination a:hover {        
+  border-radius: 25px;    /*角を丸くする*/
+}
+// .pagination p {
+//   display: inline-block;
+//   width: 30px;
+//   height: 30px;
+//   margin: 0 5px;
+//   color: #fff;
+//   background-color: #acabab;
+//   border-radius: 3px;
+//   line-height: 30px;
+// }
+
 
 #notice {
   color: #852e19;
