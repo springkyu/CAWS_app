@@ -99,3 +99,17 @@ main {
   border-radius: 3px;
   line-height: 30px;
 }
+
+#notice {
+  color: #852e19;
+}
+
+.error {
+  color: red;
+}
+
+.error-maessage {
+  font-size: 12px;
+  list-style: square;
+  margin-left: 60px;
+}
