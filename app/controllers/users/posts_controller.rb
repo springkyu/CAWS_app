@@ -12,16 +12,17 @@ class Users::PostsController < ApplicationController
       flash[:notice]="You have creatad post successfully."
       redirect_to post_path(@post)
     else
-      # redirect_back(fallback_location: root_path)
       @user = current_user
       @posts = Post.all
+      flash[:alert] = "Could not craete post."
       render :index
     end
   end
 
   def index
-    @posts = Post.all.order(params[:sort])
-    # @posts_page = Post.page(params[:page]).per(8)
+    # @posts = Post.all.order(params[:sort])
+    # ページネーションを適用
+    @posts = Post.all.order(params[:sort]).page(params[:page]).per(8)
     @user = current_user
   end
 
