@@ -21,8 +21,8 @@ class Users::PostsController < ApplicationController
 
   def index
     # @posts = Post.all.order(params[:sort])
+    # ページネーションを適用
     @posts = Post.all.order(params[:sort]).page(params[:page]).per(8)
-    # @posts_page = Post.page(params[:page]).per(8)
     @user = current_user
   end
 
