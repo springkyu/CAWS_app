@@ -46,10 +46,12 @@
             starOff :  '<%= asset_path('star-off.png') %>',
             starOn  :  '<%= asset_path('star-on.png') %>',
             starHalf:  '<%= asset_path('star-half.png') %>',
+            // postモデルのrateカラムに値を保存
+            scoreName: 'post[rate]',
             // 星の半分の入力を行う
             half    :  true,
             // 読み取り専用
-            readOnly: true,
+            // readOnly: true,
             // 星の入力値を読み込む
             score   :  <%= @post.rate %>,
           });

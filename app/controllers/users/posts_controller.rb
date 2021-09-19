@@ -20,7 +20,8 @@ class Users::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(params[:sort])
+    # @posts = Post.all.order(params[:sort])
+    @posts = Post.all.order(params[:sort]).page(params[:page]).per(8)
     # @posts_page = Post.page(params[:page]).per(8)
     @user = current_user
   end
