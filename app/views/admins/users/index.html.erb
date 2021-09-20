@@ -1,22 +1,30 @@
+<!-- 管理者用'ユーザー'一覧ページ -->
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4 class="">USERS ~// ユーザ一覧 //~</h4>
-      <table class="users table-bordered table-hover">
-        <tr class="">
-          <td> User ID </td>
-          <td> Nickname </td>
-          <td> E-Mail </td>
-          <td> Status </td>
-        </tr>
-        <tbody>
-          <% @users.each do |user| %>
+      <!-- ページタイトル -->
+      <h2 class="text-center pt-5">USER LIST <i class="fas fa-users"></i></h2>
+
+      <table class="table table-hover text-center mt-5">
+        <thead class="thead-dark">
           <tr>
-            <td><%= user.id %></td>
+            <!-- ユーザID -->
+            <th scope="col">USER ID</th>
+            <!-- ニックネーム -->
+            <th scope="col">NICKNAME</th>
+            <!-- メールアドレス -->
+            <th scope="col">E-MAIL ADDRESS</th>
+            <!-- ユーザーステータス -->
+            <th scope="col">USER STATUS</th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <th scope="row"><%= user.id %></th>
             <td><%= link_to user.name, admins_user_path(user.id), class: "user_#{user.id} text-secondary" %></td>
             <td><%= user.email %></td>
-            <td>
-              <!-- ユーザステータス/ 退会フラグで条件分岐 -->
+            <td><!-- ユーザステータス/ 退会フラグで条件分岐 -->
               <% if user.is_deleted == true %>
                 <p class="text-secondary"> 退会済 </p>
               <% else %>
@@ -24,10 +32,12 @@
               <% end %>
             </td>
           </tr>
-          <% end %>
         </tbody>
+        <% end %>
       </table>
+
     </div>
-    <div class="col"><%= paginate @users %></div>
+    <!-- ページネーション -->
+    <div class="pagination justify-content-center"><%= paginate @users %></div>
   </div>
 </div>
