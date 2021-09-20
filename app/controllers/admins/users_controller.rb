@@ -3,7 +3,6 @@ class Admins::UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page]).per(10)
-    # @posts = User.all.posts(:id)
   end
 
   def show
@@ -19,13 +18,16 @@ class Admins::UsersController < ApplicationController
     if @user.update(user_params)
       flash[:notice]="User's info was successfully updated."
       redirect_to admins_user_path(@user)
+    else
+      flash[:alert] = "Could not update."
+      render :edit
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :profile_image, :introduction, :is_deleted)
+    params.require(:user).permit(:name, :email, :profile_image, :is_deleted)
   end
 
 end
