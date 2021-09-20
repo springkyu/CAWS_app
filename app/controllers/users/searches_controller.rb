@@ -4,9 +4,10 @@ class Users::SearchesController < ApplicationController
     @model = params[:model]
     @keyword = params[:keyword]
     if @model == "Post"
-      @posts = Post.search(params[:keyword])
+      @posts = Post.search(@keyword)
     else
-      @areas = Post.search(params[:keyword])
+      @posts = Area.search(@keyword).page(params[:page]).per(8)
+      @posts_area = Post.search(area_id: @posts.ids).page(params[:page]).per(8)
     end
 
     # エリア名で検索できない
