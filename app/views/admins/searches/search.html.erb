@@ -31,11 +31,13 @@
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
               <% end %>
           </h4>
-          <!-- いいねボタン（非同期通信） -->
-          <div class="card-subtitle text-right">
-            <div id="likes_buttons_<%= post.id %>">
-              <%= render partial: 'users/likes/like', locals: {post: post} %>
-            </div>
+          <!-- いいね数 -->
+          <div class="card-text text-right">
+            <i class="fas fa-heart" style="color: #a73836; font-size: 20px;"> <%= post.likes.count %> </i>
+          </div>
+          <!-- コメント数 -->
+          <div class="card-text text-right" style="color: #001e43; font-size: 20px;">
+            COMMENTS： <%= post.comments.count %>
           </div>
           <div class="card-text">
           <!-- 投稿ユーザのプロフィール画像 -->
@@ -93,11 +95,13 @@
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
               <% end %>
           </h4>
-          <!-- いいねボタン（非同期通信） -->
-          <div class="card-subtitle text-right">
-            <div id="likes_buttons_<%= post.id %>">
-              <%= render partial: 'users/likes/like', locals: {post: post} %>
-            </div>
+          <!-- いいね数 -->
+          <div class="card-text text-right">
+            <i class="fas fa-heart" style="color: #a73836; font-size: 20px;"> <%= post.likes.count %> </i>
+          </div>
+          <!-- コメント数 -->
+          <div class="card-text text-right" style="color: #001e43; font-size: 20px;">
+            COMMENTS： <%= post.comments.count %>
           </div>
           <div class="card-text">
           <!-- 投稿ユーザのプロフィール画像 -->

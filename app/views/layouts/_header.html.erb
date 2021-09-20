@@ -39,9 +39,9 @@
           <i class="fas fa-sign-out-alt"> LOG OUT </i>
         <% end %>
       </li>
-      <div>
+      <li class="nav-item">
         <%= render 'layouts/search' %>
-      </div>
+      </li>
 
     <!-- 管理者がログインしているとき -->
     <% elsif admin_signed_in? %>
@@ -64,6 +64,9 @@
         <%= link_to destroy_admin_session_path, method: :delete do %>
           <i class="fas fa-sign-out-alt"> LOG OUT </i>
         <% end %>
+      </li>
+      <li class="nav-item">
+        <%= render 'layouts/admins_search' %>
       </li>
 
     <!-- ログインしていないとき -->
