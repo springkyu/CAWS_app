@@ -13,6 +13,7 @@ class Admins::AreasController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       @areas = Area.all
+      flash[:alert] = "Could not create area."
       render :index
     end
   end
@@ -27,6 +28,7 @@ class Admins::AreasController < ApplicationController
       flash[:notice]="Area was successfully updated."
       redirect_to admins_areas_path
     else
+      flash[:alert] = "Could not update."
       render :edit
     end
   end
@@ -36,8 +38,12 @@ class Admins::AreasController < ApplicationController
     if @area.destroy
       flash[:notice] = "Area was successfully destroyed."
       redirect_to admins_areas_path
+    else
+      flash[:alert] = "Could not destroy."
+      redirect_back(fallback_location: root_path)
     end
   end
+
 
   private
 
