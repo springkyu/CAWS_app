@@ -10,6 +10,7 @@ class Post < ApplicationRecord
 
   validates :shop_name, presence: true
   validates :area_id, presence: true
+  validates :rate, presence: true
   # validate :text
   # validate :location
 
