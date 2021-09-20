@@ -1,9 +1,11 @@
 class Users::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @post = Post.new
     @areas = Area.all
   end
+
 
   def create
     @post = Post.new(post_params)
@@ -14,10 +16,11 @@ class Users::PostsController < ApplicationController
     else
       @user = current_user
       @posts = Post.all
-      flash[:alert] = "Could not craete post."
+      flash[:alert] = "Could not create post."
       render :index
     end
   end
+
 
   def index
     # @posts = Post.all.order(params[:sort])
@@ -26,12 +29,14 @@ class Users::PostsController < ApplicationController
     @user = current_user
   end
 
+
   def show
     @newpost = Post.new
     @post = Post.find(params[:id])
     @user = @post.user
     @comment = Comment.new
   end
+
 
   def edit
     @post = Post.find(params[:id])
@@ -42,6 +47,7 @@ class Users::PostsController < ApplicationController
       redirect_to posts_path
     end
   end
+
 
   def update
     @post = Post.find(params[:id])
@@ -55,6 +61,7 @@ class Users::PostsController < ApplicationController
     end
   end
 
+
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
@@ -66,10 +73,12 @@ class Users::PostsController < ApplicationController
     end
   end
 
+
   private
 
   def post_params
     params.require(:post).permit(:shop_name, :image, :body, :rate, :area_id, :location)
   end
+
 
 end

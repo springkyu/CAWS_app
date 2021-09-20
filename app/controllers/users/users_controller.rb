@@ -1,13 +1,16 @@
 class Users::UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @user = current_user
     @posts = @user.posts.page(params[:page]).reverse_order
   end
 
+
   def edit
     @user = current_user
   end
+
 
   def update
     @user = current_user
@@ -20,6 +23,7 @@ class Users::UsersController < ApplicationController
     end
   end
 
+
   def unsubscribe
     @user = current_user
   end
@@ -31,15 +35,18 @@ class Users::UsersController < ApplicationController
       redirect_to root_path
   end
 
+
   def likes
     @user = current_user
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @like_posts = Post.find(likes)
   end
 
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction, :email, :encrypted_password, :is_deleted)
+    params.require(:user).permit(:name, :profile_image, :email, :encrypted_password, :is_deleted)
   end
+
 end
