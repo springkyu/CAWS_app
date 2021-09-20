@@ -10,8 +10,10 @@ class Post < ApplicationRecord
 
   validates :shop_name, presence: true
   validates :area_id, presence: true
-  # validate :text
-  # validate :location
+  validates :rate, presence: true
+  validates :body, length: { minimum: 1 }, allow_blank: true
+  validates :location, length: { minimum: 1 }, allow_blank: true
+
 
 
   # ActiveStorageバリデーション
@@ -33,3 +35,4 @@ class Post < ApplicationRecord
 
 
 end
+

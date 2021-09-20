@@ -1,29 +1,68 @@
+<!-- エリア一覧・新規追加ページ -->
+
 <div class="container">
+  <!-- 新規追加フォーム -->
   <div class="row">
-    <h4 class="">エリア一覧・追加</h4>
-  </div>
-  <div class="row">
-    <div class="">
+    <div class="col">
+      <!-- ページタイトル -->
+      <h2 class="text-center pt-5">Which 'area' would you like to add <i class="fas fa-question"></i></h2>
+
       <%= form_with model: @area, url: admins_areas_path, local: true do |f| %>
-        <%= f.label :AREA %>
-        <%= f.text_field :area, placeholder: "エリア名", class: "" %>
-        <%= f.submit "NEW/ADD", class: "btn btn-outline-primary" %>
+      <form>
+        <!-- エリアの名前 -->
+        <div class="row pt-5 mb-3">
+          <%= f.label :area, "AREA：", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :area, placeholder: "エリア名", autofocus: true, autocomplete: "area", class: "form-control w-75" %>
+          </div>
+        </div>
+        <!-- 新規追加ボタン -->
+        <div class="text-center mt-2 mb-3">
+          <%= f.submit "NEW / ADD", class: "btn btn-outline-primary" %>
+        </div>
+      </form>
       <% end %>
+
     </div>
-    <div class="">
-      <table class="areaindex table-hover">
-        <tr class="" style="text-align: center;">
-          <th>AREA</th>
-          <th></th>
-        </tr>
+  </div>
+
+  <!-- エリア一覧 -->
+  <div class="row mt-3">
+    <div class="col">
+      <!--ページのサブタイトル-->
+      <h3 class="text-center pt-5 mb-5">AREA LIST <i class="fas fa-map-marked-alt"></i></h3>
+
+      <table class="table table-hover text-center">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">＃</th>
+            <th scope="col">AREA</th>
+            <th scope="col">EDIT..?</th>
+            <th scope="col">DESTROY..?</th>
+          </tr>
+        </thead>
         <% @areas.each do |area| %>
-        <tr>
-          <td><%= area.area %></td>
-          <td><%= link_to "EDIT", edit_admins_area_path(area.id), class: "btn btn-outline-success" %></td>
-          <td><%= link_to "DESTROY", admins_area_path(area.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %></td>
-        </tr>
+        <tbody class="table">
+          <tr>
+            <th scope="row"><%= area.id %></th>
+            <td><%= area.area %></td>
+            <!-- 編集ボタン -->
+            <td>
+              <%= link_to edit_admins_area_path(area.id), class: "btn btn-outline-success" do %>
+                EDIT <i class="far fa-edit"></i>
+              <% end %>
+            </td>
+            <!-- 削除ボタン -->
+            <td>
+              <%= link_to admins_area_path(area.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" do %>
+                DESTROY <i class="far fa-trash-alt"></i>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
         <% end %>
       </table>
     </div>
   </div>
+
 </div>
