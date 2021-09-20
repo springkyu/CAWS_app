@@ -5,4 +5,8 @@ class Area < ApplicationRecord
   # バリデーション
   validates :area, presence: true
 
+  def self.search(keyword)
+    Area.where('area LIKE ?', "%#{keyword}%")
+  end
+
 end

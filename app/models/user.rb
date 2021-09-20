@@ -13,6 +13,11 @@ class User < ApplicationRecord
     self.likes.exists?(post_id: post.id)
   end
 
+  # 論理削除
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
 
 
   # has_one_attachedメソッド

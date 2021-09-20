@@ -39,6 +39,9 @@
           <i class="fas fa-sign-out-alt"> LOG OUT </i>
         <% end %>
       </li>
+      <li class="nav-item">
+        <%= render 'layouts/search' %>
+      </li>
 
     <!-- 管理者がログインしているとき -->
     <% elsif admin_signed_in? %>
@@ -62,6 +65,9 @@
           <i class="fas fa-sign-out-alt"> LOG OUT </i>
         <% end %>
       </li>
+      <li class="nav-item">
+        <%= render 'layouts/admins_search' %>
+      </li>
 
     <!-- ログインしていないとき -->
     <% else %>
@@ -79,6 +85,9 @@
         <%= link_to new_user_session_path do %>
           <i class="fas fa-sign-in-alt"> LOG IN </i>
         <% end %>
+      </li>
+      <li class="nav-item">
+        <%= render 'layouts/search' %>
       </li>
 
     <% end %>

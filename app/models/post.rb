@@ -11,8 +11,9 @@ class Post < ApplicationRecord
   validates :shop_name, presence: true
   validates :area_id, presence: true
   validates :rate, presence: true
-  # validate :text
-  # validate :location
+  validates :body, length: { minimum: 1 }, allow_blank: true
+  validates :location, length: { minimum: 1 }, allow_blank: true
+
 
 
   # ActiveStorageバリデーション
@@ -27,4 +28,11 @@ class Post < ApplicationRecord
     end
   end
 
+
+  def self.search(keyword)
+    Post.where(['shop_name LIKE ? OR body LIKE ? OR location LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
+
+
 end
+
