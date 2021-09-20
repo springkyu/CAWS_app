@@ -10,8 +10,8 @@ class Post < ApplicationRecord
 
   validates :shop_name, presence: true
   validates :area_id, presence: true
-  # validate :text
-  # validate :location
+  validates :body, length: { minimum: 1 }, allow_blank: true
+  validates :location, length: { minimum: 1 }, allow_blank: true
 
 
   # ActiveStorageバリデーション
@@ -25,5 +25,11 @@ class Post < ApplicationRecord
       errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
     end
   end
+
+
+  def self.search(keyword)
+    Post.where(['shop_name LIKE ? OR body LIKE ? OR area_id LIKE ? OR location LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
+
 
 end
