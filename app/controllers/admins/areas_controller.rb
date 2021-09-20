@@ -1,4 +1,5 @@
 class Admins::AreasController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @area = Area.new
