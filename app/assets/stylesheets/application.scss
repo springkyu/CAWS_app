@@ -72,21 +72,38 @@ main {
 }
 
 // フッター
-.footer {
-    background-color: #adadad;
-    padding-top: 15px;
-    padding-bottom: 15px;
+
+footer{
+  height: 100px;
+  background-color: #adadad;
+  background-size: cover;
+  background-position: bottom;
+  bottom: 0; /*下に固定*/
+  color: #555647;
 }
 
-.copyight {
-    test-align: center;
-    margin: 0;
+.footer-bottom{
+  font-size: 15px;
+  color: #555647;
 }
 
-.copy {
-    font-size: 12px;
-    color: #555647;
-}
+
+// // フッター
+// .footer {
+//     background-color: #adadad;
+//     padding-top: 15px;
+//     padding-bottom: 15px;
+// }
+
+// .copyight {
+//     test-align: center;
+//     margin: 0;
+// }
+
+// .copy {
+//     font-size: 12px;
+//     color: #555647;
+// }
 
 /*ページネーション自体のデザイン*/
 .pagination {
