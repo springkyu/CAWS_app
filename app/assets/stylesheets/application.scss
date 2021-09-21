@@ -121,13 +121,15 @@ main {
 //   line-height: 30px;
 // }
 
-
-#notice {
+/*フラッシュ */
+.flash {
   color: #852e19;
+  font-size: 25px;
+  margin-left: 100px;
 }
 
 .error {
-  color: red;
+  color: #b6195d;
 }
 
 .error-maessage {

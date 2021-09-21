@@ -21,6 +21,12 @@
     </header>
 
     <main>
+      <% if flash[:notice] %>
+        <div class="flash mt-3"><%= flash[:notice] %></div>
+      <% elsif flash[:alert] %>
+        <div class="flash mt-3"><%= flash[:alert] %></div>
+      <% end %>
+
       <%= yield %>
     </main>
 
