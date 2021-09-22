@@ -9,7 +9,7 @@
       <h1 class="text-center pt-5">POST LIST <i class="fas fa-icons"></i></h1>
       <!-- ソート（新着・おすすめ度高い） -->
       <h6 class="text-center pt-2 mb-5">Need to sort ? <i class="fas fa-arrow-right"></i>
-        <%= link_to "NEW ARRIVAL", posts_path(sort: 'created_at DESC'), class:"text-dark" %> | <%= link_to "RECOMMEND", posts_path(sort: 'rate DESC'), class:"text-dark" %>
+        <%= link_to "NEW ARRIVAL", posts_path(sort: 'created_at DESC'), class:"btnripple text-dark" %> | <%= link_to "RECOMMEND", posts_path(sort: 'rate DESC'), class:"btnripple text-dark" %>
       </h6>
 
       <!-- 投稿の一覧を表示 -->
@@ -32,7 +32,7 @@
         <div class="card-body">
           <!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
-              <%= link_to post_path(post.id), class:"text-secondary" do %>
+              <%= link_to post_path(post.id), class:"btnripple text-secondary" do %>
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
               <% end %>
           </h4>
