@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
 
   root to: "homes#top"
+  get "/about" => "homes#about"
 
   namespace :admins do
     resources :posts, only: [:index, :show, :destroy]
