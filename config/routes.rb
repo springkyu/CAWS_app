@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :users do
-    resource :users, only: [:show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update] do
       member do
         get :likes
       end

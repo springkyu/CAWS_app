@@ -6,12 +6,12 @@
     <!-- ユーザーがログインしているとき -->
     <% if user_signed_in? %>
       <li class="nav-item">
-        <%= link_to users_path do %>
+        <%= link_to user_path(current_user) do %>
           <i class="fas fa-id-card"> MY PAGE </i>
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to likes_users_path do %>
+        <%= link_to likes_user_path(current_user) do %>
           <i class="fas fa-hand-holding-heart"> FAVORITES </i>
         <% end %>
       </li>

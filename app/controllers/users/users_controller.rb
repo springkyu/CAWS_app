@@ -2,7 +2,8 @@ class Users::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = current_user
+    # @user = current_user
+    @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).reverse_order
   end
 
@@ -15,8 +16,8 @@ class Users::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
-      redirect_to users_path
+      flash[:notice] = "You have updated user info successfully."
+      redirect_to user_path(@user)
     else
       flash[:alert] = "Could not update."
       render :edit
@@ -46,7 +47,7 @@ class Users::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :email, :encrypted_password, :is_deleted)
+    params.require(:user).permit(:name, :profile_image, :email, :encrypted_password, :is_deleted, :introduction)
   end
 
 end

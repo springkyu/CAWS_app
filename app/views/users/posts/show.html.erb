@@ -30,7 +30,7 @@
             <% else %>
               <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
-            <p><%= @post.user.name %></p>
+            <p><%= link_to @post.user.name, user_path(@user.id), class: "user_#{@user.id} text-dark" %></p>
           </div>
           <!-- 投稿日 -->
           <div class="card-text mt-3">
