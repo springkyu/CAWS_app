@@ -10,14 +10,13 @@ class Users::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save!
+    if @post.save
       flash[:notice]="You have creatad post successfully."
       redirect_to post_path(@post)
     else
-      @user = current_user
-      @posts = Post.all
+      @areas = Area.all
       flash[:alert] = "Could not create post."
-      render :index
+      render :new
     end
   end
 
@@ -56,6 +55,7 @@ class Users::PostsController < ApplicationController
       flash[:notice]="Post was successfully updated."
       redirect_to post_path(@post.id)
     else
+      @areas = Area.all
       flash[:alert] = "Could not update."
       render :edit
     end

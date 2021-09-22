@@ -14,7 +14,7 @@
           <strong><%= @post.shop_name %></strong>
         </div>
         <!-- 投稿写真（メイン） -->
-          <%= image_tag @post.image %>
+          <%#= image_tag @post.image %>
 
         <div class="card-body">
           <!-- 投稿のタイトル＝カフェの名前 -->
@@ -89,7 +89,7 @@
               <% end %>
             </p>
             <p> <!-- 削除ボタン -->
-              <%= link_to post_likes_path(@post), method: :delete, data: { confirm: '本当に消してもよろしいですか？' }, class: "btn btn-outline-danger w-25" do %>
+              <%= link_to post_path(@post), method: :delete, data: { confirm: '本当に消してもよろしいですか？' }, class: "btn btn-outline-danger w-25" do %>
                 <i class="fas fa-trash-alt"></i> POST DESTROY
               <% end %>
             </p>

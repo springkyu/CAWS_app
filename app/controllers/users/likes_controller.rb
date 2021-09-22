@@ -10,8 +10,8 @@ class Users::LikesController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    like = current_user.likes.find_by(post_id: @post.id)
-    like.destroy
+    like = Like.where(post_id: @post.id, user_id: current_user.id)
+    like.destroy_all
     # redirect_back(fallback_location: root_path)
   end
 
