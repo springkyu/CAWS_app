@@ -34,16 +34,30 @@ html {
 }
 
 body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    // height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
 //   background-image: image-url("background3.png");
 }
 
+// 背景
+body{
+	animation: bgchange 30s ease infinite;
+}
+
+@keyframes bgchange{
+      0%   {background:#b38178;}/*変化させたい色*/
+      25%  {background:#bf956f;}/*変化させたい色*/
+      50%  {background:#bf978f;}/*変化させたい色*/
+      75%  {background:#85856a;}/*変化させたい色*/
+      90%  {background:#708999;}/*変化させたい色*/
+      100% {background:#b38178;}/*変化させたい色*/
+ }
+
 main {
-    flex: 10 auto;
-    background-color: #efeff0;
+    // flex: 10 auto;
+    // background-color: #efeff0;
 }
 
 
