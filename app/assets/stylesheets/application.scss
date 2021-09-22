@@ -48,43 +48,73 @@ main {
 
 
 // ヘッダー
-.navbar {
-    justify-content: flex end;
-    align-items: center;
-    background-color: #adadad;
-    padding: 8px 12px;
+header {
+  width: 100%; /* 横幅いっぱい */
+  height: 350px; /* 高さ350px */
+  background-image: image-url("caws_header1.png");
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+
 }
 
+/* 右から */
 
-.navbar-menu {
-    display: flex;
-    list-style: none;
-    padding-left: 0;
-}
-.nav-item i {
-    padding: 8px 12px;
-    color: #555647;
+.fadeRight{
+animation-name:fadeRightAnime;
+animation-duration:1.5s;
+animation-fill-mode:forwards;
+opacity:0;
 }
 
-.nav-item i:hover {
-    background-color: #727171;
-    border-radius: 4px;
+@keyframes fadeRightAnime{
+  from {
+    opacity: 0;
+	transform: translateX(100px);
+  }
+
+  to {
+    opacity: 1;
+	transform: translateX(0);
+  }
 }
+
+// .navbar {
+//     justify-content: flex end;
+//     align-items: center;
+//     background-color: #adadad;
+//     padding: 8px 12px;
+// }
+
+
+// .navbar-menu {
+//     display: flex;
+//     list-style: none;
+//     padding-left: 0;
+// }
+// .nav-item i {
+//     padding: 8px 12px;
+//     color: #555647;
+// }
+
+// .nav-item i:hover {
+//     background-color: #727171;
+//     border-radius: 4px;
+// }
 
 // フッター
 
 footer{
   height: 100px;
-  background-color: #adadad;
+  background-color: #502608;
   background-size: cover;
   background-position: bottom;
   bottom: 0; /*下に固定*/
-  color: #555647;
+  color: #ffcccc;
 }
 
 .footer-bottom{
   font-size: 15px;
-  color: #555647;
+  color: #e6eae6;
 }
 
 
