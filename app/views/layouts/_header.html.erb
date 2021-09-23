@@ -1,9 +1,15 @@
+<!-- ヘッダー(部分テンプレ) -->
 <header class="fadeRight">
-  <div class="head-img"></div>
-
-<div class="openbtn"><span></span><span></span><span></span></div>
-<nav id="g-nav">
-  <ul class="navbar-menu">
+  <a class="head">
+    <!-- topページへのリンク -->
+    <%= link_to root_path do %><div class="head-img"></div><% end %>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="nav navbar-nav ml-auto">
     <!-- ユーザーがログインしているとき -->
     <% if user_signed_in? %>
       <li class="nav-item">
@@ -92,6 +98,7 @@
 
     <% end %>
     </ul>
-  
-</nav>
+    </div>
+  </nav>
+
 </header>

@@ -22,7 +22,7 @@ body {
   font-family: 'Abril Fatface', cursive;
 }
 
-
+// 全体の設定
 * {
     margin: 0;
     padding: 0;
@@ -34,13 +34,11 @@ html {
     margin: 0;
 }
 
-body {
-    // height: 100%;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
-//   background-image: image-url("background3.png");
-}
+// body {
+//     height: 100%;
+//     flex-direction: column;
+//     justify-content: space-between;
+// }
 
 // 背景
 body{
@@ -56,16 +54,12 @@ body{
       100% {background:#c7aaa5;}
  }
 
-main {
-    // flex: 10 auto;
-    // background-color: #efeff0;
-}
 
 
 // ヘッダー
 .head-img {
   width: 100%; // 横幅いっぱい
-  height: 300px; // 高さ300px
+  height: 250px; // 高さ300px
   background-image: image-url("caws_header1.png");
   background-size: cover; // 縦横比を維持したまま背景領域を埋め尽くす
   background-position: center; // 中央に配置
@@ -92,29 +86,98 @@ opacity:0;
   }
 }
 
+// ナビゲーション
 
-
-.navbar {
-    justify-content: flex end;
-    align-items: center;
-    background-color: #502608;
-    padding: 8px 12px;
+nav{
+	background:#333;
+	color:#efefef;
+	text-align: center;
 }
 
-
-.navbar-menu {
-    display: flex;
-    list-style: none;
-    padding-left: 0;
-}
-.nav-item i {
-    padding: 8px 12px;
-    color: #555647;
+/*ナビゲーションを横並びに*/
+nav ul{
+	list-style: none;
+	display: flex;
+	justify-content: center;
 }
 
-.nav-item i:hover {
-    background-color: #727171;
-    border-radius: 4px;
+/*下の階層のulや矢印の基点にするためliにrelativeを指定*/
+// nav ul li{
+// 	position: relative;
+// }
+
+/*ナビゲーションのリンク設定*/
+.nav-item {
+// 	display: block;
+// 	text-decoration: none;
+// 	color: #efefef;
+	padding: 20px 35px;
+}
+
+.nav-item i{
+  color: #efefef;
+}
+
+.nav-item i:hover{
+	color: #778899;
+}
+
+button {
+  background-color: #ccc;
+}
+// .navbar {
+//     justify-content: flex end;
+//     align-items: center;
+//     background-color: #502608;
+//     padding: 8px 12px;
+// }
+
+
+// .navbar-menu {
+//     display: flex;
+//     list-style: none;
+//     padding-left: 0;
+// }
+
+
+/*==768px以下の形状*/
+
+@media screen and (max-width:768px){
+	nav{
+		padding: 0;
+	}
+	
+	nav ul{
+		display: block;
+	}
+}
+
+nav ul li{
+	border-bottom:1px solid #ccc;
+}
+
+/*== グラデーションが流れる */
+
+.gradient1{
+    // ボタンの形状
+    display: inline-block;
+    color:#fff;
+    padding: 18px 60px;
+    border-radius:30px;
+    text-decoration: none;
+    outline: none;
+    /*背景の色と形状*/
+    background: linear-gradient(270deg, #e3843b 0%, #e66c57 25%, #b79444 51%, #738f51 100%);
+    background-position: 1% 50%;
+    background-size: 200% auto;
+    /*アニメーションの指定*/
+    transition: all 0.3s ease-out;
+}
+
+/*hoverした際の、背景の場所とテキスト色の変更*/
+.gradient1:hover {
+    color: #fff;
+    background-position: 99% 50%;
 }
 
 // フッター
@@ -124,7 +187,7 @@ footer{
   background-color: #502608;
   background-size: cover;
   background-position: bottom;
-  bottom: 0; /*下に固定*/
+  bottom: 0; // 下に固定
   color: #ffcccc;
 }
 
@@ -134,44 +197,27 @@ footer{
 }
 
 
-// // フッター
-// .footer {
-//     background-color: #adadad;
-//     padding-top: 15px;
-//     padding-bottom: 15px;
-// }
-
-// .copyight {
-//     test-align: center;
-//     margin: 0;
-// }
-
-// .copy {
-//     font-size: 12px;
-//     color: #555647;
-// }
-
-/*ページネーション自体のデザイン*/
+// ページネーションデザイン
 .pagination {
 //   text-align: center;
   padding-top: 50px;
 }
 
 .pagination>li>a {          
-  border: none;     /*枠線をなくす*/
-  background: #cbd0d3;     /*背景の色を変える*/
-  color: #6f4b3e;   /*文字の色を変える*/
+  border: none; // 枠線をなくす
+  background: #cbd0d3; // 背景の色
+  color: #6f4b3e; // 文字の色
 }
 
-/* 表示しているページ番号のデザイン */
+// 表示しているページ番号のデザイン
 .pagination>li.active {     
-  color: #6f4b3e;   /*文字の色を変える*/
-  border-radius: 25px;     /*角を丸くする*/
+  color: #6f4b3e; //文字の色
+  border-radius: 25px; //角を丸く
 }
 
-/*ホバー時のデザイン*/
+// ホバー時のデザイン
 .pagination a:hover {        
-  border-radius: 25px;    /*角を丸くする*/
+  border-radius: 25px; //角を丸く
 }
 // .pagination p {
 //   display: inline-block;
@@ -184,7 +230,8 @@ footer{
 //   line-height: 30px;
 // }
 
-/*フラッシュ */
+// フラッシュメッセージ
+
 .flash {
   color: #852e19;
   font-size: 25px;
@@ -192,7 +239,7 @@ footer{
 }
 
 .error {
-  color: #b6195d;
+  color: #630212;
 }
 
 .error-maessage {
