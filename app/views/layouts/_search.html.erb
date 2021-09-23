@@ -1,9 +1,9 @@
-<table class="search-form table-borderless">
+<table class="search-form table-borderless" cellspacing="20">
   <%= form_with(url: search_path, method: :get, local: true) do |f| %>
   <tr>
-    <td><%= f.text_field :keyword, placeholder: "KEYWORD..?", class: "form-control" %></td>
-    <td><%= f.select :model, options_for_select({ "KEYWORD" => "Post", "AREA" => "Area" }), {}, class: "form-control" %></td>
-    <td><%= f.submit "SEARCH", class: "btn btn-outline-dark"  %></td>
+    <td style="padding:10px;"><%= f.text_field :keyword, placeholder: "KEYWORD..?", class: "form-control" %></td>
+    <td style="padding:10px;"><%= f.select :model, options_for_select({ "KEYWORD" => "Post", "AREA" => "Area" }), {}, class: "form-control" %></td>
+    <td style="padding:10px;"><%= f.submit "SEARCH", class: "btn btn-outline-light"  %></td>
   </tr>
   <% end %>
 </table>
