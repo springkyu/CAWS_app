@@ -94,7 +94,8 @@ nav{
 	text-align: center;
 }
 
-/*ナビゲーションを横並びに*/
+// ナビゲーション
+
 nav ul{
 	list-style: none;
 	display: flex;
@@ -105,12 +106,6 @@ nav ul li{
 	border-bottom:1px solid #ccc;
 }
 
-/*下の階層のulや矢印の基点にするためliにrelativeを指定*/
-// nav ul li{
-// 	position: relative;
-// }
-
-/*ナビゲーションのリンク設定*/
 .nav-item {
 // 	display: block;
 // 	text-decoration: none;
@@ -130,22 +125,8 @@ nav ul li{
   background-color: #666;
 }
 
-// .navbar {
-//     justify-content: flex end;
-//     align-items: center;
-//     background-color: #502608;
-//     padding: 8px 12px;
-// }
 
-
-// .navbar-menu {
-//     display: flex;
-//     list-style: none;
-//     padding-left: 0;
-// }
-
-
-// /*==768px以下の形状*/
+// // 768px以下の形状
 
 // @media screen and (max-width:768px){
 // 	nav{
@@ -177,6 +158,7 @@ footer {
 
 
 // ページネーションデザイン
+
 .pagination {
 //   text-align: center;
   padding-top: 50px;
