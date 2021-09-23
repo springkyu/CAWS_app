@@ -1,4 +1,4 @@
-<table class="search-form table-borderless" cellspacing="20">
+<table class="search-form table-borderless">
   <%= form_with(url: search_path, method: :get, local: true) do |f| %>
   <tr>
     <td style="padding:10px;"><%= f.text_field :keyword, placeholder: "KEYWORD..?", class: "form-control" %></td>
