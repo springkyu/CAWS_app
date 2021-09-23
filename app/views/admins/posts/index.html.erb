@@ -44,7 +44,7 @@
             <% if post.user.profile_image.attached? %>
               <%= image_tag post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
             <% else %> <!-- （ない場合はデフォルトイメージ表示） -->
-              <%= image_tag 'no_image.jpg', size:'100×100', class:"mt-3 rounded-circle"; %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
             <!--投稿ユーザーのニックネーム-->
             <p>by. <%= post.user.name %></p>
