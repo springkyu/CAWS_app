@@ -63,13 +63,12 @@ main {
 
 
 // ヘッダー
-header {
+.head-img {
   width: 100%; // 横幅いっぱい
   height: 300px; // 高さ300px
   background-image: image-url("caws_header1.png");
   background-size: cover; // 縦横比を維持したまま背景領域を埋め尽くす
   background-position: center; // 中央に配置
-
 }
 
 // 右から
@@ -95,28 +94,28 @@ opacity:0;
 
 
 
-// .navbar {
-//     justify-content: flex end;
-//     align-items: center;
-//     background-color: #adadad;
-//     padding: 8px 12px;
-// }
+.navbar {
+    justify-content: flex end;
+    align-items: center;
+    background-color: #502608;
+    padding: 8px 12px;
+}
 
 
-// .navbar-menu {
-//     display: flex;
-//     list-style: none;
-//     padding-left: 0;
-// }
-// .nav-item i {
-//     padding: 8px 12px;
-//     color: #555647;
-// }
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+.nav-item i {
+    padding: 8px 12px;
+    color: #555647;
+}
 
-// .nav-item i:hover {
-//     background-color: #727171;
-//     border-radius: 4px;
-// }
+.nav-item i:hover {
+    background-color: #727171;
+    border-radius: 4px;
+}
 
 // フッター
 
