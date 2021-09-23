@@ -113,9 +113,9 @@
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->
 
 
 <!-- ユーザーがログインしていない場合 -->
@@ -188,11 +188,11 @@
           <div class="card-text mt-3">
             <strong>LOCATION：</strong> <%= @post.location %>
           </div>
-          <!-- いいね数 -->
+          <!-- いいね数(いいねできない) -->
           <div class="card-text mt-3">
             <strong>USER RESPONSE（LIKES）：</strong><i class="fas fa-heart" style="color: #a73836;"></i> <%= @post.likes.count %>
           </div>
-          <!-- コメント数 -->
+          <!-- コメント数(コメントできない) -->
           <div class="card-text mt-3">
             <strong>USER RESPONSE（COMMENTS）：</strong> <%= @post.comments.count %>
           </div>
@@ -222,8 +222,8 @@
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->
 
 <% end %>

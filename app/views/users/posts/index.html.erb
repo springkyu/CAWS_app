@@ -61,11 +61,11 @@
       </div>
       <% end %>
 
-    </div>
-  </div>
+    </div> <!--col-->
+  </div> <!--row-->
   <!--ページネーション-->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
-</div>
+</div> <!--container-->
 
 
 
@@ -107,11 +107,11 @@
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
               <% end %>
           </h4>
-          <!-- いいね数 -->
+          <!-- いいね数(いいねできない) -->
           <div class="card-text text-right">
             <i class="fas fa-heart" style="color: #a73836; font-size: 20px;"> <%= post.likes.count %> </i>
           </div>
-          <!-- コメント数 -->
+          <!-- コメント数(コメントできない) -->
           <div class="card-text text-right" style="color: #001e43; font-size: 20px;">
             COMMENTS： <%= post.comments.count %>
           </div>
@@ -134,10 +134,10 @@
       </div>
       <% end %>
 
-    </div>
-  </div>
+    </div> <!--col-->
+  </div> <!--row-->
   <!--ページネーション-->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
-</div>
+</div> <!--container-->
 
 <% end %>

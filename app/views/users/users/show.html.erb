@@ -33,8 +33,8 @@
         <% end %>
       </div>
 
-    </div>
-  </div>
+    </div> <!--col-->
+  </div> <!--row-->
 
   <!-- ユーザーの投稿一覧を表示 -->
   <div class="row mt-5">
@@ -85,10 +85,10 @@
       <% end %>
     </div>
 
-  </div>
+  </div> <!--col-->
   <!--ページネーション-->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
-</div>
+</div> <!--row-->
 
 
 <!-- ログインユーザーでない場合 -->
@@ -166,11 +166,11 @@
         </div>
       </div>
       <% end %>
-    </div>
+    </div> <!--col-->
 
-  </div>
+  </div> <!--row-->
   <!--ページネーション-->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
-</div>
+</div> <!--container-->
 
 <% end %>

@@ -63,11 +63,11 @@
         </div>
         <% end %>
 
-      </div>
-    </div>
+      </div> <!--col-->
+    </div> <!--row-->
     <!-- ページネーション -->
     <div class="pagination justify-content-center"><%= paginate @posts %></div>
-  </div>
+  </div> <!--container-->
 
   <!-- エリア名で検索した時 -->
   <% elsif @model == "Area" %>
@@ -127,13 +127,13 @@
         </div>
         <% end %>
 
-      </div>
-    </div>
+      </div> <!--col-->
+    </div> <!--row-->
     <!-- ページネーション -->
     <div class="pagination justify-content-center"><%= paginate @posts_area %></div>
-  </div>
+  </div> <!--container-->
 
-  <% end %>
+  <% end %> <!-- 検索モデル条件分岐 -->
 
 
 <!-- ユーザーがログインしていない場合 -->
@@ -200,11 +200,11 @@
         </div>
         <% end %>
 
-      </div>
-    </div>
+      </div> <!--col-->
+    </div> <!--row-->
     <!-- ページネーション -->
     <div class="pagination justify-content-center"><%= paginate @posts %></div>
-  </div>
+  </div> <!--container-->
 
   <!-- エリア名で検索した時 -->
   <% elsif @model == "Area" %>
@@ -266,13 +266,13 @@
         </div>
         <% end %>
 
-      </div>
-    </div>
+      </div> <!--col-->
+    </div> <!--row-->
     <!-- ページネーション -->
     <div class="pagination justify-content-center"><%= paginate @posts_area %></div>
-  </div>
+  </div> <!--container-->
 
-  <% end %>
+  <% end %> <!-- 検索モデル条件分岐 -->
 
 
 <% end %>

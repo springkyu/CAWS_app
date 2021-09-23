@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 offset-md-4">
+      <!--ページタイトル-->
       <h3 class="text-center pt-5">Welcome to CAWS !<br />Please log in below.<i class="far fa-arrow-alt-circle-down"></i></h3>
 
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
@@ -37,6 +38,6 @@
         <%= render "users/shared/links" %>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->
