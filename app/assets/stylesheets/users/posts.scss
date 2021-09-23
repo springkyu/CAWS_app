@@ -20,3 +20,11 @@
     line-height: 0;  // 行の高さを0にする
     overflow: hidden;  // 拡大してはみ出る要素を隠す
 }
+
+// card内の画像サイズ調整
+
+.card-img-top {
+  object-fit: cover; // 縦横比固定したまま上2つの縦横の範囲内に収まるように配置
+  overflow: hidden;
+  height: 30em;
+}
