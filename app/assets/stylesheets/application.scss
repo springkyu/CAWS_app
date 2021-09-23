@@ -89,8 +89,8 @@ opacity:0;
 // ナビゲーション
 
 nav{
-	background:#333;
-	color:#efefef;
+	background: #333;
+	color: #efefef;
 	text-align: center;
 }
 
@@ -99,6 +99,10 @@ nav ul{
 	list-style: none;
 	display: flex;
 	justify-content: center;
+}
+
+nav ul li{
+	border-bottom:1px solid #ccc;
 }
 
 /*下の階層のulや矢印の基点にするためliにrelativeを指定*/
@@ -122,9 +126,10 @@ nav ul{
 	color: #778899;
 }
 
-button {
-  background-color: #ccc;
+.navbar-toggler {
+  background-color: #666;
 }
+
 // .navbar {
 //     justify-content: flex end;
 //     align-items: center;
@@ -140,49 +145,23 @@ button {
 // }
 
 
-/*==768px以下の形状*/
+// /*==768px以下の形状*/
 
-@media screen and (max-width:768px){
-	nav{
-		padding: 0;
-	}
-	
-	nav ul{
-		display: block;
-	}
-}
+// @media screen and (max-width:768px){
+// 	nav{
+// 		padding: 0;
+// 	}
 
-nav ul li{
-	border-bottom:1px solid #ccc;
-}
+// 	nav ul{
+// 		display: block;
+// 	}
+// }
 
-/*== グラデーションが流れる */
 
-.gradient1{
-    // ボタンの形状
-    display: inline-block;
-    color:#fff;
-    padding: 18px 60px;
-    border-radius:30px;
-    text-decoration: none;
-    outline: none;
-    /*背景の色と形状*/
-    background: linear-gradient(270deg, #e3843b 0%, #e66c57 25%, #b79444 51%, #738f51 100%);
-    background-position: 1% 50%;
-    background-size: 200% auto;
-    /*アニメーションの指定*/
-    transition: all 0.3s ease-out;
-}
-
-/*hoverした際の、背景の場所とテキスト色の変更*/
-.gradient1:hover {
-    color: #fff;
-    background-position: 99% 50%;
-}
 
 // フッター
 
-footer{
+footer {
   height: 100px;
   background-color: #502608;
   background-size: cover;
@@ -191,7 +170,7 @@ footer{
   color: #ffcccc;
 }
 
-.footer-bottom{
+.footer-bottom {
   font-size: 15px;
   color: #e6eae6;
 }
@@ -203,20 +182,20 @@ footer{
   padding-top: 50px;
 }
 
-.pagination>li>a {          
+.pagination>li>a {
   border: none; // 枠線をなくす
   background: #cbd0d3; // 背景の色
   color: #6f4b3e; // 文字の色
 }
 
 // 表示しているページ番号のデザイン
-.pagination>li.active {     
+.pagination>li.active {
   color: #6f4b3e; //文字の色
   border-radius: 25px; //角を丸く
 }
 
 // ホバー時のデザイン
-.pagination a:hover {        
+.pagination a:hover {
   border-radius: 25px; //角を丸く
 }
 // .pagination p {
@@ -252,7 +231,7 @@ footer{
 
 // リンクボタン,波紋
 
-.btnripple{
+.btnripple {
     // 波紋の基点
 	position: relative;
     // リンクの形状
