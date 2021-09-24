@@ -1,29 +1,29 @@
-<!--新規投稿画面-->
+<!-- 新規投稿画面 -->
 <div class="container">
   <div class="row">
     <div class="col">
-      <!--エラーメッセージ部分テンプレート-->
+      <!-- エラーメッセージ(部分テンプレート) -->
       <%= render "layouts/errors", obj: @post %>
-      <!--ページタイトル-->
+      <!-- ページタイトル -->
       <h3 class="text-center pt-5">Which 'cafe' would like to shere with everyone <i class="fas fa-question"></i></h3>
 
       <%= form_with model: @post, url: posts_path, local: true do |f| %>
       <form>
-        <!--カフェ（お店）の名前-->
+        <!-- カフェ（お店）の名前 -->
         <div class="row pt-5 mb-3">
           <%= f.label :shop_name, "Cafe's Name", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.text_field :shop_name, placeholder: "カフェの名前（ショップ名）", autofocus: true, autocomplete: "shop_name", class: "form-control w-75" %>
           </div>
         </div>
-        <!--写真選択-->
+        <!-- 写真選択 -->
         <div class="row pt-2 mb-3">
           <%= f.label :Photo, class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.file_field :image, placeholder: "写真を選んでください", autofocus: true %>
           </div>
         </div>
-        <!--テキスト本文-->
+        <!-- テキスト本文 -->
         <div class="row pt-2 mb-3">
           <%= f.label :Content, class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
@@ -53,21 +53,21 @@
             half    :  true,
           });
         </script>
-        <!--エリア選択-->
+        <!-- エリア選択 -->
         <div class="row pt-2 mb-3">
           <%= f.label :Area, class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.collection_select(:area_id, @areas, :id, :area, :prompt => "-- エリアを選択してください --") %>
           </div>
         </div>
-        <!--位置情報-->
+        <!-- 位置情報 -->
         <div class="row pt-2 mb-5">
           <%= f.label :Location, class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.text_field :location, placeholder: "位置情報", autofocus: true, autocomplete: "location", class: "form-control w-100" %>
           </div>
         </div>
-        <!--新規投稿ボタン-->
+        <!-- 新規投稿ボタン -->
         <div class="text-center mt-2 mb-5">
           <%= f.submit "CREATE POST", class: "btn btn-outline-dark" %>
         </div>
