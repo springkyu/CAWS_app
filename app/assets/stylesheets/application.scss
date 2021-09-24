@@ -165,32 +165,18 @@ footer {
 }
 
 .pagination>li>a {
-  border: none; // 枠線をなくす
-  background: #cbd0d3; // 背景の色
-  color: #6f4b3e; // 文字の色
+  border: none; // 枠線なし
+  background: #6c3524; // 背景の色
+  color: #fafdff; // 文字の色
+  margin: 0 10px;
+  border-radius: 5px; // 角丸く
 }
 
-// 表示しているページ番号のデザイン
-.pagination>li.active {
-  color: #6f4b3e; //文字の色
-  border-radius: 25px; //角を丸く
-}
-
-// ホバー時のデザイン
+// hover時のデザイン
 .pagination a:hover {
-  border-radius: 25px; //角を丸く
+  border-radius: 5px; // 角丸く
 }
 
-// .pagination p {
-//   display: inline-block;
-//   width: 30px;
-//   height: 30px;
-//   margin: 0 5px;
-//   color: #fff;
-//   background-color: #acabab;
-//   border-radius: 3px;
-//   line-height: 30px;
-// }
 
 // フラッシュメッセージ
 
@@ -225,9 +211,10 @@ footer {
 }
 
 //波形の設定
+
 .btnripple:hover::before {
     content: '';
-    //波形の位置,絶対配置
+    // 波形の位置,絶対配置
     position: absolute;
     left:30%;
     top:0;
@@ -236,13 +223,14 @@ footer {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    //はじめは不透明
+    // はじめは不透明
 	opacity:1;
     // アニメーション設定
     animation:1s circleanime2 forwards;
 }
 
 // 波形が広がる
+
 @keyframes circleanime2{
 	0%{
 	  transform: scale(0);
