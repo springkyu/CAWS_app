@@ -26,7 +26,7 @@
         </div>
 
         <div class="card-body">
-        　<!-- 投稿のタイトル＝カフェの名前 -->
+          <!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
               <%= link_to admins_post_path(post.id), class:"text-secondary" do %>
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
@@ -45,14 +45,14 @@
             <% if post.user.profile_image.attached? %>
               <%= image_tag post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
             <% else %> <!-- （ない場合はデフォルトイメージ表示） -->
-              <%= image_tag 'no_image.jpg', size:'100×100' %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
             <!-- 投稿ユーザのニックネーム-->
             <p>by. <%= post.user.name %></p>
           </div>
         </div>
 
-　　　　<!-- 投稿日（投稿のフッター） -->
+        <!-- 投稿日（投稿のフッター） -->
         <div class="card-footer text-light" style="background: #856859;">
           <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
         </div>
@@ -90,7 +90,7 @@
         </div>
 
         <div class="card-body">
-        　<!-- 投稿のタイトル＝カフェの名前 -->
+          <!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
             <%= link_to admins_post_path(post.id), class:"text-secondary" do %>
               <i class="fas fa-coffee"> <%= post.shop_name %> </i>
@@ -109,14 +109,14 @@
             <% if post.user.profile_image.attached? %>
               <%= image_tag post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
             <% else %> <!-- （ない場合はデフォルトイメージ表示） -->
-              <%= image_tag 'no_image.jpg', size:'100×100' %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
             <!-- 投稿ユーザのニックネーム-->
             <p>by. <%= post.user.name %></p>
           </div>
         </div>
 
-　　　　<!-- 投稿日（投稿のフッター） -->
+        <!-- 投稿日（投稿のフッター） -->
         <div class="card-footer text-light" style="background: #856859;">
           <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
         </div>

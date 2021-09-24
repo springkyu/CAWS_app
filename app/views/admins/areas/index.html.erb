@@ -18,7 +18,7 @@
         </div>
         <!-- 新規追加ボタン -->
         <div class="text-center mt-2 mb-3">
-          <%= f.submit "NEW / ADD", class: "btn btn-outline-primary" %>
+          <%= f.submit "NEW / ADD", class: "btn btn-outline-dark" %>
         </div>
       </form>
       <% end %>
@@ -27,7 +27,7 @@
   </div> <!--row-->
 
   <!-- エリア一覧 -->
-  <div class="row mt-3">
+  <div class="row mt-3 mb-5">
     <div class="col">
       <!--ページのサブタイトル-->
       <h3 class="text-center pt-5 mb-5">AREA LIST <i class="fas fa-map-marked-alt"></i></h3>
@@ -48,7 +48,7 @@
             <td><%= area.area %></td>
             <!-- 編集ボタン -->
             <td>
-              <%= link_to edit_admins_area_path(area.id), class: "btn btn-outline-success" do %>
+              <%= link_to edit_admins_area_path(area.id), class: "btn btn-outline-light" do %>
                 EDIT <i class="far fa-edit"></i>
               <% end %>
             </td>
