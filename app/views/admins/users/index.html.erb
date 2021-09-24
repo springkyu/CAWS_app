@@ -30,7 +30,7 @@
             <!-- ユーザステータス/ 退会フラグで条件分岐 -->
             <td>
               <% if user.is_deleted == true %>
-                <p class="text-dark"> 退会済 </p>
+                <p class="text-danger"> 退会済 </p>
               <% else %>
                 <p class="text-light"> 有効 </p>
               <% end %>
