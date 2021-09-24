@@ -15,7 +15,7 @@
 
         <!-- 検索結果の投稿の一覧を表示 -->
         <% @posts.each do |post| %>
-        <div class="card w-50 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #eee7e0;">
+        <div class="card w-75 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #eee7e0;">
           <!--エリア名（投稿のヘッダー）-->
           <div class="card-header text-light mt-1 mb-3" style="background: #856859;">
             <%= post.area.area %> エリア
@@ -79,7 +79,7 @@
 
         <!-- 検索結果の投稿の一覧を表示 -->
         <% @posts_area.each do |post| %>
-        <div class="card w-50 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #eee7e0;">
+        <div class="card w-75 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #eee7e0;">
           <!--エリア名（投稿のヘッダー）-->
           <div class="card-header text-light mt-1 mb-3" style="background: #856859;">
             <%= post.area.area %> エリア
@@ -150,7 +150,7 @@
 
         <!-- 検索結果の投稿の一覧を表示 -->
         <% @posts.each do |post| %>
-        <div class="card w-50 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #eee7e0;">
+        <div class="card w-75 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #eee7e0;">
           <!--エリア名（投稿のヘッダー）-->
           <div class="card-header text-light mt-1 mb-3" style="background: #856859;">
             <%= post.area.area %> エリア
@@ -216,7 +216,7 @@
 
         <!-- 検索結果の投稿の一覧を表示 -->
         <% @posts_area.each do |post| %>
-        <div class="card w-50 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #eee7e0;">
+        <div class="card w-75 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #eee7e0;">
           <!--エリア名（投稿のヘッダー）-->
           <div class="card-header text-light mt-1 mb-3" style="background: #856859;">
             <%= post.area.area %> エリア
@@ -274,4 +274,4 @@
   <% end %> <!-- 検索モデル条件分岐 -->
 
 
-<% end %>
+<% end %> <!-- ユーザーログイン 条件分岐 -->
