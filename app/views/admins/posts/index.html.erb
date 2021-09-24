@@ -4,9 +4,9 @@
     <div class="col">
       <!-- ページタイトル -->
       <h1 class="text-center pt-5">POST LIST <i class="fas fa-icons"></i></h1>
-      <!-- ソート（新着・おすすめ度高い） -->
+      <!-- ソート（新着・おすすめ度高い順に並び替え） -->
       <h6 class="text-center pt-2 mb-5">Need to sort ? <i class="fas fa-arrow-right"></i>
-        <%= link_to "NEW ARRIVAL", admins_posts_path(sort: 'created_at DESC'), class:"text-secondary" %> | <%= link_to "RECOMMEND", admins_posts_path(sort: 'rate DESC'), class:"text-secondary" %>
+        <%= link_to "NEW ARRIVAL", admins_posts_path(sort: 'created_at DESC'), class:"text-dark" %> | <%= link_to "RECOMMEND", admins_posts_path(sort: 'rate DESC'), class:"text-dark" %>
       </h6>
 
       <!-- 投稿の一覧を表示 -->
@@ -25,7 +25,7 @@
         </div>
 
         <div class="card-body">
-        　<!-- 投稿のタイトル＝カフェの名前 -->
+          <!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
              <%= link_to admins_post_path(post.id), class:"text-secondary" do %>
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
@@ -51,7 +51,7 @@
           </div>
         </div>
 
-　　　　<!--投稿日（投稿のフッター）-->
+        <!--投稿日（投稿のフッター）-->
         <div class="card-footer text-muted" style="background: #a2c2e6;">
           <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
         </div>
@@ -61,5 +61,5 @@
     </div> <!--col-->
   </div> <!--row-->
   <!--ページネーション-->
-  <!--<div class="pagination justify-content-center"><%#= paginate @posts %></div>-->
+  <div class="pagination justify-content-center"><%= paginate @posts %></div>
 </div> <!--container-->

@@ -10,7 +10,7 @@ class Admins::PostsController < ApplicationController
       @posts = Post.where(user_id: path[:id]).page(params[:page]).reverse_order 
     else
     # 全ユーザの投稿一覧
-      @posts = Post.all.page(params[:page]).reverse_order
+      @posts = Post.all.order(params[:sort]).page(params[:page]).per(8)
     end
   end
 
