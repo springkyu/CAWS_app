@@ -83,12 +83,11 @@
         </div>
       </div>
       <% end %>
-    </div>
-
-  </div> <!--col-->
+    </div> <!--col-->
+  </div> <!--row-->
   <!-- ページネーション -->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
-</div> <!--row-->
+</div> <!--container-->
 
 
 <!-- ログインユーザーでない場合 -->
@@ -116,8 +115,8 @@
       <!-- ユーザーの自己紹介 -->
       <h4 class="text-center mt-3 mb-3">Introduction：</h4>
       <div class="text-center"><strong><%= @user.introduction %></strong></div>
-    </div>
-  </div>
+    </div> <!--col-->
+  </div> <!--row-->
 
   <!-- ユーザーの投稿一覧を表示 -->
   <div class="row mt-5">
@@ -167,9 +166,8 @@
       </div>
       <% end %>
     </div> <!--col-->
-
   </div> <!--row-->
-  <!-- ページネーション-->
+  <!-- ページネーション -->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
 </div> <!--container-->
 
