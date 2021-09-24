@@ -4,7 +4,7 @@
 <!-- ユーザーマイページ -->
 <div class="container">
   <div class="row">
-    <div class="col-md-4 offset-md-4">
+    <div class="col-6 offset-3">
       <!-- ページタイトル -->
       <h1 class="text-center pt-5">USER INFO. <i class="fas fa-user-lock"></i></h1>
 
@@ -39,12 +39,12 @@
   <!-- ユーザーの投稿一覧を表示 -->
   <div class="row mt-5">
     <div class="col">
-      <!--ページのサブタイトル-->
+      <!-- ページのサブタイトル -->
       <h3 class="text-center pt-5 mb-5">YOUR POST LIST <i class="fas fa-list-ul"></i></h3>
 
       <% @posts.each do |post| %>
-      <div class="card w-50 mx-auto mt-4 mb-5 shadow-lg border-secondary p-2 text-center" style="background: #d3cbc6;">
-        <!--エリア名（投稿のヘッダー）-->
+      <div class="card w-75 mx-auto mt-4 mb-5 shadow-lg border-secondary p-2 text-center" style="background: #d3cbc6;">
+        <!-- エリア名（投稿のヘッダー） -->
         <div class="card-header text-light mt-1 mb-3" style="background: #6f514c;">
           <%= post.area.area %> エリア
         </div>
@@ -86,7 +86,7 @@
     </div>
 
   </div> <!--col-->
-  <!--ページネーション-->
+  <!-- ページネーション -->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
 </div> <!--row-->
 
@@ -122,12 +122,12 @@
   <!-- ユーザーの投稿一覧を表示 -->
   <div class="row mt-5">
     <div class="col">
-      <!--ページのサブタイトル-->
+      <!-- ページのサブタイトル -->
       <h3 class="text-center pt-5 mb-5">ONLY <%= @user.name %>'s POST <i class="fas fa-user-tag"></i></h3>
 
       <% @posts.each do |post| %>
       <div class="card w-50 mx-auto mt-4 mb-5 shadow-lg border-secondary p-2 text-center" style="background: #d3cbc6;">
-        <!--エリア名（投稿のヘッダー）-->
+        <!-- エリア名（投稿のヘッダー） -->
         <div class="card-header text-light mt-1 mb-3" style="background: #6f514c;">
           <%= post.area.area %> エリア
         </div>
@@ -169,7 +169,7 @@
     </div> <!--col-->
 
   </div> <!--row-->
-  <!--ページネーション-->
+  <!-- ページネーション-->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
 </div> <!--container-->
 
