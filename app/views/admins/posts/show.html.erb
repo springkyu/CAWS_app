@@ -16,33 +16,16 @@
         <div class="card-body">
           <!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title mt-3">
-            CAFE's NAME：<i class="fas fa-mug-hot"> <%= @post.shop_name %> </i>
+            <i class="fas fa-mug-hot"></i> CAFE's NAME： <%= @post.shop_name %>
           </h4>
-          <!-- 投稿ユーザー情報 -->
-          <div class="card-text">
-            <strong> POSTED BY：</strong>
-            <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
-            <% if @post.user.profile_image.attached? %>
-              <%= image_tag @post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
-            <% else %>
-              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
-            <% end %>
-            <p><%= link_to @post.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-dark" %></p>
-          </div>
-          <!-- 投稿日 -->
-          <div class="card-text mt-3">
-            <strong>POSTED ON：</strong> <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
-          </div>
-          <!-- 投稿テキスト本文（改行をそのまま表示） -->
-          <div class="card-text mt-3">
-            <strong>CONTENT：</strong> <%=safe_join(@post.body.split("\n"),tag(:br))%>
-            <!--<%#=simple_format(@post.body)%>-->
-          </div>
+        </div>
+        
+        <ul class="list-group list-group-flush">
           <!-- おすすめ度（星評価） -->
-          <div class="card-text mt-3">
+          <li class="list-group-item" style="background: #ede4e1;">
             <!--繰り返し処理をしてもidを一意に保てるよう@post.idを埋め込む-->
             <strong>RECOMMENDED FOR：</strong>
-                <div id="star-rate-<%= @post.id %>"></div>
+              <div id="star-rate-<%= @post.id %>"></div>
                 <script>
                   $('#star-rate-<%= @post.id %>').raty ({
                     size     :  36,
@@ -57,23 +40,47 @@
                     score    :  <%= @post.rate %>,
                   });
                 </script>
-          </div>
+          </li>
+          <!-- 投稿テキスト本文（改行をそのまま表示） -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong>CONTENT：</strong> <%=safe_join(@post.body.split("\n"),tag(:br))%>
+            <!--<%#=simple_format(@post.body)%>-->
+          </li>
           <!-- エリア名 -->
-          <div class="card-text mt-3">
+          <li class="list-group-item" style="background: #ede4e1;">
             <strong>AREA：</strong> <%= @post.area.area %>エリア
-          </div>
+          </li>
           <!-- 位置情報 -->
-          <div class="card-text mt-3">
+          <li class="list-group-item" style="background: #ede4e1;">
             <strong>LOCATION：</strong> <%= @post.location %>
-          </div>
+          </li>
+          <!-- 投稿ユーザー情報 -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong> POSTED BY：</strong>
+            <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
+            <% if @post.user.profile_image.attached? %>
+              <%= image_tag @post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
+            <% end %>
+            <!-- ユーザー名（ユーザー詳細ページへのリンク） -->
+            <p><%= link_to @post.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-dark" %></p>
+          </li>
+          <!-- 投稿日 -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong>POSTED ON：</strong> <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </li>
           <!-- いいね数 -->
-          <div class="card-text mt-3">
+          <li class="list-group-item" style="background: #ede4e1;">
             <strong>USER RESPONSE（LIKES）：</strong><i class="fas fa-heart" style="color: #a73836;"></i> <%= @post.likes.count %>
-          </div>
+          </li>
           <!-- コメント数 -->
-          <div class="card-text mt-3">
+          <li class="list-group-item" style="background: #ede4e1;">
             <strong>USER RESPONSE（COMMENTS）：</strong> <%= @post.comments.count %>
-          </div>
+          </li>
+        </ul>
+
+        <div class="card-body">
           <!-- 不適切な内容を含みますか？ -->
           <div class="card-text mt-5">
             <strong>content that is inappropriate ? </strong>
@@ -89,16 +96,22 @@
           <table class="table table-hover text-center mt-5 mb-5">
             <thead class="thead-dark">
               <tr>
+                <!-- ユーザー名 -->
                 <th scope="col">USER NAME</th>
+                <!-- コメント -->
                 <th scope="col">COMMENT</th>
+                <!-- 不適切な内容を含みますか？ -->
                 <th scope="col">content that is inappropriate ?</th>
               </tr>
             </thead>
             <% @post.comments.each do |comment| %>
             <tbody>
               <tr>
+                <!-- ユーザー名（ユーザー詳細ページへのリンク） -->
                 <td><%= link_to comment.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-dark" %></td>
+                <!-- コメント内容 -->
                 <td><%= comment.comment %></td>
+                <!-- 削除ボタン -->
                 <td><%= link_to "DESTROY", admins_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
               </tr>
             </tbody>
