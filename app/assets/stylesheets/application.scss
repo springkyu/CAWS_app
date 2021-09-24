@@ -88,7 +88,7 @@ opacity:0;
 
 // ナビゲーション
 
-nav{
+nav.navbar {
 	background: #333;
 	color: #efefef;
 	text-align: center;
@@ -96,13 +96,13 @@ nav{
 
 // ナビゲーション
 
-nav ul{
+nav.navbar ul{
 	list-style: none;
 	display: flex;
 	justify-content: center;
 }
 
-nav ul li{
+nav.navbar ul li{
 	border-bottom:1px solid #ccc;
 }
 
@@ -180,6 +180,7 @@ footer {
 .pagination a:hover {
   border-radius: 25px; //角を丸く
 }
+
 // .pagination p {
 //   display: inline-block;
 //   width: 30px;
