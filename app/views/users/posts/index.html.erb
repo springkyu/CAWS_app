@@ -10,6 +10,7 @@
       <!-- ソート（新着・おすすめ度高い順に並び替え） -->
       <h6 class="text-center pt-2 mb-5">Need to sort ? <i class="fas fa-arrow-right"></i>
         <%= link_to "NEW ARRIVAL", posts_path(sort: 'created_at DESC'), class:"btnripple text-dark" %> | <%= link_to "RECOMMEND", posts_path(sort: 'rate DESC'), class:"btnripple text-dark" %>
+        
       </h6>
 
       <!-- 投稿の一覧を表示（古い順） -->
