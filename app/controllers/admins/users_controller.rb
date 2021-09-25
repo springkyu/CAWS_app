@@ -16,7 +16,7 @@ class Admins::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice]="User's info was successfully updated."
+      flash[:notice] = "User info was successfully updated."
       redirect_to admins_user_path(@user)
     else
       flash[:alert] = "Could not update."

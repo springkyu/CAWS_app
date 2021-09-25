@@ -6,12 +6,11 @@ class Users::PostsController < ApplicationController
     @areas = Area.all
   end
 
-
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice]="You have creatad post successfully."
+      flash[:notice] = "You have creatad post successfully."
       redirect_to post_path(@post)
     else
       @areas = Area.all
@@ -20,7 +19,6 @@ class Users::PostsController < ApplicationController
     end
   end
 
-
   def index
     # @posts = Post.all.order(params[:sort])
     # ページネーションを適用
@@ -28,14 +26,12 @@ class Users::PostsController < ApplicationController
     @user = current_user
   end
 
-
   def show
     @newpost = Post.new
     @post = Post.find(params[:id])
     @user = @post.user
     @comment = Comment.new
   end
-
 
   def edit
     @post = Post.find(params[:id])
@@ -47,12 +43,11 @@ class Users::PostsController < ApplicationController
     end
   end
 
-
   def update
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
     if @post.update(post_params)
-      flash[:notice]="Post was successfully updated."
+      flash[:notice] = "Post was successfully updated."
       redirect_to post_path(@post.id)
     else
       @areas = Area.all
@@ -60,7 +55,6 @@ class Users::PostsController < ApplicationController
       render :edit
     end
   end
-
 
   def destroy
     @post = Post.find(params[:id])
@@ -73,12 +67,10 @@ class Users::PostsController < ApplicationController
     end
   end
 
-
   private
 
   def post_params
     params.require(:post).permit(:shop_name, :image, :body, :rate, :area_id, :location)
   end
-
 
 end

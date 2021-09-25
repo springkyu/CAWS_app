@@ -33,9 +33,6 @@ Rails.application.routes.draw do
       end
     end
 
-    # get "users/unsubscribe" => "users#unsubscribe"
-    # patch "users/withdraw" => "users#withdraw"
-
     resources :posts do
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
@@ -44,7 +41,6 @@ Rails.application.routes.draw do
     get "/search" => "searches#search"
 
   end
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

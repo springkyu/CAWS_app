@@ -1,4 +1,5 @@
 class Users::CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @post = Post.find(params[:post_id])
@@ -18,7 +19,6 @@ class Users::CommentsController < ApplicationController
     # 非同期
     render :index
   end
-
 
   private
 

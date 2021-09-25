@@ -2,13 +2,11 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :area
-
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   # has_one_attachedメソッド
   has_one_attached :image
-
 
   validates :shop_name, presence: true
   validates :area_id, presence: true
@@ -31,11 +29,8 @@ class Post < ApplicationRecord
     end
   end
 
-
   def self.search(keyword)
     Post.where(['shop_name LIKE ? OR body LIKE ? OR location LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
 
-
 end
-
