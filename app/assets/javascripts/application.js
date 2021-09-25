@@ -13,7 +13,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= jquery.raty.js
 
 //= require rails-ujs
 //= require activestorage
@@ -23,8 +22,11 @@
 // topページスライドショー
   // topページ開いてから動かす
 
-$(document).ready(function(){
-  $('.slider').slick({
+$(document).on('turbolinks:load',function(){
+	if($('.slider').length < 1){
+	    return
+	}
+    $('.slider').slick({
 		autoplay: true, // 自動的に動く
 		infinite: true, // スライドをループ
 		speed: 1000, // スライドスピード
