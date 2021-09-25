@@ -23,7 +23,7 @@
   // topページ開いてから動かす
 
 $(document).on('turbolinks:load',function(){
-	if($('.slider').length < 1){
+	if($('.slider').length < 1){ // 条件分岐
 	    return
 	}
     $('.slider').slick({
