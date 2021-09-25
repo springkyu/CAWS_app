@@ -25,14 +25,16 @@ Rails.application.routes.draw do
   end
 
   scope module: :users do
+    get "users/unsubscribe" => "users#unsubscribe"
+    patch "users/withdraw" => "users#withdraw"
     resources :users, only: [:show, :edit, :update] do
       member do
         get :likes
       end
     end
 
-    get "users/unsubscribe" => "users#unsubscribe"
-    patch "users/withdraw" => "users#withdraw"
+    # get "users/unsubscribe" => "users#unsubscribe"
+    # patch "users/withdraw" => "users#withdraw"
 
     resources :posts do
       resource :likes, only: [:create, :destroy]

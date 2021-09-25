@@ -112,7 +112,7 @@
                 <!-- コメント内容 -->
                 <td><%= comment.comment %></td>
                 <!-- 削除ボタン -->
-                <td><%= link_to "DESTROY", admins_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
+                <td><%= link_to "DESTROY", admins_comment_path(comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
               </tr>
             </tbody>
             <% end %>

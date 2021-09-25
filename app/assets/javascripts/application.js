@@ -21,8 +21,9 @@
 //= require_tree .
 
 // topページスライドショー
+  // topページ開いてから動かす
 
-$(function() {
+$(document).ready(function(){
   $('.slider').slick({
 		autoplay: true, // 自動的に動く
 		infinite: true, // スライドをループ
