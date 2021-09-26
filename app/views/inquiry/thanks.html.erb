@@ -1,0 +1,28 @@
+<!-- お問い合わせ完了画面 -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!--ページタイトル-->
+      <h1 class="text-center pt-5">THANK YOU <i class="fas fa-paper-plane"></i></h1>
+    </div> <!--col-->
+  </div> <!--row-->
+
+  <div class="row">
+    <div class="col">
+      <h3 class="text-center mt-5 mb-2"> お問い合わせいただきありがとうございました！ </h3>
+      <h4 class="text-center mt-5 mb-5">
+         送信が完了致しました。 <br />
+         いただいたメールは担当者が確認の上、<br />
+         折り返しご連絡させていただきますので<br />
+         今しばらく、お待ちくださいませ。
+      </h4>
+      <!-- TOPページに遷移 -->
+      <h4 class="text-center mt-5 mb-5 text-dark">
+        <%= link_to root_path do %>
+  		    <i class="fas fa-angle-double-right btnripple text-dark"> TOP </i>
+  	    <% end %>
+      </h4>
+
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

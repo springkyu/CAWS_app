@@ -1,34 +1,59 @@
 <%= render "admins/shared/error_messages", resource: resource %>
 
+<!-- 管理者 新規登録画面 -->
 <div class="container">
-  <div class="form_group form_inline row">
-    <div class="">
-      <h2> SIGN UP ~// 管理者用新規登録 //~ </h2>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <table class="table table-borderless">
-        <tr>
-          <td><%= f.label :メールアドレス, class: "float-left" %></td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_control form-control-md w-100" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :パスワード６文字以上, class: "float-left" %></td>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
-          <td><%= f.password_field :password,  autocomplete: "new-password", class: "form_control form-control-md w-100" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :パスワード（確認用）, class: "float-left" %></td>
-          <td><%= f.password_field :password_confirmation,  autocomplete: "new-password", class: "form_control form-control-md w-100" %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.submit "SIGN UP", class: "btn btn-outline-primary" %></td>
-        </tr>
-      </table>
-      <% end %>
-    </div>
-  </div>
-</div>
+  <div class="row">
+    <div class="col-6 offset-3 col-sm-8 offset-sm-2">
+      <!-- ページタイトル -->
+      <h3 class="text-center pt-5">
+        Welcome to CAWS for Management !<br />
+        You are here first time <i class="fas fa-question"></i><br />
+        Please sign up below <i class="far fa-arrow-alt-circle-down"></i></h3>
 
-<%= render "admins/shared/links" %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <!-- メールアドレス -->
+      <div class="form-label" >
+        <%= f.label :Email, class: "float-left" %>
+      </div>
+      <div class="form-group">
+        <%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "form-control w-100" %>
+      </div>
+      <!-- パスワード -->
+      <div class="form-label">
+        <%= f.label :password, "Password ", class: "float-left" %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+      </div> 
+      <div class="form-group">
+        <%= f.password_field :password, placeholder: "パスワード６文字以上", autocomplete: "new-password", class: "form-control w-100" %>
+      </div>
+      <!-- パスワード確認用 -->
+      <div class="form-label">
+        <%= f.label :password, "Password (for confirmation)", class: "float-left" %>
+      </div> 
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, placeholder: "パスワード確認用", autocomplete: "new-password", class: "form-control w-100" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+      <div class="field mb-2">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+      <% end %>
+      <!-- 新規登録ボタン -->
+      <div class="text-center mb-5">
+        <%= f.submit "SIGN UP", class: "btn btn-outline-dark w-50" %>
+      </div>
+      <% end %>
+
+      <!-- ログインページへのリンク -->
+      <div class="text-center mb-5">
+        Already registered..? <i class="fas fa-arrow-right"></i>
+        <%= render "admins/shared/links" %>
+      </div>
+
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

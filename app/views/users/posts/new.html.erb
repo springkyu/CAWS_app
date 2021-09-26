@@ -1,42 +1,79 @@
-<div class="flex-container">
-<%= render "layouts/errors", obj: @post %>
-  <h2> NEW POST ~ //新規投稿// ~ </h2>
-    <div class="form-group">
+<!-- 新規投稿画面 -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- エラーメッセージ(部分テンプレート) -->
+      <%= render "layouts/errors", obj: @post %>
+      <!-- ページタイトル -->
+      <h3 class="text-center pt-5">Which 'cafe' would like to shere with everyone <i class="fas fa-question"></i></h3>
+
       <%= form_with model: @post, url: posts_path, local: true do |f| %>
-      <table class="postnew table-borderless">
-
-        <tr>
-          <td><%= f.label :shop_name, "Cafe's Name", class: "float-left" %></td>
-          <td><%= f.text_field :shop_name, placeholder: "カフェの名前", autofocus: true, autocomplete: "shop_name", class: "form-control w-100" %></td>
-        </tr>
-
-        <tr>
-          <td><%= f.label :Photo, class: "float-left" %></td>
-          <td><%= f.file_field :image, placeholder: "写真を選んでください", autofocus: true %></td>
-        </tr>
-
-        <tr>
-          <td><%= f.label :Text, class: "float-left" %></td>
-          <td><%= f.text_area :body, placeholder: "何かコメントがあれば...", autofocus: true, autocomplete: "body", class: "form-control", size: "50x10" %></td>
-        </tr>
-
-        <tr>
-          <td><%= f.label :Area, class: "float-left" %></td>
-          <td><%= f.collection_select(:area_id, @areas, :id, :area, :prompt => "--エリアを選択してください--") %></td>
-        </tr>
-
-        <tr>
-          <td><%= f.label :Location, class: "float-left" %></td>
-          <td><%= f.text_field :location, placeholder: "位置情報", autofocus: true, autocomplete: "location", class: "form-control w-100" %></td>
-        </tr>
-
-        <tr>
-          <td></td>
-          <td><%= f.submit "POST NEW", class: "btn btn-outline-primary" %></td>
-        </tr>
-
-      </table>
+      <form>
+        <!-- カフェ（お店）の名前 -->
+        <div class="row pt-5 mb-3">
+          <%= f.label :shop_name, "Cafe's Name", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :shop_name, placeholder: "カフェの名前（ショップ名）", autofocus: true, autocomplete: "shop_name", class: "form-control w-75" %>
+          </div>
+        </div>
+        <!-- 写真選択 -->
+        <div class="row pt-2 mb-3">
+          <%= f.label :Photo, class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.file_field :image, placeholder: "写真を選んでください", autofocus: true %>
+          </div>
+        </div>
+        <!-- テキスト本文 -->
+        <div class="row pt-2 mb-3">
+          <%= f.label :Content, class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.text_area :body, placeholder: "テキスト本文なしでも、ショップ名・写真・おすすめ度だけで投稿できます。まずは投稿してみましょう！投稿してから編集も可能です。", autofocus: true, autocomplete: "body", class: "form-control", size: "75x10" %>
+          </div>
+        </div>
+        <!-- 評価 -->
+        <div class="row pt-2 mb-3">
+          <%= f.label :Rate, "Recommend?", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <div id="star">
+              <%= f.hidden_field :rate, id: :review_star, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <!-- 評価javascript -->
+        <script>
+        // debugger;
+          $('#star').raty({
+            size    :  36,
+            starOff :  '<%= asset_path('star-off.png') %>',
+            starOn  :  '<%= asset_path('star-on.png') %>',
+            starHalf:  '<%= asset_path('star-half.png') %>',
+            // postモデルのrateカラムに値を保存
+            scoreName: 'post[rate]',
+            // 星の半分の入力を行う
+            half    :  true,
+          });
+        </script>
+        <!-- エリア選択 -->
+        <div class="row pt-2 mb-3">
+          <%= f.label :Area, class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.collection_select(:area_id, @areas, :id, :area, :prompt => "-- エリアを選択してください --") %>
+          </div>
+        </div>
+        <!-- 位置情報 -->
+        <div class="row pt-2 mb-5">
+          <%= f.label :Location, class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :location, placeholder: "位置情報", autofocus: true, autocomplete: "location", class: "form-control w-100" %>
+          </div>
+        </div>
+        <!-- 新規投稿ボタン -->
+        <div class="text-center mt-2 mb-5">
+          <%= f.submit "CREATE POST", class: "btn btn-outline-dark" %>
+        </div>
+      </form>
       <% end %>
 
-    </div>
-</div>
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

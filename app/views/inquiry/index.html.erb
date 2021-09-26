@@ -1,0 +1,44 @@
+<!-- お問い合わせフォーム -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!--ページタイトル-->
+      <h1 class="text-center pt-5">INQUIRY FORM <i class="fas fa-mail-bulk"></i></h1>
+      <!-- サブ -->
+      <h4 class="text-center pt-2 mb-5"> ~ お問い合わせ ~ </h4>
+      <!-- エラーメッセージ(部分テンプレート) -->
+      <%= render "layouts/errors", obj: @inquiry %>
+
+      <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+      <form>
+        <!-- 名前 -->
+        <div class="row pt-5 mb-3">
+          <%= f.label :name, "NAME", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :name, placeholder: "名前（必須）", class: "form-control w-75" %>
+          </div>
+        </div>
+        <!-- メールアドレス -->
+        <div class="row pt-2 mb-3">
+          <%= f.label :email, "E-MAIL", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.email_field :email, placeholder: "メールアドレス（必須）", class: "form-control w-75"  %>
+          </div>
+        </div>
+        <!-- テキスト本文 -->
+        <div class="row pt-4 mb-5">
+          <%= f.label :content, "CONTENT", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.text_area :message, placeholder: "お問い合わせ内容を入力してください", class: "form-control", size: "75x5" %>
+          </div>
+        </div>
+        <!-- 確認ボタン -->
+        <div class="text-center mt-2 mb-5">
+          <%= f.submit "確認", class: "btn btn-outline-dark w-25" %>
+        </div>
+      </form>
+      <% end %>
+
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

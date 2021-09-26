@@ -1,19 +1,37 @@
+<!-- 退会確認ページ -->
 <div class="container">
   <div class="row">
-    <h3><strong>本当に退会しますか？</strong></h3>
-  </div>
-  <div class="row">
-    <h5 class="font-weight-normal text-center">
-      退会すると、ユーザ登録情報や<br />
-      これまでの投稿が閲覧できなくなり、<br />
-      いいねやコメント履歴も全て消えてしまいます。<br />
-      退会する場合は、「WITHDRAW(退会)」をクリックしてください。
-    </h5>
-  </div>
-  <div class="row">
-    <div class="">
-      <%= link_to "NOT WITHDRAW", users_path, class: "btn btn-outline-info" %>
-      <%= link_to "WITHDRAW(退会)", users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか?", class: "btn btn-outline-danger" %>
-    </div>
-  </div>
-</div>
+    <div class="col">
+      <!-- ページタイトル -->
+      <h3 class="font-weight-bold text-center pt-5">Would you really like to unsubscribe <i class="fas fa-question"></i></h3>
+      <h6 class="font-weight-bold text-center mb-5" >（ 本当に退会しますか？）</h6>
+      <!-- 退会時の注意書き -->
+      <h5 class="font-weight-normal text-center">
+        退会すると、ユーザ登録情報や<br />
+        これまでの投稿が閲覧できなくなり、<br />
+        いいねやコメント履歴も全て消えてしまいます。<br />
+        退会する場合は、<br />
+        「WITHDRAW(退会)」をクリックしてください。
+      </h5>
+      <!-- 退会しないボタン -->
+      <div class="text-center mt-5 mb-3">
+        <%= link_to user_path(@user), class: "btn btn-outline-dark w-25" do %>
+          <i class="fas fa-user"> NOT WITHDRAW </i>
+        <% end %>
+      </div>
+      <!-- 退会ボタン -->
+      <div class="text-center mt-3 mb-5">
+        <%= link_to users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか?", class: "btn btn-outline-danger w-25" do %>
+          <i class="fas fa-user-slash"> WITHDRAW(退会) </i>
+        <% end %>
+      </div>
+      <!-- 編集ページに戻る -->
+      <div class="row mb-5">
+        <%= link_to edit_user_path(@user) do %>
+          <i class="fas fa-backward text-dark"> BACK </i>
+        <% end %>
+  	  </div>
+
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

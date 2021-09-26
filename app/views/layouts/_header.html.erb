@@ -1,27 +1,30 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light" >
-    <nav class="navbar-brand navbar-left header-logo" >
-      <%= link_to root_path do %>
-        <i class="fas fa-coffee text-secondary"> CAWS </i>
-      <% end %>
-    </nav>
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--  <span class="navbar-toggler-icon"></span>-->
-    <!--</button>-->
-    <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
-    <!--  <ul class="nav navbar-nav ml-auto">-->
-
-    <ul class="navbar-menu">
+<!-- ヘッダー(部分テンプレ) -->
+<header class="fadeRight">
+  <div class="head">
+    <!-- topページへのリンク -->
+    <%= link_to root_path do %><div class="head-img"></div><% end %>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="nav navbar-nav ml-auto">
     <!-- ユーザーがログインしているとき -->
     <% if user_signed_in? %>
       <li class="nav-item">
-        <%= link_to users_path do %>
+        <%= link_to user_path(current_user) do %>
           <i class="fas fa-id-card"> MY PAGE </i>
         <% end %>
       </li>
       <li class="nav-item">
+        <%= link_to likes_user_path(current_user) do %>
+          <i class="fas fa-hand-holding-heart"> FAVORITES </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
         <%= link_to posts_path do %>
-          <i class="fas fa-quran"> 投稿一覧 </i>
+          <i class="fas fa-images"> 投稿一覧 </i>
         <% end %>
       </li>
       <li class="nav-item">
@@ -34,12 +37,16 @@
           <i class="fas fa-sign-out-alt"> LOG OUT </i>
         <% end %>
       </li>
+      <!-- 検索フォーム -->
+      <li class="nav-item">
+        <%= render 'layouts/search' %>
+      </li>
 
     <!-- 管理者がログインしているとき -->
     <% elsif admin_signed_in? %>
       <li class="nav-item">
         <%= link_to admins_posts_path do %>
-          <i class="fas fa-paste"> 投稿一覧 </i>
+          <i class="far fa-images"> 投稿一覧 </i>
         <% end %>
       </li>
       <li class="nav-item">
@@ -57,12 +64,21 @@
           <i class="fas fa-sign-out-alt"> LOG OUT </i>
         <% end %>
       </li>
+      <!-- 検索フォーム -->
+      <li class="nav-item">
+        <%= render 'layouts/admins_search' %>
+      </li>
 
     <!-- ログインしていないとき -->
     <% else %>
       <li class="nav-item">
+        <%= link_to about_path do %>
+         <i class="fas fa-atlas"> ABOUT </i>
+        <% end %>
+      </li>
+      <li class="nav-item">
         <%= link_to posts_path do %>
-          <i class="fas fa-quran"> 投稿一覧 </i>
+          <i class="far fa-images"> 投稿一覧 </i>
         <% end %>
       </li>
       <li class="nav-item">
@@ -75,9 +91,13 @@
           <i class="fas fa-sign-in-alt"> LOG IN </i>
         <% end %>
       </li>
+      <!-- 検索フォーム -->
+      <li class="nav-item">
+        <%= render 'layouts/search' %>
+      </li>
 
     <% end %>
     </ul>
-
+    </div>
   </nav>
 </header>

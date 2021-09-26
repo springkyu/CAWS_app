@@ -1,37 +1,46 @@
+<!-- 管理者 ログイン画面 -->
 <div class="container">
-  <div class="form_group form_inline row">
-    <div class="">
-      <h2> SIGN IN ~// 管理者用ログイン //~ </h2>
+  <div class="row">
+    <div class="col-6 offset-3 col-sm-8 offset-sm-2">
+      <!-- ページタイトル -->
+      <h3 class="text-center pt-5">
+        Hi! Good job today <i class="far fa-thumbs-up"></i><br />
+        Please log in below.<i class="far fa-arrow-alt-circle-down"></i>
+      </h3>
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <table class="table table-borderless">
-        <tr>
-          <td><%= f.label :メールアドレス %></td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-md w-100" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :パスワード %></td>
-          <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-md w-100" %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <% if devise_mapping.rememberable? %>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </div>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.submit "LOG IN", class: "btn btn-outline-primary" %></td>
-        </tr>
-      </table>
+
+      <!-- メールアドレス -->
+      <div class="form-label pt-2" >
+        <%= f.label :Email %>
+      </div>
+      <div class="form-group">
+        <%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "form-control w-100" %>
+      </div>
+      <!-- パスワード -->
+      <div class="form-label">
+        <%= f.label :Password %>
+      </div> 
+      <div class="form-group">
+        <%= f.password_field :password, placeholder: "パスワード", autocomplete: "current-password", class: "form-control w-100" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+      <div class="field mb-3">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
       <% end %>
-      <div class="">
+      <!-- ログインボタン -->
+      <div class="text-center mb-5">
+        <%= f.submit "LOG IN", class: "btn btn-outline-dark w-50" %>
+      </div>
+      <% end %>
+
+      <!-- 新規登録 or パスワード忘れ -->
+      <div class="text-center mb-5">
         <%= render "admins/shared/links" %>
       </div>
-    </div>
-  </div>
-</div>
+
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

@@ -1,92 +1,130 @@
+<!-- 管理者閲覧用 投稿詳細ページ -->
 <div class="card-container">
   <div class="row">
-    <div class="col-10">
-      <h2 class=""> POST DETAIL </h2>
-    </div>
-  </div>
-  <div class="card w-75 mx-auto mt-4 mb-5 p-3 shadow-lg border-secondary">
-   <!-- カフェの名前をcardのヘッダーに -->
-    <div class="card-header mb-3" style="background: #dddcd6;" >
-      <%= @post.shop_name %>
-    </div>
-   <!-- 投稿写真(メイン) -->
-    <%= image_tag @post.image %>
-    <div class="card-body">
-      <div class="card-text">
-        <table class="postinfo table-borderless">
-          <tr>
-            <th>CAFE's NAME：</th>
-            <td><%= @post.shop_name %></td>
-          </tr>
-          <tr>
-            <th>TEXT：</th>
-            <td><%= @post.body %></td>
-          </tr>
-          <tr>
-            <th>AREA：</th>
-            <td><%= @post.area.area %> エリア</td>
-          </tr>
-          <tr>
-            <th>LOCATION：</th>
-            <td><%= @post.location %></td>
-         </tr>
-          <tr>
-            <th>POSTED BY：</th>
-            <th>
-            <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
-              <% if @post.user.profile_image.attached? %>
-                <%= image_tag @post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
-              <% else %>
-                <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
-              <% end %>
-            </th>
-            <!-- 投稿ユーザと投稿日 -->
-            <td>
-              <%= link_to @post.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-secondary" %>
-            </td>
-          </tr>
-          <tr>
-            <th>Posted on </th>
-            <td><%= @post.created_at %></td>
-          </tr>
-          <tr>
-            <th>USER RESOPNSE：</th>
-          <!-- いいね数のカウント -->
-            <td><i class="fas fa-heart"><%= @post.likes.count %></i></td>
-            <td></td>
-          <!-- コメント数のカウント -->
-            <td> | COMMENTS: <%= @post.comments.count %></td>
-          </tr>
-          <tr>
-            <th>content that is inappropriate ?</th> <!-- 不適切な内容を含みますか？ -->
-            <td></td>
-            <td><%= link_to 'DESTROY', admins_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-outline-danger" %></td>
-          </tr>
-        </table>
+    <div class="col">
+      <!-- ページタイトル -->
+      <h1 class="text-center pt-5"> THIS POST DETAIL <i class="fas fa-camera-retro"></i></h1>
 
-  <!-- 投稿のコメント一覧 -->
-        <table class="table comment mt-5">
-          <thead>
-            <tr>
-              <th>USER NAME</th>
-              <th>COMMENT</th>
-              <th>content that is inappropriate ?</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @post.comments.each do |comment| %>
-              <tr>
-                <td><%= comment.user.name %></td>
-                <td><%= comment.comment %></td>
-                <td><%= link_to "DESTROY", post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
-              </tr>
+      <div class="card w-75 mx-auto mt-5 mb-5 p-3 shadow-lg border-secondary text-center" style="background: #ede4e1;">
+        <!--カフェの名前（投稿のヘッダー）-->
+        <div class="card-header text-light mb-3" style="background: #96514d;" >
+          <strong><%= @post.shop_name %></strong>
+        </div>
+        <!-- 投稿写真（メイン） -->
+          <%= image_tag @post.image %>
+
+        <div class="card-body">
+          <!-- 投稿のタイトル＝カフェの名前 -->
+          <h4 class="card-title mt-3">
+            <i class="fas fa-mug-hot"></i> CAFE's NAME： <%= @post.shop_name %>
+          </h4>
+        </div>
+        
+        <ul class="list-group list-group-flush">
+          <!-- おすすめ度（星評価） -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <!--繰り返し処理をしてもidを一意に保てるよう@post.idを埋め込む-->
+            <strong>RECOMMENDED FOR：</strong>
+              <div id="star-rate-<%= @post.id %>"></div>
+                <script>
+                  $('#star-rate-<%= @post.id %>').raty ({
+                    size     :  36,
+                    starOff  :  '<%= asset_path('star-off.png') %>',
+                    starOn   :  '<%= asset_path('star-on.png') %>',
+                    starHalf :  '<%= asset_path('star-half.png') %>',
+                    // 星の半分の入力を行う
+                    half     :  true,
+                    // 読み取り専用
+                    readOnly :  true,
+                    // 星の入力値を読み込む
+                    score    :  <%= @post.rate %>,
+                  });
+                </script>
+          </li>
+          <!-- 投稿テキスト本文（改行をそのまま表示） -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong>CONTENT：</strong> <%=safe_join(@post.body.split("\n"),tag(:br))%>
+            <!--<%#=simple_format(@post.body)%>-->
+          </li>
+          <!-- エリア名 -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong>AREA：</strong> <%= @post.area.area %>エリア
+          </li>
+          <!-- 位置情報 -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong>LOCATION：</strong> <%= @post.location %>
+          </li>
+          <!-- 投稿ユーザー情報 -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong> POSTED BY：</strong>
+            <!-- 投稿ユーザのプロフィール画像（ない場合はデフォルト画像を表示） -->
+            <% if @post.user.profile_image.attached? %>
+              <%= image_tag @post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
-          </tbody>
-        </table>
+            <!-- ユーザー名（ユーザー詳細ページへのリンク） -->
+            <p><%= link_to @post.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-dark" %></p>
+          </li>
+          <!-- 投稿日 -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong>POSTED ON：</strong> <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </li>
+          <!-- いいね数 -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong>USER RESPONSE（LIKES）：</strong><i class="fas fa-heart" style="color: #a73836;"></i> <%= @post.likes.count %>
+          </li>
+          <!-- コメント数 -->
+          <li class="list-group-item" style="background: #ede4e1;">
+            <strong>USER RESPONSE（COMMENTS）：</strong> <%= @post.comments.count %>
+          </li>
+        </ul>
+
+        <div class="card-body">
+          <!-- 不適切な内容を含みますか？ -->
+          <div class="card-text mt-5">
+            <strong>content that is inappropriate ? </strong>
+          </div>
+          <!-- 削除ボタン -->
+          <div class="card-text mt-5 mb-3">
+            <%= link_to admins_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-outline-danger w-25" do %>
+              <i class="fas fa-trash"></i> DESTROY
+            <% end %>
+          </div>
+          
+          <!-- 投稿のコメント一覧 -->
+          <table class="table table-hover text-center mt-5 mb-5">
+            <thead class="thead-dark">
+              <tr>
+                <!-- ユーザー名 -->
+                <th scope="col">USER NAME</th>
+                <!-- コメント -->
+                <th scope="col">COMMENT</th>
+                <!-- 不適切な内容を含みますか？ -->
+                <th scope="col">content that is inappropriate ?</th>
+              </tr>
+            </thead>
+            <% @post.comments.each do |comment| %>
+            <tbody>
+              <tr>
+                <!-- ユーザー名（ユーザー詳細ページへのリンク） -->
+                <td><%= link_to comment.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-dark" %></td>
+                <!-- コメント内容 -->
+                <td><%= comment.comment %></td>
+                <!-- 削除ボタン -->
+                <td><%= link_to "DESTROY", admins_comment_path(comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+
+        </div>
+        <!-- 投稿日（投稿のフッター） -->
+        <div class="card-footer text-light mt-2" style="background: #96514d;">
+          craeated at <%= @post.created_at %>
+        </div>
       </div>
-    </div>
-    <div class="card-footer text-muted mt-2" style="background: #dddcd6;">
-      craeated at. <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
-    </div>
-  </div>
-</div>
+
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

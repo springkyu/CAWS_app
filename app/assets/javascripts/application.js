@@ -18,3 +18,24 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// topページスライドショー
+  // topページ開いてから動かす
+
+$(document).on('turbolinks:load',function(){
+	if($('.slider').length < 1){ // 条件分岐
+	    return
+	}
+    $('.slider').slick({
+		autoplay: true, // 自動的に動く
+		infinite: true, // スライドをループ
+		speed: 1000, // スライドスピード
+		slidesToShow: 3, // 画面に3枚
+		slidesToScroll: 1, // 1回スクロールで1枚の写真
+		prevArrow: '<div class="slick-prev"></div>', // 矢印部分PreviewのHTMLを変更
+		nextArrow: '<div class="slick-next"></div>', // 矢印部分NextのHTMLを変更
+		centerMode: true, // 要素の中央ぞろえ
+		variableWidth: true, // 画像の高さを揃える
+		dots: true, // ドットナビゲーション
+	});
+});
