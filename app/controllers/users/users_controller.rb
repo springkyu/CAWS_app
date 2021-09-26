@@ -30,6 +30,7 @@ class Users::UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
       reset_session
+      flash[:notice] = "Thank you for using."
       redirect_to root_path
   end
 

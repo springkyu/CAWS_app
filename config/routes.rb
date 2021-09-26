@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about"
 
+  get   'inquiry'         => 'inquiry#index'
+  post  'inquiry/confirm' => 'inquiry#confirm'
+  post  'inquiry/thanks'  => 'inquiry#thanks'
+
+
   namespace :admins do
     resources :posts, only: [:index, :show, :destroy]
       resources :comments, only: [:destroy]
