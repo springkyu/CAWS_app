@@ -153,7 +153,7 @@
 
         <ul class="list-group list-group-flush">
           <!-- おすすめ度（星評価） -->
-          <li class="list-group-item" style="background: #d4d9df;">
+          <li class="list-group-item" style="background: #eee9e6;">
             <!-- 繰り返し処理をしてもidを一意に保てるよう@post.idを埋め込む -->
             <strong>RECOMMENDED FOR：</strong>
               <div id="star-rate-<%= @post.id %>"></div>
@@ -173,19 +173,19 @@
                 </script>
           </li>
           <!-- 投稿テキスト本文（改行をそのまま表示） -->
-          <li class="list-group-item mt-3" style="background: #d4d9df;">
+          <li class="list-group-item mt-3" style="background: #eee9e6;">
             <strong>CONTENT：</strong> <%=safe_join(@post.body.split("\n"),tag(:br))%>
           </li>
           <!-- エリア名 -->
-          <li class="list-group-item" style="background: #d4d9df;">
+          <li class="list-group-item" style="background: #eee9e6;">
             <strong>AREA：</strong> <%= @post.area.area %>エリア
           </li>
           <!-- 位置情報 -->
-          <li class="list-group-item mt-2" style="background: #d4d9df;">
+          <li class="list-group-item mt-2" style="background: #eee9e6;">
             <strong>LOCATION：</strong> <%= @post.location %>
           </li>
           <!-- 投稿ユーザー情報 -->
-          <li class="list-group-item" style="background: #d4d9df;">
+          <li class="list-group-item" style="background: #eee9e6;">
             <strong> POSTED BY：</strong>
             <!-- 投稿ユーザのプロフィール画像 -->
             <% if @post.user.profile_image.attached? %>
@@ -197,15 +197,15 @@
             <p><%= @post.user.name %></p>
           </li>
           <!-- 投稿日 -->
-          <li class="list-group-item" style="background: #d4d9df;">
+          <li class="list-group-item" style="background: #eee9e6;">
             <strong>POSTED ON：</strong> <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
           </li>
           <!-- リアクション（いいねとコメント数） -->
-          <li class="list-group-item mt-2 mb-4" style="background: #d4d9df;">
+          <li class="list-group-item mt-2 mb-2" style="background: #eee9e6;">
             <!-- いいね数(いいねできない) -->
             <strong>USER RESPONSE（LIKES）：</strong><i class="fas fa-heart" style="color: #a73836;"></i> <%= @post.likes.count %>
             <!-- コメント数(コメントできない) -->
-            <strong>USER RESPONSE（COMMENTS）：</strong> <%= @post.comments.count %>
+            <p><strong>USER RESPONSE（COMMENTS）：</strong> <%= @post.comments.count %></p>
           </li>
         </ul>
 

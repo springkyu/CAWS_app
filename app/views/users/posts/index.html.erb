@@ -57,7 +57,7 @@
 
         <!-- 投稿日（投稿のフッター） -->
         <div class="card-footer text-light" style="background: #9d8e87;">
-          <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
+          <i class="fas fa-calendar-day"><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></i>
         </div>
       </div>
       <% end %>
@@ -81,7 +81,7 @@
       <h1 class="text-center pt-5">POST LIST <i class="fas fa-icons"></i></h1>
       <!-- ソート（新着・おすすめ度高い順に並び替え） -->
       <h6 class="text-center pt-2 mb-5">Need to sort ? <i class="fas fa-arrow-right"></i>
-        <%= link_to "NEW ARRIVAL", posts_path(sort: 'created_at DESC'), class:"text-secondary" %> | <%= link_to "RECOMMEND", posts_path(sort: 'rate DESC'), class:"text-secondary" %>
+        <%= link_to "NEW ARRIVAL", posts_path(sort: 'created_at DESC'), class:"btnripple text-dark" %> | <%= link_to "RECOMMEND", posts_path(sort: 'rate DESC'), class:"btnripple text-dark" %>
       </h6>
 
       <!-- 投稿の一覧を表示（古い順） -->
@@ -104,7 +104,7 @@
         <div class="card-body">
         　<!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
-              <%= link_to post_path(post.id), class:"text-secondary" do %>
+              <%= link_to post_path(post.id), class:"btnripple text-secondary" do %>
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
               <% end %>
           </h4>
@@ -121,7 +121,7 @@
             <% if post.user.profile_image.attached? %>
               <%= image_tag post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
             <% else %> <!-- （ない場合はデフォルトイメージ表示） -->
-              <%= image_tag 'no_image.jpg', size:'100×100', class:"mt-3 rounded-circle"; %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
             <!-- 投稿ユーザーのニックネーム -->
             <p>by. <%= post.user.name %></p>
@@ -130,7 +130,7 @@
 
 　　　　<!-- 投稿日（投稿のフッター） -->
         <div class="card-footer text-light" style="background: #6c3524;">
-          <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
+          <i class="fas fa-calendar-day"><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></i>
         </div>
       </div>
       <% end %>

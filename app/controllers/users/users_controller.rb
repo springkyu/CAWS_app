@@ -36,7 +36,7 @@ class Users::UsersController < ApplicationController
   def likes
     @user = current_user
     likes = Like.where(user_id: @user.id).pluck(:post_id)
-    @like_posts = Post.where(id: likes).page(params[:page]).per(8)
+    @like_posts = Post.where(id: likes).page(params[:page]).per(8).reverse_order
   end
 
   private
