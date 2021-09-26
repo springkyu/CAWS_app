@@ -15,7 +15,7 @@
       </h5>
       <!-- 退会しないボタン -->
       <div class="text-center mt-5 mb-3">
-        <%= link_to users_path, class: "btn btn-outline-info w-25" do %>
+        <%= link_to user_path(@user), class: "btn btn-outline-dark w-25" do %>
           <i class="fas fa-user"> NOT WITHDRAW </i>
         <% end %>
       </div>
@@ -27,11 +27,11 @@
       </div>
       <!-- 編集ページに戻る -->
       <div class="row mb-5">
-        <%= link_to edit_users_path do %>
+        <%= link_to edit_user_path(@user) do %>
           <i class="fas fa-backward text-dark"> BACK </i>
         <% end %>
   	  </div>
 
-    </div>
-  </div>
-</div>
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

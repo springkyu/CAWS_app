@@ -1,7 +1,8 @@
 <!-- 管理者 ログイン画面 -->
 <div class="container">
   <div class="row">
-    <div class="col-md-4 offset-md-4">
+    <div class="col-6 offset-3 col-sm-8 offset-sm-2">
+      <!-- ページタイトル -->
       <h3 class="text-center pt-5">
         Hi! Good job today <i class="far fa-thumbs-up"></i><br />
         Please log in below.<i class="far fa-arrow-alt-circle-down"></i>
@@ -31,15 +32,15 @@
       <% end %>
       <!-- ログインボタン -->
       <div class="text-center mb-5">
-        <%= f.submit "LOG IN", class: "btn btn-outline-primary w-100" %>
+        <%= f.submit "LOG IN", class: "btn btn-outline-dark w-50" %>
       </div>
       <% end %>
 
-      <!-- 新規登録orパスワード忘れ -->
-      <div class="">
+      <!-- 新規登録 or パスワード忘れ -->
+      <div class="text-center mb-5">
         <%= render "admins/shared/links" %>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

@@ -6,7 +6,14 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+
   root to: "homes#top"
+  get "/about" => "homes#about"
 
   namespace :admins do
     resources :posts, only: [:index, :show, :destroy]
@@ -18,14 +25,13 @@ Rails.application.routes.draw do
   end
 
   scope module: :users do
-    resource :users, only: [:show, :edit, :update] do
+    get "users/unsubscribe" => "users#unsubscribe"
+    patch "users/withdraw" => "users#withdraw"
+    resources :users, only: [:show, :edit, :update] do
       member do
         get :likes
       end
     end
-
-    get "users/unsubscribe" => "users#unsubscribe"
-    patch "users/withdraw" => "users#withdraw"
 
     resources :posts do
       resource :likes, only: [:create, :destroy]
@@ -35,12 +41,6 @@ Rails.application.routes.draw do
     get "/search" => "searches#search"
 
   end
-
-  devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations'
-  }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

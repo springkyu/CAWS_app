@@ -8,6 +8,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
@@ -16,6 +24,12 @@
     </header>
 
     <main>
+      <% if flash[:notice] %>
+        <div class="flash mt-3"><%= flash[:notice] %></div>
+      <% elsif flash[:alert] %>
+        <div class="flash mt-3"><%= flash[:alert] %></div>
+      <% end %>
+
       <%= yield %>
     </main>
 

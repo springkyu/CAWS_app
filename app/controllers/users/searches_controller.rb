@@ -11,5 +11,4 @@ class Users::SearchesController < ApplicationController
     end
   end
 
-
 end

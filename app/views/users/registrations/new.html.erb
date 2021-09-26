@@ -2,7 +2,8 @@
 <!-- ユーザー 新規登録画面 -->
 <div class="container">
   <div class="row">
-    <div class="col-md-4 offset-md-4">
+    <div class="col-6 offset-3">
+      <!--ページタイトル-->
       <h3 class="text-center pt-5">
         Welcome to CAWS !<br />
         You are here first time <i class="fas fa-question"></i><br />
@@ -28,14 +29,14 @@
       <!-- パスワード -->
       <div class="form-label">
         <%= f.label :password, "Password(6 characters or more)", class: "float-left" %>
-      </div> 
+      </div>
       <div class="form-group">
         <%= f.password_field :password, placeholder: "パスワード６文字以上", autocomplete: "new-password", class: "form-control w-100" %>
       </div>
       <!-- パスワード確認用 -->
       <div class="form-label">
         <%= f.label :password, "Password(for confirmation)", class: "float-left" %>
-      </div> 
+      </div>
       <div class="form-group">
         <%= f.password_field :password_confirmation, placeholder: "パスワード確認用", autocomplete: "new-password", class: "form-control w-100" %>
       </div>
@@ -47,16 +48,16 @@
       <% end %>
       <!-- 新規登録ボタン -->
       <div class="text-center mb-5">
-        <%= f.submit "SIGN UP", class: "btn btn-outline-primary w-100" %>
+        <%= f.submit "SIGN UP", class: "btn btn-outline-dark w-50" %>
       </div>
       <% end %>
 
       <!-- ログインページへのリンク -->
-      <div class="">
+      <div class="text-center mb-5">
         Already registered..? <i class="fas fa-arrow-right"></i>
         <%= render "users/shared/links" %>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div> <!--col-->
+  </div> <!--row-->
+</div> <!--container-->

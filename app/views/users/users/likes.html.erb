@@ -4,26 +4,30 @@
     <div class="col">
       <!-- ページタイトル -->
       <h1 class="text-center pt-5">ONLY YOUR 'FAVORITE' POSTS <i class="fas fa-thumbs-up"></i></h1>
+      <!-- サブ（投稿日が新しい順に並んでいます） -->
+      <h4 class="text-center pt-2 mb-5">( From newest )</h4>
 
       <!-- お気に入り投稿の一覧を表示 -->
       <% @like_posts.each do |post| %>
-      <div class="card w-50 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #c8c2c6;">
+      <div class="card w-75 mx-auto mt-5 mb-5 shadow-lg p-2 text-center" style="background: #c8c2c6;">
         <!--エリア名（投稿のヘッダー）-->
         <div class="card-header text-light mt-1 mb-3" style="background: #a89dac;">
           <%= post.area.area %> エリア
         </div>
 
         <!-- 投稿写真（メイン） -->
-        <div class="bd-placeholder-img card-img-top" width="100%" height="50">
-        <%= link_to post_path(post.id) do %>
-          <%= image_tag post.image, class:"card-img-top"; %>
-        <% end %>
+        <div class="zoomIn bd-placeholder-img card-img-top" width="100%" height="50">
+          <span class="mask">
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.image, class:"card-img-top"; %>
+            <% end %>
+          </span>
         </div>
 
         <div class="card-body">
         　<!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
-             <%= link_to post_path(post.id), class:"text-dark" do %>
+             <%= link_to post_path(post.id), class:"btnripple text-dark" do %>
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
               <% end %>
           </h4>
@@ -38,9 +42,9 @@
             <% if post.user.profile_image.attached? %>
               <%= image_tag post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
             <% else %> <!-- （ない場合はデフォルトイメージ表示） -->
-              <%= image_tag 'no_image.jpg', size:'100×100' %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
-            <!-- 投稿ユーザのニックネーム-->
+            <!-- 投稿ユーザのニックネーム -->
             <p>by. <%= post.user.name %></p>
           </div>
         </div>
@@ -52,8 +56,8 @@
       </div>
       <% end %>
 
-    </div>
-  </div>
+    </div> <!--col-->
+  </div> <!--row-->
   <!-- ページネーション -->
-  <!--<div class="pagination justify-content-center"><%#= paginate @posts_page %></div>-->
-</div>
+  <div class="pagination justify-content-center"><%= paginate @like_posts %></div>
+</div> <!--container-->

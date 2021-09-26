@@ -7,19 +7,17 @@ class Admins::PostsController < ApplicationController
 
     # ユーザの詳細ページから、そのユーザだけの投稿一覧を見たい時
     if path[:controller] == "admins/users" && path[:action] == "show"
-      @posts = Post.where(user_id: path[:id]).page(params[:page]).reverse_order 
+      @posts = Post.where(user_id: path[:id]).page(params[:page]).reverse_order
     else
     # 全ユーザの投稿一覧
-      @posts = Post.all.page(params[:page]).reverse_order
+      @posts = Post.all.order(params[:sort]).page(params[:page]).per(8)
     end
   end
-
 
   def show
     @post = Post.find(params[:id])
     @user = @post.user
   end
-
 
   def destroy
     @post = Post.find(params[:id])
@@ -31,6 +29,5 @@ class Admins::PostsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
 
 end

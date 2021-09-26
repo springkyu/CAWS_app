@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-
   def already_liked?(post)
     self.likes.exists?(post_id: post.id)
   end
@@ -17,8 +16,6 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
-
-
 
   # has_one_attachedメソッド
   has_one_attached :profile_image

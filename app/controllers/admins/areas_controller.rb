@@ -9,7 +9,7 @@ class Admins::AreasController < ApplicationController
   def create
     @area = Area.new(area_params)
     if @area.save!
-      flash[:notice]="You have creatad area successfully."
+      flash[:notice] = "You have creatad area successfully."
       redirect_back(fallback_location: root_path)
     else
       @areas = Area.all
@@ -25,7 +25,7 @@ class Admins::AreasController < ApplicationController
   def update
     @area = Area.find(params[:id])
     if @area.update(area_params)
-      flash[:notice]="Area was successfully updated."
+      flash[:notice] = "Area was successfully updated."
       redirect_to admins_areas_path
     else
       flash[:alert] = "Could not update."
@@ -43,7 +43,6 @@ class Admins::AreasController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
 
   private
 

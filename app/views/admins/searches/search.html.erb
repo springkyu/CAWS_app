@@ -1,5 +1,6 @@
 <!-- 管理者用 検索結果 投稿一覧 -->
 
+
 <!-- キーワードで検索した時 -->
 <% if @model == "Post" %>
 
@@ -18,16 +19,18 @@
         </div>
 
         <!-- 投稿写真（メイン） -->
-        <div class="bd-placeholder-img card-img-top" width="100%" height="50">
-        <%= link_to post_path(post.id) do %>
-          <%= image_tag post.image, class:"card-img-top"; %>
-        <% end %>
+        <div class="zoomIn bd-placeholder-img card-img-top" width="100%" height="50">
+          <span class="mask">
+            <%= link_to admins_post_path(post.id) do %>
+              <%= image_tag post.image, class:"card-img-top"; %>
+            <% end %>
+          </span>
         </div>
 
         <div class="card-body">
-        　<!-- 投稿のタイトル＝カフェの名前 -->
+          <!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
-             <%= link_to post_path(post.id), class:"text-dark" do %>
+              <%= link_to admins_post_path(post.id), class:"text-secondary" do %>
                 <i class="fas fa-coffee"> <%= post.shop_name %> </i>
               <% end %>
           </h4>
@@ -44,25 +47,25 @@
             <% if post.user.profile_image.attached? %>
               <%= image_tag post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
             <% else %> <!-- （ない場合はデフォルトイメージ表示） -->
-              <%= image_tag 'no_image.jpg', size:'100×100' %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
             <!-- 投稿ユーザのニックネーム-->
             <p>by. <%= post.user.name %></p>
           </div>
         </div>
 
-　　　　<!-- 投稿日（投稿のフッター） -->
+        <!-- 投稿日（投稿のフッター） -->
         <div class="card-footer text-light" style="background: #856859;">
           <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
         </div>
       </div>
       <% end %>
 
-    </div>
-  </div>
+    </div> <!--col-->
+  </div> <!--row-->
   <!-- ページネーション -->
   <div class="pagination justify-content-center"><%= paginate @posts %></div>
-</div>
+</div> <!--container-->
 
 <!-- エリア名で検索した時 -->
 <% elsif @model == "Area" %>
@@ -71,7 +74,7 @@
   <div class="row">
     <div class="col">
       <!-- ページタイトル -->
-      <h1 class="text-center pt-5">SEARCH FOR "<%= @keyword %>" <i class="fas fa-search-plus"></i></h1>
+      <h1 class="text-center pt-5">SEARCH FOR "<%= @keyword %> エリア" <i class="fas fa-search-plus"></i></h1>
 
       <!-- 検索結果の投稿の一覧を表示 -->
       <% @posts_area.each do |post| %>
@@ -82,18 +85,20 @@
         </div>
 
         <!-- 投稿写真（メイン） -->
-        <div class="bd-placeholder-img card-img-top" width="100%" height="50">
-        <%= link_to post_path(post.id) do %>
-          <%= image_tag post.image, class:"card-img-top"; %>
-        <% end %>
+        <div class="zoomIn bd-placeholder-img card-img-top" width="100%" height="50">
+          <span class="mask">
+            <%= link_to admins_post_path(post.id) do %>
+              <%= image_tag post.image, class:"card-img-top"; %>
+            <% end %>
+          </span>
         </div>
 
         <div class="card-body">
-        　<!-- 投稿のタイトル＝カフェの名前 -->
+          <!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title">
-             <%= link_to post_path(post.id), class:"text-dark" do %>
-                <i class="fas fa-coffee"> <%= post.shop_name %> </i>
-              <% end %>
+            <%= link_to admins_post_path(post.id), class:"text-secondary" do %>
+              <i class="fas fa-coffee"> <%= post.shop_name %> </i>
+            <% end %>
           </h4>
           <!-- いいね数 -->
           <div class="card-text text-right">
@@ -108,24 +113,24 @@
             <% if post.user.profile_image.attached? %>
               <%= image_tag post.user.profile_image.variant(resize:'100x100'), class:"mt-3 rounded-circle"; %>
             <% else %> <!-- （ない場合はデフォルトイメージ表示） -->
-              <%= image_tag 'no_image.jpg', size:'100×100' %>
+              <%= image_tag 'no_image.jpg', size: '100x100', class:"mt-3 rounded-circle"; %>
             <% end %>
             <!-- 投稿ユーザのニックネーム-->
             <p>by. <%= post.user.name %></p>
           </div>
         </div>
 
-　　　　<!-- 投稿日（投稿のフッター） -->
+        <!-- 投稿日（投稿のフッター） -->
         <div class="card-footer text-light" style="background: #856859;">
           <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
         </div>
       </div>
       <% end %>
 
-    </div>
-  </div>
+    </div> <!--col-->
+  </div> <!--row-->
   <!-- ページネーション -->
   <div class="pagination justify-content-center"><%= paginate @posts_area %></div>
-</div>
+</div> <!--container-->
 
 <% end %>
