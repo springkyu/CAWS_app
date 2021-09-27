@@ -2,8 +2,8 @@
 <div class="comment-form mt-5">
   <%= form_with(model:[post, comment], url: post_comments_path(post) ) do |f| %>
     <div class="form-label mb-4">
-        <strong><%= f.label :comment, "NEW COMMENT..?" %> <i class="fas fa-arrow-down"></i></strong>
-      </div>
+      <strong><%= f.label :comment, "NEW COMMENT..?" %> <i class="fas fa-arrow-down faa-float animated"></i></strong>
+    </div>
     <div class="form-group">
       <%= f.text_area :comment, placeholder: "ここにコメントを入力", class: "form-control form-control-lg" %><br >
     </div>

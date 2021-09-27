@@ -2,7 +2,7 @@
 <table class="search-form table-borderless">
   <%= form_with(url: admins_search_path, method: :get, local: true) do |f| %>
   <tr>
-    <td style="padding:0 10px;"><i class="fas fa-search-plus" style="font-size: 30px;"></i></td> <!--検索アイコン -->
+    <td style="padding:0 10px;"><i class="fas fa-search-plus faa-wrench animated-hover" style="font-size: 30px;"></i></td> <!--検索アイコン -->
     <!-- 検索ワードフォーム -->
     <td style="padding:0 10px;"><%= f.text_field :keyword, placeholder: "KEYWORD..?", class: "form-control" %></td>
     <!-- モデル選択 (キーワードかエリア名か) -->
