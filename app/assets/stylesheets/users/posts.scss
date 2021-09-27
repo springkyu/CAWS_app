@@ -28,3 +28,9 @@
   overflow: hidden;
   height: 30em;
 }
+
+.scroll {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 350px;
+}
