@@ -6,11 +6,16 @@
         <li class=""> プライバシーポリシー </li>
         <li class=""> 利用規約 </li>
         <li class=""> サイトマップ </li>
-        <li class="">
-          <%= link_to inquiry_path do %>
-            <i class="far fa-paper-plane faa-float animated" style="color: #ffcccc;"> お問い合わせ </i>
-          <% end %>
-        </li>
+        <!-- 管理者がログインしているとき -->
+        <% if admin_signed_in? %> <!-- 表示なし -->
+        <!-- ユーザーが使用するとき -->
+        <% else %>
+          <li class="">
+            <%= link_to inquiry_path do %>
+              <i class="far fa-paper-plane faa-float animated" style="color: #ffcccc;"> お問い合わせ </i>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="footer-bottom">
