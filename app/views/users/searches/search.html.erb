@@ -62,6 +62,11 @@
         </div>
         <% end %>
 
+        <!-- 検索結果がない場合 -->
+        <% if @posts.count == 0 %>
+          <h3 class="text-center pt-5"><i class="fas fa-exclamation-triangle"></i> 検索の結果、一致する投稿がありませんでした</h3>
+        <% end %>
+
       </div> <!--col-->
     </div> <!--row-->
     <!-- ページネーション -->
@@ -124,6 +129,11 @@
             <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
           </div>
         </div>
+        <% end %>
+
+        <!-- 検索結果がない場合 -->
+        <% if @posts.count == 0 %>
+          <h3 class="text-center pt-5"><i class="fas fa-exclamation-triangle"></i> 検索の結果、一致する投稿がありませんでした</h3>
         <% end %>
 
       </div> <!--col-->
@@ -199,6 +209,11 @@
         </div>
         <% end %>
 
+        <!-- 検索結果がない場合 -->
+        <% if @posts.count == 0 %>
+          <h3 class="text-center pt-5"><i class="fas fa-exclamation-triangle"></i> 検索の結果、一致する投稿がありませんでした</h3>
+        <% end %>
+
       </div> <!--col-->
     </div> <!--row-->
     <!-- ページネーション -->
@@ -263,6 +278,11 @@
             <i class="fas fa-calendar-day"> <%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </i>
           </div>
         </div>
+        <% end %>
+
+        <!-- 検索結果がない場合 -->
+        <% if @posts.count == 0 %>
+          <h3 class="text-center pt-5"><i class="fas fa-exclamation-triangle"></i> 検索の結果、一致する投稿がありませんでした</h3>
         <% end %>
 
       </div> <!--col-->

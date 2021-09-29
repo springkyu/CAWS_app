@@ -17,10 +17,10 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-// フォントの種類
-body {
-  font-family: 'Abril Fatface', cursive;
-}
+// // フォントの種類
+// body {
+//   font-family: 'Abril Fatface', cursive;
+// }
 
 // 全体の設定
 * {
@@ -42,6 +42,8 @@ html {
 
 // 背景
 body{
+  // フォントの種類
+  font-family: 'Abril Fatface', cursive;
 	animation: bgchange 40s ease infinite;
 }
 
@@ -54,6 +56,9 @@ body{
       100% {background:#c7aaa5;}
  }
 
+main {
+  min-height: 100vh;
+}
 
 
 // ヘッダー
@@ -132,6 +137,7 @@ footer {
   background-color: #502608;
   background-size: cover;
   background-position: bottom;
+  margin-top: auto;
   bottom: 0; // 下に固定
   color: #ffcccc;
 }
@@ -228,4 +234,26 @@ footer {
 		transform:scale(2);
 		opacity: 0;
 	}
+}
+
+// レスポンシブ（見出し文字大きさ変更）
+@media screen and (max-width:768px) {
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 26px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 16px;
+  }
+  h6 {
+    font-size: 12px;
+  }
 }
