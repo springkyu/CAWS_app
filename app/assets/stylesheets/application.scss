@@ -17,10 +17,10 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-// フォントの種類
-body {
-  font-family: 'Abril Fatface', cursive;
-}
+// // フォントの種類
+// body {
+//   font-family: 'Abril Fatface', cursive;
+// }
 
 // 全体の設定
 * {
@@ -42,6 +42,8 @@ html {
 
 // 背景
 body{
+  // フォントの種類
+  font-family: 'Abril Fatface', cursive;
 	animation: bgchange 40s ease infinite;
 }
 
