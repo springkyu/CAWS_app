@@ -56,6 +56,9 @@ body{
       100% {background:#c7aaa5;}
  }
 
+main {
+  min-height: 100vh;
+}
 
 
 // ヘッダー
@@ -134,6 +137,7 @@ footer {
   background-color: #502608;
   background-size: cover;
   background-position: bottom;
+  margin-top: auto;
   bottom: 0; // 下に固定
   color: #ffcccc;
 }
