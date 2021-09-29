@@ -29,6 +29,54 @@
   height: 30em;
 }
 
+@media screen and (max-width:768px) {
+  // .card {
+  //   height: 50em;
+  // }
+  
+  .card-img-top {
+    object-fit: cover;
+    overflow: hidden;
+    height: 20em;
+  }
+}
+
+@media screen and (max-width:425px) {
+  // .card {
+  //   height: 40em;
+  // }
+  
+  .card-img-top {
+    object-fit: cover;
+    overflow: hidden;
+    height: 15em;
+  }
+  
+  .card-body {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width:380px) {
+  // .card {
+  //   height: 38em;
+  // }
+  
+  .card-img-top {
+    object-fit: cover;
+    overflow: hidden;
+    height: 10em;
+  }
+  
+  .card-body {
+    font-size: 8px;
+  }
+  .card-text {
+    font-size: 8px;
+  }
+}
+
+
 .scroll {
   overflow-y: scroll;
   scroll-behavior: smooth;
