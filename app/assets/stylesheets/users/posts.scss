@@ -33,7 +33,7 @@
   // .card {
   //   height: 50em;
   // }
-  
+
   .card-img-top {
     object-fit: cover;
     overflow: hidden;
@@ -45,15 +45,18 @@
   // .card {
   //   height: 40em;
   // }
-  
+
   .card-img-top {
     object-fit: cover;
     overflow: hidden;
     height: 15em;
   }
-  
+
   .card-body {
     font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: no-wrap;
   }
 }
 
@@ -61,24 +64,41 @@
   // .card {
   //   height: 38em;
   // }
-  
+
   .card-img-top {
     object-fit: cover;
     overflow: hidden;
     height: 10em;
   }
-  
+
   .card-body {
     font-size: 8px;
   }
   .card-text {
     font-size: 8px;
   }
+
+  .card-header {
+    font-size: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: no-wrap;
+  }
+  .card-footer {
+    font-size: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: no-wrap;
+  }
 }
 
 
 .scroll {
+  overflow-x: auto;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  height: 350px;
+  height: 300px;
+  th, td {
+    width: 100px;
+  }
 }

@@ -16,7 +16,7 @@
         <div class="card-body">
           <!-- 投稿のタイトル＝カフェの名前 -->
           <h4 class="card-title mt-3">
-            <i class="fas fa-mug-hot"></i> CAFE's NAME： <%= @post.shop_name %>
+            <i class="fas fa-mug-hot faa-bounce animated"></i> CAFE's NAME： <%= @post.shop_name %>
           </h4>
         </div>
         
@@ -37,7 +37,7 @@
                     // 読み取り専用
                     readOnly :  true,
                     // 星の入力値を読み込む
-                    score    :  <%= @post.rate %>,
+                    score    :  <%= @post.rate || 0 %>
                   });
                 </script>
           </li>
@@ -91,32 +91,38 @@
               <i class="fas fa-trash"></i> DESTROY
             <% end %>
           </div>
-          
-          <!-- 投稿のコメント一覧 -->
-          <table class="table table-hover text-center mt-5 mb-5">
-            <thead class="thead-dark">
-              <tr>
-                <!-- ユーザー名 -->
-                <th scope="col">USER NAME</th>
-                <!-- コメント -->
-                <th scope="col">COMMENT</th>
-                <!-- 不適切な内容を含みますか？ -->
-                <th scope="col">content that is inappropriate ?</th>
-              </tr>
-            </thead>
-            <% @post.comments.each do |comment| %>
-            <tbody>
-              <tr>
-                <!-- ユーザー名（ユーザー詳細ページへのリンク） -->
-                <td><%= link_to comment.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-dark" %></td>
-                <!-- コメント内容 -->
-                <td><%= comment.comment %></td>
-                <!-- 削除ボタン -->
-                <td><%= link_to "DESTROY", admins_comment_path(comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
-              </tr>
-            </tbody>
-            <% end %>
-          </table>
+
+          <div class="mt-5 mb-4">
+            <strong>COMMENT ALL <i class="fas fa-arrow-down faa-float animated"></i></strong>
+          </div>
+          <!-- この部分だけスクロールできるように -->
+          <div class="scroll">
+            <!-- 投稿のコメント一覧 -->
+            <table class="table table-hover text-center mt-5 mb-5">
+              <thead class="thead-dark">
+                <tr>
+                  <!-- ユーザー名 -->
+                  <th scope="col">USER NAME</th>
+                  <!-- コメント -->
+                  <th scope="col">COMMENT</th>
+                  <!-- 不適切な内容を含みますか？ -->
+                  <th scope="col">content that is inappropriate ?</th>
+                </tr>
+              </thead>
+              <% @post.comments.each do |comment| %>
+              <tbody>
+                <tr>
+                  <!-- ユーザー名（ユーザー詳細ページへのリンク） -->
+                  <td><%= link_to comment.user.name, admins_user_path(@user.id), class: "user_#{@user.id} text-dark" %></td>
+                  <!-- コメント内容 -->
+                  <td><%= comment.comment %></td>
+                  <!-- 削除ボタン -->
+                  <td><%= link_to "DESTROY", admins_comment_path(comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: " btn btn-outline-danger" %></td>
+                </tr>
+              </tbody>
+              <% end %>
+            </table>
+          </div>
 
         </div>
         <!-- 投稿日（投稿のフッター） -->
